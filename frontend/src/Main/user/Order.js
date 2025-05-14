@@ -1,6 +1,8 @@
 /* eslint-disable no-useless-concat */
 /* eslint-disable jsx-a11y/heading-has-content */
 import { useState, useEffect, useRef } from "react";
+import { FaHome } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Order() {
   const [orderItem, setOrderItem] = useState([]);
@@ -72,7 +74,7 @@ export default function Order() {
   };
   return (
     <div className="order">
-      <h1>Your Order</h1>
+      <h1><Link to={window.location.href.replace("/yourorder", "")} className="link" style={{color:"white",fontSize:"larger",marginRight:"1rem"}}><FaHome/></Link>Your Order</h1>
       <div className="filter">
         <strong>FILTER{">>>"}</strong>
         <button type="button">Success</button>
