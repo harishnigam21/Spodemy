@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-concat */
 /* eslint-disable jsx-a11y/heading-has-content */
 import { useState, useEffect, useRef } from "react";
 
@@ -48,7 +49,7 @@ export default function Order() {
     const data = JSON.parse(item.usrcartobj);
     let result = 0;
     for (let i = 0; i < data.length; i++) {
-      result += data[i].price;
+      result += data[i].price * data[i].quantity;
     }
     return result;
   };
