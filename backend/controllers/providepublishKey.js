@@ -1,5 +1,5 @@
-const decrypt = require("../usefulFunction/decryption");
-const prisma = require("./prisma_initilization");
+const prisma = require("../shortcut/prisma_initilization");
+const decrypt = require("../utils/usefulFunction/decryption");
 require("dotenv").config();
 const KEY = process.env.STRIPE_PUBLISHABLE_KEY;
 const provideKey = async (req, res) => {

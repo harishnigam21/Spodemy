@@ -1,4 +1,4 @@
-const prisma = require("./prisma_initilization");
+const prisma = require("../shortcut/prisma_initilization");
 const signoutUser = async (req, res) => {
   const cookies = req.cookies;
   //listing cookies

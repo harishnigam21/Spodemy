@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const verifyTrans = require("../middleware/verifyTransaction");
+const verifyTrans = require("../controllers/verifyTransaction");
 
 router.route("/verifytransaction").post(verifyTrans.verify);
 

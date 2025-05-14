@@ -1,5 +1,5 @@
-const prisma = require("./prisma_initilization");
-const decrypt = require("../usefulFunction/decryption");
+const prisma = require("../shortcut/prisma_initilization");
+const decrypt = require("../utils/usefulFunction/decryption");
 const verify = async (req, res) => {
   const { transactionid, transactionState } = req.body;
   if (!transactionid && !transactionState) {

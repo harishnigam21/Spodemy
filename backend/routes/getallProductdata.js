@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const getallProductdata = require('../middleware/getallProductdata'); 
+const getallProductdata = require('../controllers/getallProductdata'); 
 router.route('/getallproductdata')
       .get(getallProductdata.getProduct);
 module.exports = router;

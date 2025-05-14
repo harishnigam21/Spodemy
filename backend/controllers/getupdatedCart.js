@@ -1,5 +1,5 @@
-const decrypt = require("../usefulFunction/decryption");
-const prisma = require("./prisma_initilization");
+const prisma = require("../shortcut/prisma_initilization");
+const decrypt = require("../utils/usefulFunction/decryption");
 const getCart = async (req, res) => {
   try {
     const cookies = req.cookies;

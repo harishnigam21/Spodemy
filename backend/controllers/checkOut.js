@@ -1,7 +1,7 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const { v4: uuidv4 } = require("uuid");
-const prisma = require("./prisma_initilization");
-const decrypt = require("../usefulFunction/decryption");
+const prisma = require("../shortcut/prisma_initilization");
+const decrypt = require("../utils/usefulFunction/decryption");
 const checkout = async (req, res) => {
   const cookies = req.cookies;
   if (!cookies) {

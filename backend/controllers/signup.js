@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const prisma = require('./prisma_initilization');
+const prisma = require("../shortcut/prisma_initilization");
 
 const getUser = async (req, res) => {
   if (

@@ -1,4 +1,4 @@
-const prisma = require("./prisma_initilization");
+const prisma = require("../shortcut/prisma_initilization");
 
 const getProduct = async (req, res) => {
   try {
