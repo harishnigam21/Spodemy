@@ -607,11 +607,12 @@ code {
   align-self: center;
   width: 50%;
   padding: 10rem 0rem;
-  border: 3px solid red;
+  border: 1px solid red;
   border-radius: 2rem;
-  box-shadow: 0rem 0rem 5rem red, 0rem 0rem 3rem rgb(255, 255, 255) inset;
+  box-shadow: 0rem 0rem 1.5rem red, 0rem 0rem 5rem rgb(255, 255, 255) inset;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.9);
+
 }
 
 #passwordfield {
@@ -635,6 +636,7 @@ code {
   list-style: none;
   font-weight: bold;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: larger;
 }
 
 #cnfpasswordfield {

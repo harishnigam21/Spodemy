@@ -17,9 +17,9 @@ const forgotPassword = async (req, res) => {
   if (!userEmail) {
     return res
       .status(404)
-      .jsin({ Message: "Please input your email to move forward" });
+      .json({ Message: "Please input your email to move forward" });
   }
-  const validUser = prisma.users.findUnique({
+  const validUser = await prisma.users.findUnique({
     where: { email: userEmail },
   });
   if (!validUser) {
@@ -31,6 +31,7 @@ const forgotPassword = async (req, res) => {
 
   try {
     const useremail = validUser.email;
+    console.log(useremail);
     const encryptemail = encrypt(useremail);
     // send mail with defined transport object
     const info = await transporter.sendMail({
@@ -49,6 +50,7 @@ const forgotPassword = async (req, res) => {
           "Password Reset Link has been send to your registered Email ID",
       });
   } catch (error) {
+    console.log(error);
     res
       .status(500)
       .json({

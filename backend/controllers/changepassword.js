@@ -28,7 +28,7 @@ const changePassword = async (req, res) => {
         console.log("Succesfully Changed Password");
         return res
           .status(200)
-          .json({ Message: "Succesfully Changed Password" });
+          .json({ Message: "Succesfully Changed Password, returning to signin page within 5s" });
       } else {
         return res
           .status(500)

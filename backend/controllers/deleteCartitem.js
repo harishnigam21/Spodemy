@@ -24,7 +24,7 @@ const deleteCart = async (req, res) => {
     // Update beforebuying cart
     const userBB = await prisma.beforebuying.findMany({
       where: { email: decryptedEmail, transactionid: null },
-      orderBy: { createdAt: "desc", },
+      orderBy: { createdAt: "desc" },
       take: 1,
     });
     if (userBB) {
