@@ -7,7 +7,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.link {
+  text-decoration: "none";
+  color: "black";
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -612,7 +615,6 @@ code {
   box-shadow: 0rem 0rem 1.5rem red, 0rem 0rem 5rem rgb(255, 255, 255) inset;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.9);
-
 }
 
 #passwordfield {
@@ -954,7 +956,7 @@ code {
   padding: 0.8rem;
   border-top-left-radius: 0.8rem;
   border-top-right-radius: 0.8rem;
-  p{
+  p {
     color: blue;
   }
   div {
@@ -1016,13 +1018,13 @@ code {
     box-shadow: 0 0 0.3rem blue inset;
   }
 }
-.imgArray{
+.imgArray {
   display: flex;
   flex-direction: row;
   overflow: scroll;
   width: 15rem;
   /* height: 6rem; */
-  img{
+  img {
     width: 5rem;
     height: 5rem;
     padding: 0.5rem;
