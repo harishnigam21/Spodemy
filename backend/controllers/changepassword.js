@@ -1,13 +1,7 @@
-const users = {
-  user: require("../model/registration.json"),
-  setUser: function (data) {
-    this.user = data;
-  },
-};
-const fs = require('fs').promises;
 const bcrypt = require("bcrypt");
-const decrypt = require('../usefulFunction/decryption');
-const path = require('path');
+const decrypt = require("../utils/usefulFunction/decryption");
+const prisma = require("../shortcut/prisma_initilization");
+
 const changePassword = async (req, res) => {
   try {
     if (
@@ -17,21 +11,38 @@ const changePassword = async (req, res) => {
       req.body.password === req.body.cnfpassword
     ) {
       const decryptemail = decrypt(req.body.email);
-      const validUser = users.user.find((item) => item.email === decryptemail);
-      const otherUser = users.user.filter((item) => item.email !== decryptemail);
+      const validUser = prisma.users.findUnique({
+        where: { email: decryptemail },
+      });
       if (!validUser) {
-        return res.status(404).json({ Message: "Email ID is not registered" });
+        return res
+          .status(404)
+          .json({ Message: "Entered Email ID is not registered" });
       }
       const encryptPassword = await bcrypt.hash(req.body.password, 5);
-      validUser.password = encryptPassword;
-      users.setUser([...otherUser,validUser]);
-      await fs.writeFile(path.join(__dirname,'..','model','registration.json'),JSON.stringify(users.user),(error)=>{if(error){return res.status(507).json({Message:"DB is not responding"})}});
-      return res.status(200).json({Message : 'Succesfully Changed'});
+      const changePassword = await prisma.users.update({
+        where: { email: decryptemail },
+        data: { password: encryptPassword },
+      });
+      if (changePassword) {
+        console.log("Succesfully Changed Password");
+        return res
+          .status(200)
+          .json({ Message: "Succesfully Changed Password" });
+      } else {
+        return res
+          .status(500)
+          .json({ Message: "Problem while updating password at DB side" });
+      }
     } else {
-      return res.status(406).json({Message: "Looks like your both password field does not matches"});
+      return res.status(406).json({
+        Message: "Looks like your both password field does not matches",
+      });
     }
   } catch (error) {
-    return res.status(500).json({Message : 'Please Sign In, you are not member of spodemy'});
+    return res
+      .status(500)
+      .json({ Message: "Please Sign In, you are not member of spodemy" });
   }
 };
 module.exports = { changePassword };
