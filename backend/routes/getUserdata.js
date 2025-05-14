@@ -1,0 +1,6 @@
+const express = require('express');
+const router = express.Router();
+const getUserdata = require('../middleware/getUserdata'); 
+router.route('/getuserdata')
+      .get(getUserdata.getUser);
+module.exports = router;
