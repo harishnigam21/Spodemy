@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model products {
+  ProductId         Int       @id @unique(map: "ProductId_UNIQUE") @default(autoincrement())
+  ProductName       String?   @db.VarChar(255)
+  ProductBrand      String?   @db.VarChar(255)
+  ProductQuantity   Int?
+  ProductPrice      Int?
+  ProductExpirydate DateTime? @db.Date
+  ProductImg        String?   @db.VarChar(255)
+  ShopName          String?   @db.VarChar(255)
+  UserEmail         String?
+}
+
+model users {
+  id             Int      @id @unique(map: "Users_id_key") @default(autoincrement())
+  firstname      String
+  middlename     String?
+  lastname       String
+  dob            String
+  gender         String
+  email          String   @unique(map: "Users_email_key")
+  mobileno       String
+  password       String
+  createdUser    DateTime @default(now())
+  referenceToken String   @unique(map: "Users_referenceToken_key")
+  userType       String
+}
+
+model usercart {
+  email     String  @id @unique(map: "email_UNIQUE") @db.VarChar(255)
+  totalItem Int?    @default(0)
+  itemsid   String? @db.VarChar(555)
+}
+
+model beforebuying {
+  id                Int      @id @default(autoincrement())
+  email             String   @db.VarChar(255)
+  usrcartobj        String?  @db.LongText
+  transactionid     String?  @unique @db.VarChar(255)
+  transactionstatus String?  @db.VarChar(45)
+  createdAt         DateTime @default(now()) // Modified this line
+}
