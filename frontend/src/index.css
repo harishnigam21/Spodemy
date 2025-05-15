@@ -2,7 +2,6 @@ body {
   background-color: black;
   margin: 0;
   padding: 0;
-  width: 100vw;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -662,8 +661,14 @@ code {
 /*Change password end*/
 
 .productList {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   border: 0.1rem solid red;
   box-shadow: 0rem 0rem 1rem blue inset;
+  justify-content: center;
+  align-items: center;
+  background: gray;
 }
 .productDiv {
   display: flex;
@@ -671,9 +676,7 @@ code {
   flex-wrap: wrap;
   flex-grow: 1;
   div {
-    display: block;
     width: 20rem;
-    background: gray;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -683,16 +686,19 @@ code {
     h3 {
       font-size: larger;
       font-weight: bolder;
+      flex-grow: 1;
     }
     img {
       max-width: 90%;
       max-height: 15rem;
-      /* mix-blend-mode: multiply; */
+      flex-grow: 1;
     }
     section {
       display: grid;
+      display:flex;
       grid-template-columns: 48% 4% 48%;
       align-items: center;
+      flex-grow: 1;
       label {
         margin: 0;
         padding: 0.2rem;
@@ -707,10 +713,10 @@ code {
     }
     div {
       display: flex;
-      width: 100%;
-      padding: 0.5rem;
+      flex-direction: row;
       background-color: transparent;
-      justify-content: center;
+      justify-self: center;
+      padding: 1rem 0;
       button {
         text-align: center;
         padding: 0.5rem;
@@ -729,10 +735,13 @@ code {
   }
 }
 
-/* hide scrollbar here */
-.productList,.imgArray::-webkit-scrollbar {
-  width: 0; /* For vertical scrollbar */
-  height: 0; /* For horizontal scrollbar */
+.productList::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.imgArray::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .Contain {
@@ -959,7 +968,7 @@ code {
   background: gray;
   border-top-left-radius: 0.8rem;
   border-top-right-radius: 0.8rem;
-  strong{
+  strong {
     padding: 0.5rem;
   }
   p {
