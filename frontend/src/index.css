@@ -735,6 +735,11 @@ code {
   }
 }
 
+.wish{
+  font-size:x-large;
+  color: white;
+}
+
 .productList::-webkit-scrollbar {
   width: 0;
   height: 0;

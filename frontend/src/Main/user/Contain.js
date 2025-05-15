@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 import { FaCartArrowDown } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { IoSend } from "react-icons/io5";
+import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export function Contain() {
   const [product, setProduct] = useState([]);
   const [iteminatc, setIteminatc] = useState(0);
   const [itemidsinatc, setItemidsinatc] = useState([]);
+  const [whishlist, setWhishlist] = useState([]);
+  const [whishlistState, setWhishlistState] = useState([]);
   const [searchbarvalue, setSearchbarvalue] = useState("");
   const [buttonStates, setButtonStates] = useState({});
   const currentLocation = window.location.href;
@@ -67,7 +70,9 @@ export function Contain() {
     // Initialize button states based on itemidsinatc when products load
     const initialButtonStates = {};
     product.forEach((item) => {
-      initialButtonStates[item.ProductId] = itemidsinatc.includes(item.ProductId)
+      initialButtonStates[item.ProductId] = itemidsinatc.includes(
+        item.ProductId
+      )
         ? { text: "Added", disabled: true }
         : { text: "Add to cart", disabled: false };
     });
@@ -89,10 +94,28 @@ export function Contain() {
         console.error("Error posting cart data:", error);
       }
     };
-    if (iteminatc > 0) { // Only post if there are items in the cart
+    if (iteminatc > 0) {
+      // Only post if there are items in the cart
       postcartdata();
     }
   }, [iteminatc, itemidsinatc]);
+
+  useEffect(() => {
+    setWhishlist(
+      whishlistState
+        .filter((item) => item.status === true)
+        .map((item) => item.id)
+    );
+    const lenght = whishlistState.length;
+    for (let i = 0; i < lenght; i++) {
+      const id = `#wish${whishlistState[i].id}`;
+      if (whishlistState[i].status === true) {
+        document.querySelector(id).style.color = "red";
+      } else {
+        document.querySelector(id).style.color = "white";
+      }
+    }
+  }, [whishlistState]);
 
   const handleAddToCart = (productId) => {
     setIteminatc((prevCount) => prevCount + 1);
@@ -102,8 +125,27 @@ export function Contain() {
       [productId]: { text: "Added", disabled: true },
     }));
   };
-
-
+  const onClickWL = (id) => {
+    const newObj = {
+      id: id,
+      status: true,
+    };
+    const thatItem = whishlistState.find((item) => item.id === id);
+    if (!thatItem || thatItem === undefined) {
+      setWhishlistState((item) => [...item, newObj]);
+    } else {
+      setWhishlistState((preitem) =>
+        preitem.map((item) => {
+          if (item.id === id) {
+            return { ...item, status: !item.status };
+          }
+          return item;
+        })
+      );
+    }
+  };
+  console.log(whishlistState);
+  console.log(whishlist);
   return (
     <div className="Contain">
       <div className="searchboxdiv">
@@ -154,6 +196,11 @@ export function Contain() {
                   {buttonStates[item.ProductId]?.text || "Add to cart"}
                 </button>
                 <button type="button">Buy Now</button>
+                <FaHeart
+                  className="wish"
+                  id={`wish${item.ProductId}`}
+                  onClick={() => onClickWL(item.ProductId)}
+                />
               </div>
             </div>
           ))
@@ -161,9 +208,15 @@ export function Contain() {
           product
             .filter(
               (item) =>
-                item.ProductName.toLowerCase().includes(searchbarvalue.toLowerCase()) ||
-                item.ProductBrand.toLowerCase().includes(searchbarvalue.toLowerCase()) ||
-                item.ShopName.toLowerCase().includes(searchbarvalue.toLowerCase())
+                item.ProductName.toLowerCase().includes(
+                  searchbarvalue.toLowerCase()
+                ) ||
+                item.ProductBrand.toLowerCase().includes(
+                  searchbarvalue.toLowerCase()
+                ) ||
+                item.ShopName.toLowerCase().includes(
+                  searchbarvalue.toLowerCase()
+                )
             )
             .map((item) => (
               <div key={item.ProductId} className="productList">

@@ -27,6 +27,7 @@ app.use(require("./routes/getCartItem"));
 app.use(require("./routes/getupdatedCart"));
 app.use(require("./routes/updatedCart"));
 app.use(require("./routes/deleteCartitem"));
+app.use(require("./routes/wishList"));
 app.use(require("./routes/providepublishKey"));
 app.use(require("./routes/checkOut"));
 app.use(require("./routes/verifyTransaction"));

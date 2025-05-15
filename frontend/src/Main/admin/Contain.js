@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 export function Contain({ user }) {
   const [product, setProduct] = useState([]);
-
   useEffect(() => {
     const getProducturl = "http://localhost:5000/getproductdata";
     const getProduct = async () => {

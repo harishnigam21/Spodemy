@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { GiConfirmed } from "react-icons/gi";
