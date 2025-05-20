@@ -36,7 +36,7 @@ app.use(require("./routes/directUser"));
 app.use(require("./routes/signout"));
 
 app.get("/", (req, res) => {
-  res.send("Welcome to your API!");
+  res.send("Welcome to your Spodemy!");
 });
 
 app.listen(PORT, () => {
