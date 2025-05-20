@@ -5,7 +5,7 @@ const Forgotpwd = () =>
     {
         const[email,setEmail] = useState('');
         const path = window.location.href;
-        const forgotpasswordurl = 'http://localhost:5000/forgotpassword'
+        const forgotpasswordurl = 'https://spodemy.vercel.app/forgotpassword'
         const responseMessage = async(response) => {
             const statusMessage = JSON.parse(JSON.stringify(await response.json()));
             document.getElementById('error').innerText = statusMessage.Message;

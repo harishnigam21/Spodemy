@@ -17,8 +17,8 @@ export function Contain() {
   const updateforatc = `${currentLocation}/yourcart`;
 
   useEffect(() => {
-    const getcartdataurl = "http://localhost:5000/getcartdata";
-    const getProducturl = "http://localhost:5000/getallproductdata";
+    const getcartdataurl = "https://spodemy.vercel.app/getcartdata";
+    const getProducturl = "https://spodemy.vercel.app/getallproductdata";
 
     const getcartdata = async () => {
       try {
@@ -80,7 +80,7 @@ export function Contain() {
   }, [product, itemidsinatc]); // Re-run when product or cart items change
 
   useEffect(() => {
-    const postcartdataurl = "http://localhost:5000/postcartdata";
+    const postcartdataurl = "https://spodemy.vercel.app/postcartdata";
     const postcartdata = async () => {
       try {
         const response = await fetch(postcartdataurl, {

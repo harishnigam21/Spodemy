@@ -13,7 +13,7 @@ const Main = () => {
   pullUser(emailenc);
   //for user who signed in and then we fetch user information
   useEffect(() => {
-    const getuserurl = "http://localhost:5000/getuserdata";
+    const getuserurl = "https://spodemy.vercel.app/getuserdata";
     const getUser = async () => {
       const response = await fetch(getuserurl, {
         method: "GET",

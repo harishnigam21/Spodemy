@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 export function Contain({ user }) {
   const [product, setProduct] = useState([]);
   useEffect(() => {
-    const getProducturl = "http://localhost:5000/getproductdata";
+    const getProducturl = "https://spodemy.vercel.app/getproductdata";
     const getProduct = async () => {
       const response = await fetch(getProducturl, {
         method: "GET",

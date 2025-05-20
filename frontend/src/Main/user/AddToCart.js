@@ -16,8 +16,8 @@ export default function AddToCart() {
   const newUrl = currentLocation.replace("/yourcart", "");
 
   useEffect(() => {
-    const getcartitemurl = "http://localhost:5000/getcartitem";
-    const getupdatedcarturl = "http://localhost:5000/getupdatedcart";
+    const getcartitemurl = "https://spodemy.vercel.app/getcartitem";
+    const getupdatedcarturl = "https://spodemy.vercel.app/getupdatedcart";
 
     const getItem = async () => {
       const response = await fetch(getcartitemurl, {
@@ -102,7 +102,7 @@ export default function AddToCart() {
   }, [quantities]);
 
   const sendUpdatedcart = async () => {
-    const sendurl = "http://localhost:5000/sendupdatedcart";
+    const sendurl = "https://spodemy.vercel.app/sendupdatedcart";
     const response = await fetch(sendurl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -117,7 +117,7 @@ export default function AddToCart() {
   };
 
   const handleDeleteCart = async (productId) => {
-    const deleteurl = "http://localhost:5000/deletecartitem";
+    const deleteurl = "https://spodemy.vercel.app/deletecartitem";
     const response = await fetch(deleteurl, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
@@ -144,7 +144,7 @@ export default function AddToCart() {
   };
 
   const makePayment = async () => {
-    const getpublishKeyurl = "http://localhost:5000/publishkey";
+    const getpublishKeyurl = "https://spodemy.vercel.app/publishkey";
     const getpublishKeyResponse = await fetch(getpublishKeyurl, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -154,7 +154,7 @@ export default function AddToCart() {
       const key = (await getpublishKeyResponse.json()).pk;
       const stripe = await loadStripe(key);
 
-      const checkout = "http://localhost:5000/checkout";
+      const checkout = "https://spodemy.vercel.app/checkout";
       const response = await fetch(checkout, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

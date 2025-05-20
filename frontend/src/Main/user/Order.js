@@ -9,7 +9,7 @@ export default function Order() {
   const [showError, setShowError] = useState(false);
   const errorRef = useRef(null);
   useEffect(() => {
-    const getOrderitemUrl = "http://localhost:5000/getorderitem";
+    const getOrderitemUrl = "https://spodemy.vercel.app/getorderitem";
     const getOrderItem = async () => {
       const response = await fetch(getOrderitemUrl, {
         method: "GET",

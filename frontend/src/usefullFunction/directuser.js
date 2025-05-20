@@ -1,4 +1,4 @@
-const pulluserurl = "http://localhost:5000/directuser";
+const pulluserurl = "https://spodemy.vercel.app/directuser";
 //pull User, who are not signed in
 const pullUser = async (emailenc) => {
   const response = await fetch(pulluserurl, {
