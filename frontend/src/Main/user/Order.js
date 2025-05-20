@@ -22,22 +22,18 @@ export default function Order() {
         console.log(data.Message);
         setOrderItem(data.orderItems);
       } else {
+        setShowError(true);
         const data = await response.json();
         console.log(data.Message);
+        if (errorRef.current) {
+          errorRef.current.textContent = data.Message;
+        }
         if (response.status === 401) {
-          setShowError(true);
-          if (errorRef.current) {
-            errorRef.current.textContent = data.Message;
-          }
           setTimeout(() => {
             window.location.replace("/signin");
           }, 5000);
         }
         if (response.status === 404) {
-          setShowError(true);
-          if (errorRef.current) {
-            errorRef.current.textContent = data.Message;
-          }
           setTimeout(() => {
             window.location.replace(
               window.location.href.replace("/yourorder", "")
