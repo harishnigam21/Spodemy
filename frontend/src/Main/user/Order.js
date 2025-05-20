@@ -86,7 +86,7 @@ export default function Order() {
           ref={errorRef}
           className="errorMsg"
           style={{ textAlign: "center", color: "red", padding: "1rem" }}
-        ></h1>
+        >Loading...</h1>
       ) : (
         orderItem.map((item) => (
           <div key={item.id} className="orderItem">
