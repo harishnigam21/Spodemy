@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import { FaCartArrowDown } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { IoSend } from "react-icons/io5";
@@ -15,7 +15,7 @@ export function Contain() {
   const [buttonStates, setButtonStates] = useState({});
   const currentLocation = window.location.href;
   const updateforatc = `${currentLocation}/yourcart`;
-
+  const errorRef = useRef(null);
   useEffect(() => {
     const getcartdataurl = "https://spodemy.vercel.app/getcartdata";
     const getProducturl = "https://spodemy.vercel.app/getallproductdata";
@@ -56,6 +56,9 @@ export function Contain() {
           setProduct(validProduct);
         } else {
           console.log("There is nothing to show you currently");
+          if(errorRef.current){
+            errorRef.current.textContent = "Sorry!, There is not any product to list currently";
+          }
         }
       } catch (error) {
         console.error("Error fetching product data:", error);
@@ -259,7 +262,7 @@ export function Contain() {
           <h1>Sorry, We are currently out of stock</h1>
         )}
       </div>
-        :<h1 style={{color:"red",textAlign:"center"}}>Their is no product to show you currently</h1>
+        :<h1 ref={errorRef} style={{color:"red",textAlign:"center"}}>Loading ...</h1>
       }
       
       <button className="atcpop" type="button">

@@ -5,7 +5,7 @@ const getProduct = async (req, res) => {
     const validProducts = await prisma.products.findMany();
     if (!validProducts) {
       return res
-        .status(401)
+        .status(404)
         .json({ Message: "There is nothing to show you currently" });
     }
     return res.status(200).json({ product: validProducts });
