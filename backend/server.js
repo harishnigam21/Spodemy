@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors(corsOptions));
 
-app.use(require("./routes/signup"));
+app.use("/",require("./routes/signup"));
 app.use(require("./routes/signin"));
 app.use(require("./routes/forgotpassword"));
 app.use(require("./routes/changepassword"));
@@ -36,7 +36,7 @@ app.use(require("./routes/directUser"));
 app.use(require("./routes/signout"));
 
 app.get("/", (req, res) => {
-  res.send("Welcome to your Spodemy!");
+  res.send("Welcome to Spodemy!");
 });
 
 app.listen(PORT, () => {
