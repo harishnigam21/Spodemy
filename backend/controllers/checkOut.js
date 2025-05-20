@@ -39,8 +39,8 @@ const checkout = async (req, res) => {
       payment_method_types: ["card"],
       line_items: showItem,
       mode: "payment",
-      success_url: `https://spodemy.vercel.app/main/user/${encryptedEmail}/yourcart/${transactionID}/paymentSuccess`,
-      cancel_url: `https://spodemy.vercel.app/main/user/${encryptedEmail}/yourcart/${transactionID}/paymentFail`,
+      success_url: `https://spodemyfront.vercel.app/main/user/${encryptedEmail}/yourcart/${transactionID}/paymentSuccess`,
+      cancel_url: `https://spodemyfront.vercel.app/main/user/${encryptedEmail}/yourcart/${transactionID}/paymentFail`,
     });
     if (!session) {
       return res.status(500).json({ Message: "Unable to create Session" });
