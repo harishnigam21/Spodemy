@@ -2,23 +2,19 @@
 /* eslint-disable jsx-a11y/heading-has-content */
 import { useState, useEffect, useRef } from "react";
 import { FaHome } from "react-icons/fa";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Order() {
   const [orderItem, setOrderItem] = useState([]);
   const [showError, setShowError] = useState(true);
   const errorRef = useRef(null);
-  const params = useParams();
-
   useEffect(() => {
     const getOrderitemUrl = "https://spodemy.vercel.app/getorderitem";
-    const emailenc = params.email;
     const getOrderItem = async () => {
       const response = await fetch(getOrderitemUrl, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({ emailenc }),
       });
       if (response.ok) {
         setShowError(false);

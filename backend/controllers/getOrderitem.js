@@ -6,12 +6,11 @@ const orderItem = async (req, res) => {
     return res.status(401).json({ Message: "Cookie is missing" });
   }
   const encryptedemail = cookies.emenc;
-  if (!encryptedemail && req.body.emailenc !== encryptedemail) {
+  if (!encryptedemail) {
     return res.status(401).json({
       Message: "You are not authorized Directly here, please Login first",
     });
   }
-
   const decryptedemail = decrypt(encryptedemail);
   if (!decryptedemail) {
     return res
