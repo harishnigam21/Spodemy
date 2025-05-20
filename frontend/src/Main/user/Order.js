@@ -74,7 +74,16 @@ export default function Order() {
   };
   return (
     <div className="order">
-      <h1><Link to={window.location.href.replace("/yourorder", "")} className="link" style={{color:"white",fontSize:"larger",marginRight:"1rem"}}><FaHome/></Link>Your Order</h1>
+      <h1>
+        <Link
+          to={window.location.href.replace("/yourorder", "")}
+          className="link"
+          style={{ color: "white", fontSize: "larger", marginRight: "1rem" }}
+        >
+          <FaHome />
+        </Link>
+        Your Order
+      </h1>
       <div className="filter">
         <strong>FILTER{">>>"}</strong>
         <button type="button">Success</button>
@@ -86,7 +95,9 @@ export default function Order() {
           ref={errorRef}
           className="errorMsg"
           style={{ textAlign: "center", color: "red", padding: "1rem" }}
-        >Loading...</h1>
+        >
+          Loading...
+        </h1>
       ) : (
         orderItem.map((item) => (
           <div key={item.id} className="orderItem">
@@ -120,9 +131,12 @@ export default function Order() {
                 <h1>Delivery Time</h1>
                 <p>Delivery status that where it is</p>
                 <div className="imgArray">
-                  {
-                  imageArray(item).map((img,index) => (
-                    <img key={`${item.id}`+`${index}`} src={img} alt="refresh" />
+                  {imageArray(item).map((img, index) => (
+                    <img
+                      key={`${item.id}` + `${index}`}
+                      src={img}
+                      alt="refresh"
+                    />
                   ))}
                 </div>
                 {/* list product here */}
