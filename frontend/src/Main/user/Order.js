@@ -41,7 +41,7 @@ export default function Order() {
             window.location.replace(
               window.location.href.replace("/yourorder", "")
             );
-          }, 500000); //fix it at 5000 after testing:TODO
+          }, 5000);
         }
       }
     };
