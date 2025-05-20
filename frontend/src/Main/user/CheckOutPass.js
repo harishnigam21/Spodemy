@@ -22,7 +22,6 @@ export default function CheckOutPass() {
       return url; // Return original URL if it's invalid
     }
   }
-  // const returnToCartURL = removeLastTwoParams(currentLocation,2);
   useEffect(() => {
     const verifyTransURL = "https://spodemy.vercel.app/verifytransaction";
     const verifyTrans = async () => {
@@ -62,7 +61,7 @@ export default function CheckOutPass() {
       }
     };
     verifyTrans();
-  }, []);
+  }, [transactionid,currentLocation]);
   return (
     <div>
       {show ? (
