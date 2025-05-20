@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function Order() {
   const [orderItem, setOrderItem] = useState([]);
-  const [showError, setShowError] = useState(false);
+  const [showError, setShowError] = useState(true);
   const errorRef = useRef(null);
   useEffect(() => {
     const getOrderitemUrl = "https://spodemy.vercel.app/getorderitem";
@@ -17,6 +17,7 @@ export default function Order() {
         credentials: "include",
       });
       if (response.ok) {
+        setShowError(false);
         const data = await response.json();
         console.log(data.Message);
         setOrderItem(data.orderItems);
