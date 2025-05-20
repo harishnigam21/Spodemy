@@ -35,6 +35,10 @@ app.use(require("./routes/getOrderitem"));
 app.use(require("./routes/directUser"));
 app.use(require("./routes/signout"));
 
+app.get("/", (req, res) => {
+  res.send("Welcome to your API!");
+});
+
 app.listen(PORT, () => {
   console.log(`Your backend is running on PORT no : ${PORT}`);
 });
