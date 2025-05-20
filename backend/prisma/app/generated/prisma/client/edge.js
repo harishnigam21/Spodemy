@@ -203,6 +203,10 @@ const config = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "rhel-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -229,8 +233,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"app/generated/prisma/client\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel products {\n  ProductId         Int       @id @unique(map: \"ProductId_UNIQUE\") @default(autoincrement())\n  ProductName       String?   @db.VarChar(255)\n  ProductBrand      String?   @db.VarChar(255)\n  ProductQuantity   Int?\n  ProductPrice      Int?\n  ProductExpirydate DateTime? @db.Date\n  ProductImg        String?   @db.VarChar(255)\n  ShopName          String?   @db.VarChar(255)\n  UserEmail         String?\n}\n\nmodel users {\n  id             Int      @id @unique(map: \"Users_id_key\") @default(autoincrement())\n  firstname      String\n  middlename     String?\n  lastname       String\n  dob            String\n  gender         String\n  email          String   @unique(map: \"Users_email_key\")\n  mobileno       String\n  password       String\n  createdUser    DateTime @default(now())\n  referenceToken String   @unique(map: \"Users_referenceToken_key\")\n  userType       String\n}\n\nmodel usercart {\n  email     String  @id @unique(map: \"email_UNIQUE\") @db.VarChar(255)\n  totalItem Int?    @default(0)\n  itemsid   String? @db.VarChar(555)\n}\n\nmodel beforebuying {\n  id                Int      @id @default(autoincrement())\n  email             String   @db.VarChar(255)\n  usrcartobj        String?  @db.LongText\n  transactionid     String?  @unique @db.VarChar(255)\n  transactionstatus String?  @db.VarChar(45)\n  createdAt         DateTime @default(now()) // Modified this line\n}\n",
-  "inlineSchemaHash": "cad55d23f30e638b98ebab9614687ae374547ce6df63f56b93ac40d008b080d2",
+  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  binaryTargets = [\"native\", \"rhel-openssl-3.0.x\"]\n  output        = \"app/generated/prisma/client\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel products {\n  ProductId         Int       @id @unique(map: \"ProductId_UNIQUE\") @default(autoincrement())\n  ProductName       String?   @db.VarChar(255)\n  ProductBrand      String?   @db.VarChar(255)\n  ProductQuantity   Int?\n  ProductPrice      Int?\n  ProductExpirydate DateTime? @db.Date\n  ProductImg        String?   @db.VarChar(255)\n  ShopName          String?   @db.VarChar(255)\n  UserEmail         String?\n}\n\nmodel users {\n  id             Int      @id @unique(map: \"Users_id_key\") @default(autoincrement())\n  firstname      String\n  middlename     String?\n  lastname       String\n  dob            String\n  gender         String\n  email          String   @unique(map: \"Users_email_key\")\n  mobileno       String\n  password       String\n  createdUser    DateTime @default(now())\n  referenceToken String   @unique(map: \"Users_referenceToken_key\")\n  userType       String\n}\n\nmodel usercart {\n  email     String  @id @unique(map: \"email_UNIQUE\") @db.VarChar(255)\n  totalItem Int?    @default(0)\n  itemsid   String? @db.VarChar(555)\n}\n\nmodel beforebuying {\n  id                Int      @id @default(autoincrement())\n  email             String   @db.VarChar(255)\n  usrcartobj        String?  @db.LongText\n  transactionid     String?  @unique @db.VarChar(255)\n  transactionstatus String?  @db.VarChar(45)\n  createdAt         DateTime @default(now()) // Modified this line\n}\n",
+  "inlineSchemaHash": "f8045e77199e3da282c5b2ee1f02fd84588acdd7a3dd936397e747aea594f0bb",
   "copyEngine": true
 }
 config.dirname = '/'
