@@ -163,7 +163,10 @@ export function Contain() {
           style={{ color: "white", fontSize: "2rem", marginLeft: "0.5rem" }}
         />
       </div>
-      <div className="productDiv">
+      {
+        product.length!==0
+        ?
+        <div className="productDiv">
         {product && !searchbarvalue ? (
           product.map((item) => (
             <div key={item.ProductId} className="productList">
@@ -256,6 +259,9 @@ export function Contain() {
           <h1>Sorry, We are currently out of stock</h1>
         )}
       </div>
+        :<h1 style={{color:"red",textAlign:"center"}}>Their is no product to show you currently</h1>
+      }
+      
       <button className="atcpop" type="button">
         <Link to={updateforatc} style={{ textDecoration: "none" }}>
           <FaCartArrowDown style={{ fontSize: "2rem", color: "white" }} />
