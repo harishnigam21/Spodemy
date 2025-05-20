@@ -124,7 +124,9 @@ exports.Prisma.ProductsScalarFieldEnum = {
   ProductQuantity: 'ProductQuantity',
   ProductPrice: 'ProductPrice',
   ProductExpirydate: 'ProductExpirydate',
-  ProductImg: 'ProductImg'
+  ProductImg: 'ProductImg',
+  ShopName: 'ShopName',
+  UserEmail: 'UserEmail'
 };
 
 exports.Prisma.UsersScalarFieldEnum = {
@@ -142,20 +144,37 @@ exports.Prisma.UsersScalarFieldEnum = {
   userType: 'userType'
 };
 
+exports.Prisma.UsercartScalarFieldEnum = {
+  email: 'email',
+  totalItem: 'totalItem',
+  itemsid: 'itemsid'
+};
+
+exports.Prisma.BeforebuyingScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  usrcartobj: 'usrcartobj',
+  transactionid: 'transactionid',
+  transactionstatus: 'transactionstatus',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
 };
 
-exports.Prisma.productsOrderByRelevanceFieldEnum = {
-  ProductName: 'ProductName',
-  ProductBrand: 'ProductBrand',
-  ProductImg: 'ProductImg'
-};
-
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.productsOrderByRelevanceFieldEnum = {
+  ProductName: 'ProductName',
+  ProductBrand: 'ProductBrand',
+  ProductImg: 'ProductImg',
+  ShopName: 'ShopName',
+  UserEmail: 'UserEmail'
 };
 
 exports.Prisma.usersOrderByRelevanceFieldEnum = {
@@ -165,15 +184,30 @@ exports.Prisma.usersOrderByRelevanceFieldEnum = {
   dob: 'dob',
   gender: 'gender',
   email: 'email',
+  mobileno: 'mobileno',
   password: 'password',
   referenceToken: 'referenceToken',
   userType: 'userType'
 };
 
+exports.Prisma.usercartOrderByRelevanceFieldEnum = {
+  email: 'email',
+  itemsid: 'itemsid'
+};
+
+exports.Prisma.beforebuyingOrderByRelevanceFieldEnum = {
+  email: 'email',
+  usrcartobj: 'usrcartobj',
+  transactionid: 'transactionid',
+  transactionstatus: 'transactionstatus'
+};
+
 
 exports.Prisma.ModelName = {
   products: 'products',
-  users: 'users'
+  users: 'users',
+  usercart: 'usercart',
+  beforebuying: 'beforebuying'
 };
 
 /**

@@ -13,6 +13,9 @@ const getCartdata = async (req, res) => {
         .json({ Message: "Problem at decryption function" });
     const validCartdata = await prisma.usercart.findUnique({
       where: {
+        email: {
+          not: null,
+        },
         email: decryptEmail,
       },
     });
