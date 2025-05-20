@@ -47,7 +47,7 @@ const getUser = async (req, res) => {
       }
     } catch (error) {
       console.error("Error during signup:", error);
-      return res.status(500).json({ Message: "Something went wrong, please try again" });
+      return res.status(500).json({ Message: `Something went wrong,with error,${error}`});
     } finally {
       await prisma.$disconnect();
     }
