@@ -99,7 +99,7 @@ export default function AddToCart() {
       }
     };
     totalitem();
-  }, [quantities]);
+  }, [quantities,totalItem]);
 
   const sendUpdatedcart = async () => {
     const sendurl = "https://spodemy.vercel.app/sendupdatedcart";
