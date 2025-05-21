@@ -2,7 +2,7 @@ import { MdDelete } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { useEffect, useState, useRef } from "react";
-import { data, Link } from "react-router-dom";
+import {Link } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 
 export default function AddToCart() {
