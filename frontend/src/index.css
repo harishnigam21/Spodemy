@@ -736,7 +736,9 @@ code {
     }
   }
 }
-
+.atcbn{
+  display: flex;
+}
 .wish{
   font-size:x-large;
   color: white;
