@@ -2,7 +2,7 @@ import { MdDelete } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { data, Link } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 
 export default function AddToCart() {
@@ -29,6 +29,11 @@ export default function AddToCart() {
         const data = (await response.json()).cartitem;
         if (data) {
           setCartitem(data);
+          if (data.length === 0) {
+            if (errorRef.current) {
+              errorRef.current.textContent = "Looks like your cart is empty";
+            }
+          }
           // Initializing quantities state when cart items are fetched
           const getUpdatedCart = async () => {
             const response = await fetch(getupdatedcarturl, {
@@ -91,15 +96,10 @@ export default function AddToCart() {
       for (let i = 0; i < quantities.length; i++) {
         result += quantities[i].quantity;
       }
-      setTotalItem(result);
-      if (totalItem === 0) {
-        if (errorRef.current) {
-          errorRef.current.textContent = "Looks Like your Cart is empty";
-        }
-      }
+      setTotalItem(result); 
     };
     totalitem();
-  }, [quantities,totalItem]);
+  }, [quantities, totalItem, cartItem]);
 
   const sendUpdatedcart = async () => {
     const sendurl = "https://spodemy.vercel.app/sendupdatedcart";
@@ -273,10 +273,7 @@ export default function AddToCart() {
         })
       ) : (
         <div className="cartdberror">
-          <h1 ref={errorRef}>
-            Sorry, unable to fetch your cart item at this time, Please try later
-            after some time
-          </h1>
+          <h1 ref={errorRef}>Loading...</h1>
         </div>
       )}
       <div className="continueShopping">
