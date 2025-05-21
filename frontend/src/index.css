@@ -699,7 +699,6 @@ code {
       grid-template-columns: 48% 4% 48%;
       align-items: center;
       flex-grow: 1;
-      background-color: aqua;
       label {
         margin: 0;
         padding: 0.2rem;
