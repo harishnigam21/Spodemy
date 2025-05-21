@@ -192,7 +192,7 @@ export function Contain() {
                 <>:</>
                 <p>{item.ShopName}</p>
               </section>
-              <div className="atc&bn">
+              <div className="atcbn">
                 <button
                   type="button"
                   onClick={() => handleAddToCart(item.ProductId)}
