@@ -69,7 +69,7 @@ const Nav = ({user,updateforlogout}) => {
                 </li>
                 <li className="logo">
                     <img style={{display:'block',padding:'0.5rem'}} src={logo} alt="refresh"/>
-                    <p style={{margin:'0',alignSelf:'center',color:'white',textAlign:'center'}}>Welcome {user.firstname}! as "{user.userType}"</p>
+                    <p style={{margin:'0',alignSelf:'center',color:'white',textAlign:'center'}}>Welcome {user.firstname} as "{user.userType}"</p>
                 </li>
                 <li className="rightlist">
                     <li style={{margin:'auto',marginRight:'0.5rem'}} className="profile"><CgProfile onClick={()=>setProfile(!profile)}/></li>

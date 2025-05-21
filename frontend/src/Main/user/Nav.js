@@ -111,7 +111,7 @@ const Nav = ({ user, updateforlogout }) => {
             alt="refresh"
           />
           <p>
-            Welcome {user.firstname}! as "{user.userType}"
+            Welcome {user.firstname} as "{user.userType}"
           </p>
         </li>
         <li className="rightlist">
