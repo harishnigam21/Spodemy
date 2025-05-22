@@ -70,6 +70,7 @@ export function Contain() {
 
     getcartdata();
     getProduct();
+    getWL();
   }, []);
 
   useEffect(() => {
@@ -107,26 +108,12 @@ export function Contain() {
   }, [iteminatc, itemidsinatc]);
 
   useEffect(() => {
-    const getWL = async () => {
-      const response = await fetch(wishlisturl, {
-        method: "GET",
-        headers: { "content-type": "application/json" },
-        credentials: "include",
-      });
-      if (response.ok) {
-        const data = (await response.json()).obj;
-        setWhishlistState(JSON.parse(data));
-      } else {
-        console.log((await response.json()).Message);
-      }
-    };
-    getWL();
     setWhishlist(
       whishlistState
         .filter((item) => item.status === true)
         .map((item) => item.id)
     );
-  }, [whishlistState]);
+  }, [whishlistState, whishlist]);
 
   const handleAddToCart = (productId) => {
     setIteminatc((prevCount) => prevCount + 1);
@@ -135,6 +122,20 @@ export function Contain() {
       ...prevStates,
       [productId]: { text: "Added", disabled: true },
     }));
+  };
+
+  const getWL = async () => {
+    const response = await fetch(wishlisturl, {
+      method: "GET",
+      headers: { "content-type": "application/json" },
+      credentials: "include",
+    });
+    if (response.ok) {
+      const data = (await response.json()).obj;
+      setWhishlistState(JSON.parse(data));
+    } else {
+      console.log((await response.json()).Message);
+    }
   };
 
   const postWL = async () => {
