@@ -1,4 +1,4 @@
-import { useState, useEffect,useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaCartArrowDown } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { IoSend } from "react-icons/io5";
@@ -16,6 +16,8 @@ export function Contain() {
   const currentLocation = window.location.href;
   const updateforatc = `${currentLocation}/yourcart`;
   const errorRef = useRef(null);
+  const wishlisturl = "https://spodemyfront.vercel.app/wishlist";
+
   useEffect(() => {
     const getcartdataurl = "https://spodemy.vercel.app/getcartdata";
     const getProducturl = "https://spodemy.vercel.app/getallproductdata";
@@ -56,8 +58,9 @@ export function Contain() {
           setProduct(validProduct);
         } else {
           console.log("There is nothing to show you currently");
-          if(errorRef.current){
-            errorRef.current.textContent = "Sorry!, There is not any product to list currently";
+          if (errorRef.current) {
+            errorRef.current.textContent =
+              "Sorry!, There is not any product to list currently";
           }
         }
       } catch (error) {
@@ -104,20 +107,25 @@ export function Contain() {
   }, [iteminatc, itemidsinatc]);
 
   useEffect(() => {
+    const getWL = async () => {
+      const response = await fetch(wishlisturl, {
+        method: "GET",
+        headers: { "content-type": "application/json" },
+        credentials: "include",
+      });
+      if (response.ok) {
+        const data = (await response.json()).obj;
+        setWhishlistState(data);
+      } else {
+        console.log((await response.json()).Message);
+      }
+    };
+    getWL();
     setWhishlist(
       whishlistState
         .filter((item) => item.status === true)
         .map((item) => item.id)
     );
-    const lenght = whishlistState.length;
-    for (let i = 0; i < lenght; i++) {
-      const id = `#wish${whishlistState[i].id}`;
-      if (whishlistState[i].status === true) {
-        document.querySelector(id).style.color = "red";
-      } else {
-        document.querySelector(id).style.color = "white";
-      }
-    }
   }, [whishlistState]);
 
   const handleAddToCart = (productId) => {
@@ -128,6 +136,30 @@ export function Contain() {
       [productId]: { text: "Added", disabled: true },
     }));
   };
+
+  const postWL = async () => {
+    const wlResponse = await fetch(wishlisturl, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ whishlistState }),
+      credentials: "include",
+    });
+    if (wlResponse.ok) {
+      const lenght = whishlistState.length;
+      for (let i = 0; i < lenght; i++) {
+        const id = `#wish${whishlistState[i].id}`;
+        if (whishlistState[i].status === true) {
+          document.querySelector(id).style.color = "red";
+        } else {
+          document.querySelector(id).style.color = "white";
+        }
+      }
+    } else {
+      const message = (await wlResponse.json()).Message;
+      console.log(message);
+    }
+  };
+
   const onClickWL = (id) => {
     const newObj = {
       id: id,
@@ -146,6 +178,7 @@ export function Contain() {
         })
       );
     }
+    postWL();
   };
   console.log(whishlistState);
   console.log(whishlist);
@@ -166,65 +199,10 @@ export function Contain() {
           style={{ color: "white", fontSize: "2rem", marginLeft: "0.5rem" }}
         />
       </div>
-      {
-        product.length!==0
-        ?
+      {product.length !== 0 ? (
         <div className="productDiv">
-        {product && !searchbarvalue ? (
-          product.map((item) => (
-            <div key={item.ProductId} className="productList">
-              <h3>
-                {item.ProductName} ({item.ProductBrand})
-              </h3>
-              <img src={item.ProductImg} alt="refresh" />
-              <section>
-                <label>Quantity</label>
-                <>:</>
-                <p>{item.ProductQuantity}</p>
-              </section>
-              <section>
-                <label>Price</label>
-                <>:</>
-                <p>₹ {item.ProductPrice}/piece</p>
-              </section>
-              <section>
-                <label>Shop</label>
-                <>:</>
-                <p>{item.ShopName}</p>
-              </section>
-              <div className="atcbn">
-                <button
-                  type="button"
-                  onClick={() => handleAddToCart(item.ProductId)}
-                  data-product-id={item.ProductId}
-                  disabled={buttonStates[item.ProductId]?.disabled || false}
-                >
-                  {buttonStates[item.ProductId]?.text || "Add to cart"}
-                </button>
-                <button type="button">Buy Now</button>
-                <FaHeart
-                  className="wish"
-                  id={`wish${item.ProductId}`}
-                  onClick={() => onClickWL(item.ProductId)}
-                />
-              </div>
-            </div>
-          ))
-        ) : searchbarvalue ? (
-          product
-            .filter(
-              (item) =>
-                item.ProductName.toLowerCase().includes(
-                  searchbarvalue.toLowerCase()
-                ) ||
-                item.ProductBrand.toLowerCase().includes(
-                  searchbarvalue.toLowerCase()
-                ) ||
-                item.ShopName.toLowerCase().includes(
-                  searchbarvalue.toLowerCase()
-                )
-            )
-            .map((item) => (
+          {product && !searchbarvalue ? (
+            product.map((item) => (
               <div key={item.ProductId} className="productList">
                 <h3>
                   {item.ProductName} ({item.ProductBrand})
@@ -245,7 +223,7 @@ export function Contain() {
                   <>:</>
                   <p>{item.ShopName}</p>
                 </section>
-                <div className="atc&bn">
+                <div className="atcbn">
                   <button
                     type="button"
                     onClick={() => handleAddToCart(item.ProductId)}
@@ -255,16 +233,72 @@ export function Contain() {
                     {buttonStates[item.ProductId]?.text || "Add to cart"}
                   </button>
                   <button type="button">Buy Now</button>
+                  <FaHeart
+                    className="wish"
+                    id={`wish${item.ProductId}`}
+                    onClick={() => onClickWL(item.ProductId)}
+                  />
                 </div>
               </div>
             ))
-        ) : (
-          <h1>Sorry, We are currently out of stock</h1>
-        )}
-      </div>
-        :<h1 ref={errorRef} style={{color:"red",textAlign:"center"}}>Loading ...</h1>
-      }
-      
+          ) : searchbarvalue ? (
+            product
+              .filter(
+                (item) =>
+                  item.ProductName.toLowerCase().includes(
+                    searchbarvalue.toLowerCase()
+                  ) ||
+                  item.ProductBrand.toLowerCase().includes(
+                    searchbarvalue.toLowerCase()
+                  ) ||
+                  item.ShopName.toLowerCase().includes(
+                    searchbarvalue.toLowerCase()
+                  )
+              )
+              .map((item) => (
+                <div key={item.ProductId} className="productList">
+                  <h3>
+                    {item.ProductName} ({item.ProductBrand})
+                  </h3>
+                  <img src={item.ProductImg} alt="refresh" />
+                  <section>
+                    <label>Quantity</label>
+                    <>:</>
+                    <p>{item.ProductQuantity}</p>
+                  </section>
+                  <section>
+                    <label>Price</label>
+                    <>:</>
+                    <p>₹ {item.ProductPrice}/piece</p>
+                  </section>
+                  <section>
+                    <label>Shop</label>
+                    <>:</>
+                    <p>{item.ShopName}</p>
+                  </section>
+                  <div className="atc&bn">
+                    <button
+                      type="button"
+                      onClick={() => handleAddToCart(item.ProductId)}
+                      data-product-id={item.ProductId}
+                      disabled={buttonStates[item.ProductId]?.disabled || false}
+                    >
+                      {buttonStates[item.ProductId]?.text || "Add to cart"}
+                    </button>
+                    <button type="button">Buy Now</button>
+                  </div>
+                </div>
+              ))
+          ) : (
+            <h1>Sorry, We are currently out of stock</h1>
+          )}
+        </div>
+      ) : (
+        <h1 ref={errorRef} style={{ color: "red", textAlign: "center" }}>
+          Loading ...
+        </h1>
+      )}
+
       <button className="atcpop" type="button">
         <Link to={updateforatc} style={{ textDecoration: "none" }}>
           <FaCartArrowDown style={{ fontSize: "2rem", color: "white" }} />

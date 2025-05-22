@@ -159,6 +159,12 @@ exports.Prisma.BeforebuyingScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.WhishlistScalarFieldEnum = {
+  email: 'email',
+  listObj: 'listObj',
+  category: 'category'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -202,12 +208,19 @@ exports.Prisma.beforebuyingOrderByRelevanceFieldEnum = {
   transactionstatus: 'transactionstatus'
 };
 
+exports.Prisma.whishlistOrderByRelevanceFieldEnum = {
+  email: 'email',
+  listObj: 'listObj',
+  category: 'category'
+};
+
 
 exports.Prisma.ModelName = {
   products: 'products',
   users: 'users',
   usercart: 'usercart',
-  beforebuying: 'beforebuying'
+  beforebuying: 'beforebuying',
+  whishlist: 'whishlist'
 };
 
 /**

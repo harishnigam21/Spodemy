@@ -12,3 +12,4 @@ const pullUser = async (emailenc) => {
   }
 };
 export default pullUser;
+// TODO: use this function in every  page to pull out direct user

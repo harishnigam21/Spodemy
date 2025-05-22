@@ -48,5 +48,11 @@ model beforebuying {
   usrcartobj        String?  @db.LongText
   transactionid     String?  @unique @db.VarChar(255)
   transactionstatus String?  @db.VarChar(45)
-  createdAt         DateTime @default(now()) // Modified this line
+  createdAt         DateTime @default(now())
+}
+
+model whishlist {
+  email    String  @id @unique(map: "email_UNIQUE") @db.VarChar(255)
+  listObj  String? @db.LongText
+  category String? @db.VarChar(55)
 }

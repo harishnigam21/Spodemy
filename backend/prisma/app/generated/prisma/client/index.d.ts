@@ -33,6 +33,11 @@ export type usercart = $Result.DefaultSelection<Prisma.$usercartPayload>
  * 
  */
 export type beforebuying = $Result.DefaultSelection<Prisma.$beforebuyingPayload>
+/**
+ * Model whishlist
+ * 
+ */
+export type whishlist = $Result.DefaultSelection<Prisma.$whishlistPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -198,6 +203,16 @@ export class PrismaClient<
     * ```
     */
   get beforebuying(): Prisma.beforebuyingDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.whishlist`: Exposes CRUD operations for the **whishlist** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Whishlists
+    * const whishlists = await prisma.whishlist.findMany()
+    * ```
+    */
+  get whishlist(): Prisma.whishlistDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -641,7 +656,8 @@ export namespace Prisma {
     products: 'products',
     users: 'users',
     usercart: 'usercart',
-    beforebuying: 'beforebuying'
+    beforebuying: 'beforebuying',
+    whishlist: 'whishlist'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "products" | "users" | "usercart" | "beforebuying"
+      modelProps: "products" | "users" | "usercart" | "beforebuying" | "whishlist"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -928,6 +944,72 @@ export namespace Prisma {
           }
         }
       }
+      whishlist: {
+        payload: Prisma.$whishlistPayload<ExtArgs>
+        fields: Prisma.whishlistFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.whishlistFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$whishlistPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.whishlistFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$whishlistPayload>
+          }
+          findFirst: {
+            args: Prisma.whishlistFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$whishlistPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.whishlistFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$whishlistPayload>
+          }
+          findMany: {
+            args: Prisma.whishlistFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$whishlistPayload>[]
+          }
+          create: {
+            args: Prisma.whishlistCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$whishlistPayload>
+          }
+          createMany: {
+            args: Prisma.whishlistCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.whishlistDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$whishlistPayload>
+          }
+          update: {
+            args: Prisma.whishlistUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$whishlistPayload>
+          }
+          deleteMany: {
+            args: Prisma.whishlistDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.whishlistUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.whishlistUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$whishlistPayload>
+          }
+          aggregate: {
+            args: Prisma.WhishlistAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWhishlist>
+          }
+          groupBy: {
+            args: Prisma.whishlistGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WhishlistGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.whishlistCountArgs<ExtArgs>
+            result: $Utils.Optional<WhishlistCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1016,6 +1098,7 @@ export namespace Prisma {
     users?: usersOmit
     usercart?: usercartOmit
     beforebuying?: beforebuyingOmit
+    whishlist?: whishlistOmit
   }
 
   /* Types for Logging */
@@ -4893,6 +4976,866 @@ export namespace Prisma {
 
 
   /**
+   * Model whishlist
+   */
+
+  export type AggregateWhishlist = {
+    _count: WhishlistCountAggregateOutputType | null
+    _min: WhishlistMinAggregateOutputType | null
+    _max: WhishlistMaxAggregateOutputType | null
+  }
+
+  export type WhishlistMinAggregateOutputType = {
+    email: string | null
+    listObj: string | null
+    category: string | null
+  }
+
+  export type WhishlistMaxAggregateOutputType = {
+    email: string | null
+    listObj: string | null
+    category: string | null
+  }
+
+  export type WhishlistCountAggregateOutputType = {
+    email: number
+    listObj: number
+    category: number
+    _all: number
+  }
+
+
+  export type WhishlistMinAggregateInputType = {
+    email?: true
+    listObj?: true
+    category?: true
+  }
+
+  export type WhishlistMaxAggregateInputType = {
+    email?: true
+    listObj?: true
+    category?: true
+  }
+
+  export type WhishlistCountAggregateInputType = {
+    email?: true
+    listObj?: true
+    category?: true
+    _all?: true
+  }
+
+  export type WhishlistAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which whishlist to aggregate.
+     */
+    where?: whishlistWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of whishlists to fetch.
+     */
+    orderBy?: whishlistOrderByWithRelationInput | whishlistOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: whishlistWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` whishlists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` whishlists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned whishlists
+    **/
+    _count?: true | WhishlistCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WhishlistMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WhishlistMaxAggregateInputType
+  }
+
+  export type GetWhishlistAggregateType<T extends WhishlistAggregateArgs> = {
+        [P in keyof T & keyof AggregateWhishlist]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWhishlist[P]>
+      : GetScalarType<T[P], AggregateWhishlist[P]>
+  }
+
+
+
+
+  export type whishlistGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: whishlistWhereInput
+    orderBy?: whishlistOrderByWithAggregationInput | whishlistOrderByWithAggregationInput[]
+    by: WhishlistScalarFieldEnum[] | WhishlistScalarFieldEnum
+    having?: whishlistScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WhishlistCountAggregateInputType | true
+    _min?: WhishlistMinAggregateInputType
+    _max?: WhishlistMaxAggregateInputType
+  }
+
+  export type WhishlistGroupByOutputType = {
+    email: string
+    listObj: string | null
+    category: string | null
+    _count: WhishlistCountAggregateOutputType | null
+    _min: WhishlistMinAggregateOutputType | null
+    _max: WhishlistMaxAggregateOutputType | null
+  }
+
+  type GetWhishlistGroupByPayload<T extends whishlistGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WhishlistGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WhishlistGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WhishlistGroupByOutputType[P]>
+            : GetScalarType<T[P], WhishlistGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type whishlistSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    email?: boolean
+    listObj?: boolean
+    category?: boolean
+  }, ExtArgs["result"]["whishlist"]>
+
+
+
+  export type whishlistSelectScalar = {
+    email?: boolean
+    listObj?: boolean
+    category?: boolean
+  }
+
+  export type whishlistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"email" | "listObj" | "category", ExtArgs["result"]["whishlist"]>
+
+  export type $whishlistPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "whishlist"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      email: string
+      listObj: string | null
+      category: string | null
+    }, ExtArgs["result"]["whishlist"]>
+    composites: {}
+  }
+
+  type whishlistGetPayload<S extends boolean | null | undefined | whishlistDefaultArgs> = $Result.GetResult<Prisma.$whishlistPayload, S>
+
+  type whishlistCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<whishlistFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: WhishlistCountAggregateInputType | true
+    }
+
+  export interface whishlistDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['whishlist'], meta: { name: 'whishlist' } }
+    /**
+     * Find zero or one Whishlist that matches the filter.
+     * @param {whishlistFindUniqueArgs} args - Arguments to find a Whishlist
+     * @example
+     * // Get one Whishlist
+     * const whishlist = await prisma.whishlist.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends whishlistFindUniqueArgs>(args: SelectSubset<T, whishlistFindUniqueArgs<ExtArgs>>): Prisma__whishlistClient<$Result.GetResult<Prisma.$whishlistPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Whishlist that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {whishlistFindUniqueOrThrowArgs} args - Arguments to find a Whishlist
+     * @example
+     * // Get one Whishlist
+     * const whishlist = await prisma.whishlist.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends whishlistFindUniqueOrThrowArgs>(args: SelectSubset<T, whishlistFindUniqueOrThrowArgs<ExtArgs>>): Prisma__whishlistClient<$Result.GetResult<Prisma.$whishlistPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Whishlist that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {whishlistFindFirstArgs} args - Arguments to find a Whishlist
+     * @example
+     * // Get one Whishlist
+     * const whishlist = await prisma.whishlist.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends whishlistFindFirstArgs>(args?: SelectSubset<T, whishlistFindFirstArgs<ExtArgs>>): Prisma__whishlistClient<$Result.GetResult<Prisma.$whishlistPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Whishlist that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {whishlistFindFirstOrThrowArgs} args - Arguments to find a Whishlist
+     * @example
+     * // Get one Whishlist
+     * const whishlist = await prisma.whishlist.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends whishlistFindFirstOrThrowArgs>(args?: SelectSubset<T, whishlistFindFirstOrThrowArgs<ExtArgs>>): Prisma__whishlistClient<$Result.GetResult<Prisma.$whishlistPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Whishlists that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {whishlistFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Whishlists
+     * const whishlists = await prisma.whishlist.findMany()
+     * 
+     * // Get first 10 Whishlists
+     * const whishlists = await prisma.whishlist.findMany({ take: 10 })
+     * 
+     * // Only select the `email`
+     * const whishlistWithEmailOnly = await prisma.whishlist.findMany({ select: { email: true } })
+     * 
+     */
+    findMany<T extends whishlistFindManyArgs>(args?: SelectSubset<T, whishlistFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$whishlistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Whishlist.
+     * @param {whishlistCreateArgs} args - Arguments to create a Whishlist.
+     * @example
+     * // Create one Whishlist
+     * const Whishlist = await prisma.whishlist.create({
+     *   data: {
+     *     // ... data to create a Whishlist
+     *   }
+     * })
+     * 
+     */
+    create<T extends whishlistCreateArgs>(args: SelectSubset<T, whishlistCreateArgs<ExtArgs>>): Prisma__whishlistClient<$Result.GetResult<Prisma.$whishlistPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Whishlists.
+     * @param {whishlistCreateManyArgs} args - Arguments to create many Whishlists.
+     * @example
+     * // Create many Whishlists
+     * const whishlist = await prisma.whishlist.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends whishlistCreateManyArgs>(args?: SelectSubset<T, whishlistCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Whishlist.
+     * @param {whishlistDeleteArgs} args - Arguments to delete one Whishlist.
+     * @example
+     * // Delete one Whishlist
+     * const Whishlist = await prisma.whishlist.delete({
+     *   where: {
+     *     // ... filter to delete one Whishlist
+     *   }
+     * })
+     * 
+     */
+    delete<T extends whishlistDeleteArgs>(args: SelectSubset<T, whishlistDeleteArgs<ExtArgs>>): Prisma__whishlistClient<$Result.GetResult<Prisma.$whishlistPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Whishlist.
+     * @param {whishlistUpdateArgs} args - Arguments to update one Whishlist.
+     * @example
+     * // Update one Whishlist
+     * const whishlist = await prisma.whishlist.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends whishlistUpdateArgs>(args: SelectSubset<T, whishlistUpdateArgs<ExtArgs>>): Prisma__whishlistClient<$Result.GetResult<Prisma.$whishlistPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Whishlists.
+     * @param {whishlistDeleteManyArgs} args - Arguments to filter Whishlists to delete.
+     * @example
+     * // Delete a few Whishlists
+     * const { count } = await prisma.whishlist.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends whishlistDeleteManyArgs>(args?: SelectSubset<T, whishlistDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Whishlists.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {whishlistUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Whishlists
+     * const whishlist = await prisma.whishlist.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends whishlistUpdateManyArgs>(args: SelectSubset<T, whishlistUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Whishlist.
+     * @param {whishlistUpsertArgs} args - Arguments to update or create a Whishlist.
+     * @example
+     * // Update or create a Whishlist
+     * const whishlist = await prisma.whishlist.upsert({
+     *   create: {
+     *     // ... data to create a Whishlist
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Whishlist we want to update
+     *   }
+     * })
+     */
+    upsert<T extends whishlistUpsertArgs>(args: SelectSubset<T, whishlistUpsertArgs<ExtArgs>>): Prisma__whishlistClient<$Result.GetResult<Prisma.$whishlistPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Whishlists.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {whishlistCountArgs} args - Arguments to filter Whishlists to count.
+     * @example
+     * // Count the number of Whishlists
+     * const count = await prisma.whishlist.count({
+     *   where: {
+     *     // ... the filter for the Whishlists we want to count
+     *   }
+     * })
+    **/
+    count<T extends whishlistCountArgs>(
+      args?: Subset<T, whishlistCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WhishlistCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Whishlist.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WhishlistAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WhishlistAggregateArgs>(args: Subset<T, WhishlistAggregateArgs>): Prisma.PrismaPromise<GetWhishlistAggregateType<T>>
+
+    /**
+     * Group by Whishlist.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {whishlistGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends whishlistGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: whishlistGroupByArgs['orderBy'] }
+        : { orderBy?: whishlistGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, whishlistGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWhishlistGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the whishlist model
+   */
+  readonly fields: whishlistFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for whishlist.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__whishlistClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the whishlist model
+   */
+  interface whishlistFieldRefs {
+    readonly email: FieldRef<"whishlist", 'String'>
+    readonly listObj: FieldRef<"whishlist", 'String'>
+    readonly category: FieldRef<"whishlist", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * whishlist findUnique
+   */
+  export type whishlistFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the whishlist
+     */
+    select?: whishlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the whishlist
+     */
+    omit?: whishlistOmit<ExtArgs> | null
+    /**
+     * Filter, which whishlist to fetch.
+     */
+    where: whishlistWhereUniqueInput
+  }
+
+  /**
+   * whishlist findUniqueOrThrow
+   */
+  export type whishlistFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the whishlist
+     */
+    select?: whishlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the whishlist
+     */
+    omit?: whishlistOmit<ExtArgs> | null
+    /**
+     * Filter, which whishlist to fetch.
+     */
+    where: whishlistWhereUniqueInput
+  }
+
+  /**
+   * whishlist findFirst
+   */
+  export type whishlistFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the whishlist
+     */
+    select?: whishlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the whishlist
+     */
+    omit?: whishlistOmit<ExtArgs> | null
+    /**
+     * Filter, which whishlist to fetch.
+     */
+    where?: whishlistWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of whishlists to fetch.
+     */
+    orderBy?: whishlistOrderByWithRelationInput | whishlistOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for whishlists.
+     */
+    cursor?: whishlistWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` whishlists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` whishlists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of whishlists.
+     */
+    distinct?: WhishlistScalarFieldEnum | WhishlistScalarFieldEnum[]
+  }
+
+  /**
+   * whishlist findFirstOrThrow
+   */
+  export type whishlistFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the whishlist
+     */
+    select?: whishlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the whishlist
+     */
+    omit?: whishlistOmit<ExtArgs> | null
+    /**
+     * Filter, which whishlist to fetch.
+     */
+    where?: whishlistWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of whishlists to fetch.
+     */
+    orderBy?: whishlistOrderByWithRelationInput | whishlistOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for whishlists.
+     */
+    cursor?: whishlistWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` whishlists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` whishlists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of whishlists.
+     */
+    distinct?: WhishlistScalarFieldEnum | WhishlistScalarFieldEnum[]
+  }
+
+  /**
+   * whishlist findMany
+   */
+  export type whishlistFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the whishlist
+     */
+    select?: whishlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the whishlist
+     */
+    omit?: whishlistOmit<ExtArgs> | null
+    /**
+     * Filter, which whishlists to fetch.
+     */
+    where?: whishlistWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of whishlists to fetch.
+     */
+    orderBy?: whishlistOrderByWithRelationInput | whishlistOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing whishlists.
+     */
+    cursor?: whishlistWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` whishlists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` whishlists.
+     */
+    skip?: number
+    distinct?: WhishlistScalarFieldEnum | WhishlistScalarFieldEnum[]
+  }
+
+  /**
+   * whishlist create
+   */
+  export type whishlistCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the whishlist
+     */
+    select?: whishlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the whishlist
+     */
+    omit?: whishlistOmit<ExtArgs> | null
+    /**
+     * The data needed to create a whishlist.
+     */
+    data: XOR<whishlistCreateInput, whishlistUncheckedCreateInput>
+  }
+
+  /**
+   * whishlist createMany
+   */
+  export type whishlistCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many whishlists.
+     */
+    data: whishlistCreateManyInput | whishlistCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * whishlist update
+   */
+  export type whishlistUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the whishlist
+     */
+    select?: whishlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the whishlist
+     */
+    omit?: whishlistOmit<ExtArgs> | null
+    /**
+     * The data needed to update a whishlist.
+     */
+    data: XOR<whishlistUpdateInput, whishlistUncheckedUpdateInput>
+    /**
+     * Choose, which whishlist to update.
+     */
+    where: whishlistWhereUniqueInput
+  }
+
+  /**
+   * whishlist updateMany
+   */
+  export type whishlistUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update whishlists.
+     */
+    data: XOR<whishlistUpdateManyMutationInput, whishlistUncheckedUpdateManyInput>
+    /**
+     * Filter which whishlists to update
+     */
+    where?: whishlistWhereInput
+    /**
+     * Limit how many whishlists to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * whishlist upsert
+   */
+  export type whishlistUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the whishlist
+     */
+    select?: whishlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the whishlist
+     */
+    omit?: whishlistOmit<ExtArgs> | null
+    /**
+     * The filter to search for the whishlist to update in case it exists.
+     */
+    where: whishlistWhereUniqueInput
+    /**
+     * In case the whishlist found by the `where` argument doesn't exist, create a new whishlist with this data.
+     */
+    create: XOR<whishlistCreateInput, whishlistUncheckedCreateInput>
+    /**
+     * In case the whishlist was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<whishlistUpdateInput, whishlistUncheckedUpdateInput>
+  }
+
+  /**
+   * whishlist delete
+   */
+  export type whishlistDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the whishlist
+     */
+    select?: whishlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the whishlist
+     */
+    omit?: whishlistOmit<ExtArgs> | null
+    /**
+     * Filter which whishlist to delete.
+     */
+    where: whishlistWhereUniqueInput
+  }
+
+  /**
+   * whishlist deleteMany
+   */
+  export type whishlistDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which whishlists to delete
+     */
+    where?: whishlistWhereInput
+    /**
+     * Limit how many whishlists to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * whishlist without action
+   */
+  export type whishlistDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the whishlist
+     */
+    select?: whishlistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the whishlist
+     */
+    omit?: whishlistOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -4960,6 +5903,15 @@ export namespace Prisma {
   export type BeforebuyingScalarFieldEnum = (typeof BeforebuyingScalarFieldEnum)[keyof typeof BeforebuyingScalarFieldEnum]
 
 
+  export const WhishlistScalarFieldEnum: {
+    email: 'email',
+    listObj: 'listObj',
+    category: 'category'
+  };
+
+  export type WhishlistScalarFieldEnum = (typeof WhishlistScalarFieldEnum)[keyof typeof WhishlistScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -5019,6 +5971,15 @@ export namespace Prisma {
   };
 
   export type beforebuyingOrderByRelevanceFieldEnum = (typeof beforebuyingOrderByRelevanceFieldEnum)[keyof typeof beforebuyingOrderByRelevanceFieldEnum]
+
+
+  export const whishlistOrderByRelevanceFieldEnum: {
+    email: 'email',
+    listObj: 'listObj',
+    category: 'category'
+  };
+
+  export type whishlistOrderByRelevanceFieldEnum = (typeof whishlistOrderByRelevanceFieldEnum)[keyof typeof whishlistOrderByRelevanceFieldEnum]
 
 
   /**
@@ -5327,6 +6288,49 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"beforebuying"> | Date | string
   }
 
+  export type whishlistWhereInput = {
+    AND?: whishlistWhereInput | whishlistWhereInput[]
+    OR?: whishlistWhereInput[]
+    NOT?: whishlistWhereInput | whishlistWhereInput[]
+    email?: StringFilter<"whishlist"> | string
+    listObj?: StringNullableFilter<"whishlist"> | string | null
+    category?: StringNullableFilter<"whishlist"> | string | null
+  }
+
+  export type whishlistOrderByWithRelationInput = {
+    email?: SortOrder
+    listObj?: SortOrderInput | SortOrder
+    category?: SortOrderInput | SortOrder
+    _relevance?: whishlistOrderByRelevanceInput
+  }
+
+  export type whishlistWhereUniqueInput = Prisma.AtLeast<{
+    email?: string
+    AND?: whishlistWhereInput | whishlistWhereInput[]
+    OR?: whishlistWhereInput[]
+    NOT?: whishlistWhereInput | whishlistWhereInput[]
+    listObj?: StringNullableFilter<"whishlist"> | string | null
+    category?: StringNullableFilter<"whishlist"> | string | null
+  }, "email" | "email">
+
+  export type whishlistOrderByWithAggregationInput = {
+    email?: SortOrder
+    listObj?: SortOrderInput | SortOrder
+    category?: SortOrderInput | SortOrder
+    _count?: whishlistCountOrderByAggregateInput
+    _max?: whishlistMaxOrderByAggregateInput
+    _min?: whishlistMinOrderByAggregateInput
+  }
+
+  export type whishlistScalarWhereWithAggregatesInput = {
+    AND?: whishlistScalarWhereWithAggregatesInput | whishlistScalarWhereWithAggregatesInput[]
+    OR?: whishlistScalarWhereWithAggregatesInput[]
+    NOT?: whishlistScalarWhereWithAggregatesInput | whishlistScalarWhereWithAggregatesInput[]
+    email?: StringWithAggregatesFilter<"whishlist"> | string
+    listObj?: StringNullableWithAggregatesFilter<"whishlist"> | string | null
+    category?: StringNullableWithAggregatesFilter<"whishlist"> | string | null
+  }
+
   export type productsCreateInput = {
     ProductName?: string | null
     ProductBrand?: string | null
@@ -5610,6 +6614,48 @@ export namespace Prisma {
     transactionid?: NullableStringFieldUpdateOperationsInput | string | null
     transactionstatus?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type whishlistCreateInput = {
+    email: string
+    listObj?: string | null
+    category?: string | null
+  }
+
+  export type whishlistUncheckedCreateInput = {
+    email: string
+    listObj?: string | null
+    category?: string | null
+  }
+
+  export type whishlistUpdateInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    listObj?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type whishlistUncheckedUpdateInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    listObj?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type whishlistCreateManyInput = {
+    email: string
+    listObj?: string | null
+    category?: string | null
+  }
+
+  export type whishlistUpdateManyMutationInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    listObj?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type whishlistUncheckedUpdateManyInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    listObj?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -5971,6 +7017,30 @@ export namespace Prisma {
 
   export type beforebuyingSumOrderByAggregateInput = {
     id?: SortOrder
+  }
+
+  export type whishlistOrderByRelevanceInput = {
+    fields: whishlistOrderByRelevanceFieldEnum | whishlistOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type whishlistCountOrderByAggregateInput = {
+    email?: SortOrder
+    listObj?: SortOrder
+    category?: SortOrder
+  }
+
+  export type whishlistMaxOrderByAggregateInput = {
+    email?: SortOrder
+    listObj?: SortOrder
+    category?: SortOrder
+  }
+
+  export type whishlistMinOrderByAggregateInput = {
+    email?: SortOrder
+    listObj?: SortOrder
+    category?: SortOrder
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
