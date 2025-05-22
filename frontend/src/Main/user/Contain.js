@@ -124,14 +124,19 @@ export function Contain() {
       console.log(message);
     };
     postWL();
-    const lenght = whishlistState.length;
-    for (let i = 0; i < lenght; i++) {
-      const id = `#wish${whishlistState[i].id}`;
-      if (whishlistState[i].status === true) {
-        document.querySelector(id).style.color = "red";
-      } else {
-        document.querySelector(id).style.color = "white";
+    const length = whishlistState.length;
+    if (length > 0) {
+      for (let i = 0; i < length; i++) {
+        const id = `#wish${whishlistState[i].id}`;
+        if (whishlistState[i].status === true) {
+          document.querySelector(id).style.color = "red";
+        } else {
+          document.querySelector(id).style.color = "white";
+        }
       }
+    }
+    else{
+      console.log("Empty wishList");
     }
   }, [whishlistState]);
 
