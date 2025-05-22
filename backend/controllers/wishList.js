@@ -66,13 +66,13 @@ const postWL = async (req, res) => {
         data: { listObj: JSON.stringify(req.body.whishlistState) },
       });
       if (!update) {
-        console.log("Unable to update data at DB");
-        return res.status(503).json({ Message: "Unable to update data at DB" });
+        console.log("Unable to update wishlist data at DB");
+        return res.status(503).json({ Message: "Unable to update wishlist data at DB" });
       }
-      console.log("Successfully updated data at DB");
+      console.log("Successfully updated wishlist data at DB");
       return res
         .status(200)
-        .json({ Message: "Successfully updated data at DB" });
+        .json({ Message: "Successfully updated wishlist data at DB" });
     } else {
       const create = await prisma.whishlist.create({
         data: {
@@ -81,13 +81,13 @@ const postWL = async (req, res) => {
         },
       });
       if (!create) {
-        console.log("Unable to create data at DB");
-        return res.status(503).json({ Message: "Unable to create data at DB" });
+        console.log("Unable to create wishlist data at DB");
+        return res.status(503).json({ Message: "Unable to create wishlist data at DB" });
       }
-      console.log("Successfully created data at DB");
+      console.log("Successfully created wishlist data at DB");
       return res
         .status(200)
-        .json({ Message: "Successfully created data at DB" });
+        .json({ Message: "Successfully created wishlist data at DB" });
     }
   } catch (error) {
     console.log(error);

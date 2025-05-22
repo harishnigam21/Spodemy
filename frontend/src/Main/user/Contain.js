@@ -115,7 +115,7 @@ export function Contain() {
       });
       if (response.ok) {
         const data = (await response.json()).obj;
-        setWhishlistState(data);
+        setWhishlistState(JSON.parse(data));
       } else {
         console.log((await response.json()).Message);
       }
@@ -126,7 +126,7 @@ export function Contain() {
         .filter((item) => item.status === true)
         .map((item) => item.id)
     );
-  }, [whishlistState]);
+  }, [whishlistState, whishlist]);
 
   const handleAddToCart = (productId) => {
     setIteminatc((prevCount) => prevCount + 1);
