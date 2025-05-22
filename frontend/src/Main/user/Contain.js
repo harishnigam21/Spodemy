@@ -128,14 +128,19 @@ export function Contain() {
     if (length > 0) {
       for (let i = 0; i < length; i++) {
         const id = `#wish${whishlistState[i].id}`;
-        if (whishlistState[i].status === true) {
-          document.querySelector(id).style.color = "red";
+        const element = document.querySelector(id);
+        if (element) {
+          if (whishlistState[i].status === true) {
+            element.style.color = "red";
+          } else {
+            element.style.color = "white";
+          }
         } else {
-          document.querySelector(id).style.color = "white";
+          // Optional: Log a warning if the element isn't found, for debugging
+          console.warn(`Element with ID ${id} not found in DOM.`);
         }
       }
-    }
-    else{
+    } else {
       console.log("Empty wishList");
     }
   }, [whishlistState]);
