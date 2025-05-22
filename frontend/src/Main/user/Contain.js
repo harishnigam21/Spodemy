@@ -16,7 +16,7 @@ export function Contain() {
   const currentLocation = window.location.href;
   const updateforatc = `${currentLocation}/yourcart`;
   const errorRef = useRef(null);
-  const wishlisturl = "https://spodemyfront.vercel.app/wishlist";
+  const wishlisturl = "https://spodemy.vercel.app/wishlist";
 
   useEffect(() => {
     const getcartdataurl = "https://spodemy.vercel.app/getcartdata";
