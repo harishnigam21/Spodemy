@@ -113,6 +113,16 @@ export function Contain() {
         .filter((item) => item.status === true)
         .map((item) => item.id)
     );
+    const postWL = async () => {
+      const wlResponse = await fetch(wishlisturl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ whishlistState }),
+        credentials: "include",
+      });
+      const message = (await wlResponse.json()).Message;
+      console.log(message);
+    };
     postWL();
     const lenght = whishlistState.length;
     for (let i = 0; i < lenght; i++) {
@@ -146,17 +156,6 @@ export function Contain() {
     } else {
       console.log((await response.json()).Message);
     }
-  };
-
-  const postWL = async () => {
-    const wlResponse = await fetch(wishlisturl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ whishlistState }),
-      credentials: "include",
-    });
-    const message = (await wlResponse.json()).Message;
-    console.log(message);
   };
 
   const onClickWL = (id) => {
