@@ -124,12 +124,15 @@ export function Contain() {
       console.log(message);
     };
     postWL();
+  }, [whishlistState]);
+
+  useEffect(() => {
     const lenght = whishlist.length;
     for (let i = 0; i < lenght; i++) {
       const id = `#wish${whishlist[i]}`;
       document.querySelector(id).style.color = "red";
     }
-  }, [whishlistState]);
+  }, [whishlist]);
 
   const handleAddToCart = (productId) => {
     setIteminatc((prevCount) => prevCount + 1);
