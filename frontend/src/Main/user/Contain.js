@@ -124,16 +124,12 @@ export function Contain() {
       console.log(message);
     };
     postWL();
-    const lenght = whishlistState.length;
+    const lenght = whishlist.length;
     for (let i = 0; i < lenght; i++) {
-      const id = `#wish${whishlistState[i].id}`;
-      if (whishlistState[i].status === true) {
-        document.querySelector(id).style.color = "red";
-      } else {
-        document.querySelector(id).style.color = "white";
-      }
+      const id = `#wish${whishlist[i]}`;
+      document.querySelector(id).style.color = "red";
     }
-  }, [whishlistState]);
+  }, [whishlistState, whishlist]);
 
   const handleAddToCart = (productId) => {
     setIteminatc((prevCount) => prevCount + 1);
