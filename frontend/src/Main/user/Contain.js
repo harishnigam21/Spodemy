@@ -113,6 +113,15 @@ export function Contain() {
         .filter((item) => item.status === true)
         .map((item) => item.id)
     );
+    const lenght = whishlistState.length;
+    for (let i = 0; i < lenght; i++) {
+      const id = `#wish${whishlistState[i].id}`;
+      if (whishlistState[i].status === true) {
+        document.querySelector(id).style.color = "red";
+      } else {
+        document.querySelector(id).style.color = "white";
+      }
+    }
   }, [whishlistState]);
 
   const handleAddToCart = (productId) => {
@@ -145,20 +154,8 @@ export function Contain() {
       body: JSON.stringify({ whishlistState }),
       credentials: "include",
     });
-    if (wlResponse.ok) {
-      const lenght = whishlistState.length;
-      for (let i = 0; i < lenght; i++) {
-        const id = `#wish${whishlistState[i].id}`;
-        if (whishlistState[i].status === true) {
-          document.querySelector(id).style.color = "red";
-        } else {
-          document.querySelector(id).style.color = "white";
-        }
-      }
-    } else {
-      const message = (await wlResponse.json()).Message;
-      console.log(message);
-    }
+    const message = (await wlResponse.json()).Message;
+    console.log(message);
   };
 
   const onClickWL = (id) => {
