@@ -126,7 +126,7 @@ export function Contain() {
         .filter((item) => item.status === true)
         .map((item) => item.id)
     );
-  }, [whishlistState, whishlist]);
+  }, [whishlistState]);
 
   const handleAddToCart = (productId) => {
     setIteminatc((prevCount) => prevCount + 1);
