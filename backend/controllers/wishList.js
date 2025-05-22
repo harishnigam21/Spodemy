@@ -51,7 +51,7 @@ const postWL = async (req, res) => {
     return res.status(503).json({ Message: "Problem at decrypted function" });
   }
   try {
-    if (!req.whishlistState) {
+    if (!req.body.whishlistState) {
       return res.status(406).json({
         Message:
           "This type of request is not allowed, we cannot move forward without source data",
@@ -63,7 +63,7 @@ const postWL = async (req, res) => {
     if (isORnot) {
       const update = await prisma.whishlist.update({
         where: { email: decryptedEmail },
-        data: { listObj: JSON.stringify(req.whishlistState) },
+        data: { listObj: JSON.stringify(req.body.whishlistState) },
       });
       if (!update) {
         console.log("Unable to update data at DB");
@@ -77,7 +77,7 @@ const postWL = async (req, res) => {
       const create = await prisma.whishlist.create({
         data: {
           email: decryptedEmail,
-          listObj: JSON.stringify(req.whishlistState),
+          listObj: JSON.stringify(req.body.whishlistState),
         },
       });
       if (!create) {
