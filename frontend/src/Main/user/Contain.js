@@ -113,7 +113,7 @@ export function Contain() {
         .filter((item) => item.status === true)
         .map((item) => item.id)
     );
-    const lenght = whishlistState.length;
+    const lenght = whishlist.length;
     for (let i = 0; i < lenght; i++) {
       const id = `#wish${whishlistState[i].id}`;
       if (whishlistState[i].status === true) {
@@ -122,7 +122,7 @@ export function Contain() {
         document.querySelector(id).style.color = "white";
       }
     }
-  }, [whishlistState]);
+  }, [whishlistState, whishlist]);
 
   const handleAddToCart = (productId) => {
     setIteminatc((prevCount) => prevCount + 1);
