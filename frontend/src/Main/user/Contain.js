@@ -140,7 +140,7 @@ export function Contain() {
   const postWL = async () => {
     const wlResponse = await fetch(wishlisturl, {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ whishlistState }),
       credentials: "include",
     });
