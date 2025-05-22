@@ -129,7 +129,7 @@ export function Contain() {
       const id = `#wish${whishlist[i]}`;
       document.querySelector(id).style.color = "red";
     }
-  }, [whishlistState, whishlist]);
+  }, [whishlistState]);
 
   const handleAddToCart = (productId) => {
     setIteminatc((prevCount) => prevCount + 1);
