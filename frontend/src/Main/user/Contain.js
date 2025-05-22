@@ -113,6 +113,7 @@ export function Contain() {
         .filter((item) => item.status === true)
         .map((item) => item.id)
     );
+    postWL();
     const lenght = whishlistState.length;
     for (let i = 0; i < lenght; i++) {
       const id = `#wish${whishlistState[i].id}`;
@@ -176,7 +177,6 @@ export function Contain() {
         })
       );
     }
-    postWL();
   };
   console.log(whishlistState);
   console.log(whishlist);
