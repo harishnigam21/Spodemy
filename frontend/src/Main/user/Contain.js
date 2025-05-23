@@ -81,7 +81,7 @@ export function Contain() {
         console.log((await response.json()).Message);
       }
     };
-
+    
     const fetchData = async () => {
       const productFetchSuccess = await getProduct();
       await getcartdata();
@@ -133,7 +133,17 @@ export function Contain() {
         .filter((item) => item.status === true)
         .map((item) => item.id)
     );
-
+    const postWL = async () => {
+      const wlResponse = await fetch(wishlisturl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ whishlistState }),
+        credentials: "include",
+      });
+      const message = (await wlResponse.json()).Message;
+      console.log(message);
+    };
+    postWL();
     //TODO:solve it first then move forward
     const length = whishlistState.length;
     if (length > 0) {
@@ -165,17 +175,6 @@ export function Contain() {
     }));
   };
 
-  const postWL = async () => {
-    const wlResponse = await fetch(wishlisturl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ whishlistState }),
-      credentials: "include",
-    });
-    const message = (await wlResponse.json()).Message;
-    console.log(message);
-  };
-
   const onClickWL = (id) => {
     const newObj = {
       id: id,
@@ -194,7 +193,6 @@ export function Contain() {
         })
       );
     }
-    postWL();
   };
   console.log(whishlistState);
   console.log(whishlist);
