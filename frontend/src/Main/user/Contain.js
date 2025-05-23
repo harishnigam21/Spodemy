@@ -16,11 +16,31 @@ export function Contain() {
   const updateforatc = `${currentLocation}/yourcart`;
   const errorRef = useRef(null);
   const wishlisturl = "https://spodemy.vercel.app/wishlist";
+  const getcartdataurl = "https://spodemy.vercel.app/getcartdata";
+  const getProducturl = "https://spodemy.vercel.app/getallproductdata";
 
   useEffect(() => {
-    const getcartdataurl = "https://spodemy.vercel.app/getcartdata";
-    const getProducturl = "https://spodemy.vercel.app/getallproductdata";
-
+    const getProduct = async () => {
+      try {
+        const response = await fetch(getProducturl, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+        });
+        if (response.ok) {
+          const validProduct = (await response.json()).product;
+          setProduct(validProduct);
+        } else {
+          console.log("There is nothing to show you currently");
+          if (errorRef.current) {
+            errorRef.current.textContent =
+              "Sorry!, There is not any product to list currently";
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
     const getcartdata = async () => {
       try {
         const response = await fetch(getcartdataurl, {
@@ -44,29 +64,6 @@ export function Contain() {
         console.error("Error fetching cart data:", error);
       }
     };
-
-    const getProduct = async () => {
-      try {
-        const response = await fetch(getProducturl, {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-        });
-        if (response.ok) {
-          const validProduct = (await response.json()).product;
-          setProduct(validProduct);
-        } else {
-          console.log("There is nothing to show you currently");
-          if (errorRef.current) {
-            errorRef.current.textContent =
-              "Sorry!, There is not any product to list currently";
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching product data:", error);
-      }
-    };
-
     const getWL = async () => {
       const response = await fetch(wishlisturl, {
         method: "GET",
@@ -81,16 +78,9 @@ export function Contain() {
         console.log((await response.json()).Message);
       }
     };
-
-    const fetchData = async () => {
-      const productFetchSuccess = await getProduct();
-      await getcartdata();
-      if (productFetchSuccess) {
-        await getWL();
-      }
-    };
-
-    fetchData();
+    getProduct();
+    getcartdata();
+    getWL();
   }, []);
 
   useEffect(() => {
