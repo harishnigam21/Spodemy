@@ -9,7 +9,6 @@ export function Contain() {
   const [product, setProduct] = useState([]);
   const [iteminatc, setIteminatc] = useState(0);
   const [itemidsinatc, setItemidsinatc] = useState([]);
-  const [whishlist, setWhishlist] = useState([]);
   const [whishlistState, setWhishlistState] = useState([]);
   const [searchbarvalue, setSearchbarvalue] = useState("");
   const [buttonStates, setButtonStates] = useState({});
@@ -81,7 +80,7 @@ export function Contain() {
         console.log((await response.json()).Message);
       }
     };
-    
+
     const fetchData = async () => {
       const productFetchSuccess = await getProduct();
       await getcartdata();
@@ -128,11 +127,6 @@ export function Contain() {
   }, [iteminatc, itemidsinatc]);
 
   useEffect(() => {
-    setWhishlist(
-      whishlistState
-        .filter((item) => item.status === true)
-        .map((item) => item.id)
-    );
     const postWL = async () => {
       const wlResponse = await fetch(wishlisturl, {
         method: "POST",
@@ -195,7 +189,6 @@ export function Contain() {
     }
   };
   console.log(whishlistState);
-  console.log(whishlist);
   return (
     <div className="Contain">
       <div className="searchboxdiv">
