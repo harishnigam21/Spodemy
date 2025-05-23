@@ -126,14 +126,9 @@ export function Contain() {
           body: JSON.stringify({ whishlistState }),
           credentials: "include",
         });
-        const message = (await wlResponse.json()).Message;
-        console.log(message);
-      }
-    };
-    postWL();
-    //TODO:solve it first then move forward
-    const length = whishlistState.length;
-    if (length > 0 && product.length > 0) {
+        if(wlResponse.ok){
+          const length = whishlistState.length;
+    if (length > 0) {
       for (let i = 0; i < length; i++) {
         const id = `#wish${whishlistState[i].id}`;
         const element = document.querySelector(id);
@@ -148,7 +143,15 @@ export function Contain() {
           console.warn(`Element with ID ${id} not found in DOM.`);
         }
       }
-    } else {
+    }
+        }
+        const message = (await wlResponse.json()).Message;
+        console.log(message);
+      }
+    };
+    postWL();
+    //TODO:solve it first then move forward
+     else {
       console.log("Empty wishList");
     }
   }, [whishlistState]);
