@@ -68,9 +68,15 @@ export function Contain() {
       }
     };
 
-    getcartdata();
-    getProduct();
-    getWL();
+    const fetchData = async () => {
+      const productFetchSuccess = await getProduct();
+      await getcartdata(); 
+      if (productFetchSuccess) {
+        await getWL();
+      }
+    };
+
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -124,6 +130,7 @@ export function Contain() {
       console.log(message);
     };
     postWL();
+    //TODO:solve it first then move forward
     const length = whishlistState.length;
     if (length > 0) {
       for (let i = 0; i < length; i++) {
