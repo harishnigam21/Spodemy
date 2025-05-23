@@ -126,24 +126,26 @@ export function Contain() {
           body: JSON.stringify({ whishlistState }),
           credentials: "include",
         });
-        if(wlResponse.ok){
+        if (wlResponse.ok) {
           const length = whishlistState.length;
-    if (length > 0) {
-      for (let i = 0; i < length; i++) {
-        const id = `#wish${whishlistState[i].id}`;
-        const element = document.querySelector(id);
-        if (element) {
-          if (whishlistState[i].status === true) {
-            element.style.color = "red";
+          if (length > 0) {
+            for (let i = 0; i < length; i++) {
+              const id = `#wish${whishlistState[i].id}`;
+              const element = document.querySelector(id);
+              if (element) {
+                if (whishlistState[i].status === true) {
+                  element.style.color = "red";
+                } else {
+                  element.style.color = "white";
+                }
+              } else {
+                // Optional: Log a warning if the element isn't found, for debugging
+                console.warn(`Element with ID ${id} not found in DOM.`);
+              }
+            }
           } else {
-            element.style.color = "white";
+            console.log("Empty wishList");
           }
-        } else {
-          // Optional: Log a warning if the element isn't found, for debugging
-          console.warn(`Element with ID ${id} not found in DOM.`);
-        }
-      }
-    }
         }
         const message = (await wlResponse.json()).Message;
         console.log(message);
@@ -151,9 +153,6 @@ export function Contain() {
     };
     postWL();
     //TODO:solve it first then move forward
-     else {
-      console.log("Empty wishList");
-    }
   }, [whishlistState]);
 
   const handleAddToCart = (productId) => {
