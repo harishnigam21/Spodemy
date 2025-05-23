@@ -128,14 +128,16 @@ export function Contain() {
 
   useEffect(() => {
     const postWL = async () => {
-      const wlResponse = await fetch(wishlisturl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ whishlistState }),
-        credentials: "include",
-      });
-      const message = (await wlResponse.json()).Message;
-      console.log(message);
+      if (whishlistState.length > 0) {
+        const wlResponse = await fetch(wishlisturl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ whishlistState }),
+          credentials: "include",
+        });
+        const message = (await wlResponse.json()).Message;
+        console.log(message);
+      }
     };
     postWL();
     //TODO:solve it first then move forward
