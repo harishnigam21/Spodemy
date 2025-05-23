@@ -68,9 +68,23 @@ export function Contain() {
       }
     };
 
+    const getWL = async () => {
+      const response = await fetch(wishlisturl, {
+        method: "GET",
+        headers: { "content-type": "application/json" },
+        credentials: "include",
+      });
+      if (response.ok) {
+        const data = (await response.json()).obj;
+        setWhishlistState(JSON.parse(data));
+      } else {
+        console.log((await response.json()).Message);
+      }
+    };
+    
     const fetchData = async () => {
       const productFetchSuccess = await getProduct();
-      await getcartdata(); 
+      await getcartdata();
       if (productFetchSuccess) {
         await getWL();
       }
@@ -159,20 +173,6 @@ export function Contain() {
       ...prevStates,
       [productId]: { text: "Added", disabled: true },
     }));
-  };
-
-  const getWL = async () => {
-    const response = await fetch(wishlisturl, {
-      method: "GET",
-      headers: { "content-type": "application/json" },
-      credentials: "include",
-    });
-    if (response.ok) {
-      const data = (await response.json()).obj;
-      setWhishlistState(JSON.parse(data));
-    } else {
-      console.log((await response.json()).Message);
-    }
   };
 
   const onClickWL = (id) => {
