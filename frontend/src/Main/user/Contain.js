@@ -76,6 +76,7 @@ export function Contain() {
       if (response.ok) {
         const data = (await response.json()).obj;
         setWhishlistState(JSON.parse(data));
+        console.log((await response.json()).Message);
       } else {
         console.log((await response.json()).Message);
       }
