@@ -1,5 +1,4 @@
 /* eslint-disable no-useless-concat */
-/* eslint-disable jsx-a11y/heading-has-content */
 import { useState, useEffect, useRef } from "react";
 import { FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
