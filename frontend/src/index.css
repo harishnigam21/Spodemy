@@ -8,6 +8,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+button, .icon{
+  cursor: pointer;
+}
 .link {
   text-decoration: "none";
   color: "black";
@@ -695,7 +698,7 @@ code {
     }
     section {
       display: grid;
-      display:inline-flex;
+      display: inline-flex;
       grid-template-columns: 48% 4% 48%;
       align-items: center;
       flex-grow: 1;
@@ -736,11 +739,11 @@ code {
     }
   }
 }
-.atcbn{
+.atcbn {
   display: flex;
 }
-.wish{
-  font-size:x-large;
+.wish {
+  font-size: x-large;
   color: white;
 }
 
@@ -866,14 +869,12 @@ code {
   }
 }
 .update {
-  margin-right: 1rem;
   padding: 0.8rem;
   border-radius: 0.5rem;
   font-weight: bold;
   box-shadow: 0.1rem 0.1rem 0.8rem red inset;
 }
 .checkout {
-  margin-left: 1rem;
   padding: 0.8rem;
   border-radius: 0.5rem;
   font-weight: bold;
@@ -886,10 +887,11 @@ code {
   bottom: 0;
   right: 0;
   left: 0;
-  justify-content: center;
+  justify-content:space-evenly;
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
+  padding: 0.5rem;
   strong {
     color: red;
     font-family: Georgia, "Times New Roman", Times, serif;
@@ -971,17 +973,17 @@ code {
   width: 100%;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap-reverse;
+  flex-wrap: nowrap;
+  overflow: auto;
   font-size: medium;
   text-align: center;
   background: gray;
+  align-items: center;
   border-top-left-radius: 0.8rem;
   border-top-right-radius: 0.8rem;
-  strong {
-    padding: 0.5rem;
-  }
   p {
     color: blue;
+    margin: 0;
   }
   div {
     display: flex;
@@ -991,6 +993,9 @@ code {
   div:last-child {
     margin-left: auto;
   }
+}
+.orderBarItem {
+  margin: 0.5rem;
 }
 .otherdetails {
   padding: 0.8rem;
@@ -1098,9 +1103,8 @@ code {
         font-weight: bolder;
       }
       img {
-        max-width: 90%;
+        max-width: 40%;
         max-height: 15rem;
-        mix-blend-mode: multiply;
       }
       section {
         display: grid;
@@ -1120,7 +1124,6 @@ code {
       }
       div {
         padding: 0.5rem;
-        justify-content: space-between;
         button {
           padding: 0.5rem;
           border-radius: 0.5rem;
@@ -1128,5 +1131,21 @@ code {
         }
       }
     }
+  }
+  .orderBar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  .filter {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  .searchboxdiv{
+    input{
+      min-width:100%;
+    }
+  }
+  .order{
+    width: 95%;
   }
 }

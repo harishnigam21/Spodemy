@@ -119,7 +119,7 @@ const Nav = ({ user, updateforlogout }) => {
             style={{ margin: "auto", marginRight: "0.5rem" }}
             className="profile"
           >
-            <CgProfile onMouseEnter={() => setProfile(!profile)} />
+            <CgProfile className="icon" onMouseEnter={() => setProfile(!profile)} />
           </li>
           {profile ? (
             <div
@@ -136,7 +136,7 @@ const Nav = ({ user, updateforlogout }) => {
                   className="profile"
                   onClick={() => setProfile(!profile)}
                 >
-                  <CgProfile id="profileToogle" />
+                  <CgProfile className="icon" id="profileToogle" />
                 </li>
                 <li>Your Account</li>
                 <li>Your Whish List</li>

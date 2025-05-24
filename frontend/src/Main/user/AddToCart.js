@@ -185,7 +185,7 @@ export default function AddToCart() {
     <div className="maincartdiv">
       <h1>
         <Link to={newUrl}>
-          <FaHome style={{ color: "white", marginRight: "1rem" }} />
+          <FaHome className="icon" style={{ color: "white", marginRight: "1rem" }} />
         </Link>
         Your Cart
       </h1>
@@ -269,6 +269,7 @@ export default function AddToCart() {
               </div>
               <div className="removeUpdate">
                 <MdDelete
+                  className="icon"
                   style={{ color: "red", fontSize: "2rem" }}
                   onClick={() => handleDeleteCart(item.ProductId)}
                 />
@@ -298,15 +299,23 @@ export default function AddToCart() {
         >
           Update Cart
         </button>
-        <strong htmlFor="totalprice">Total</strong>
-        <strong>=</strong>
-        <p id="pricevalue">₹ {totalPrice}</p>
-        <p
-          style={{ color: "greenyellow", marginLeft: "0.8rem" }}
-          id="totalitem"
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
         >
-          ({totalItem} items)
-        </p>
+          <strong htmlFor="totalprice">Total</strong>
+          <strong>=</strong>
+          <p id="pricevalue">₹ {totalPrice}</p>
+          <p
+            style={{ color: "greenyellow", marginLeft: "0.8rem" }}
+            id="totalitem"
+          >
+            ({totalItem} items)
+          </p>
+        </div>
         <button
           disabled={updcheckstatus}
           className="checkout"

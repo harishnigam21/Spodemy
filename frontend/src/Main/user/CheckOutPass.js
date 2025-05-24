@@ -79,7 +79,7 @@ export default function CheckOutPass() {
           <div>
             <h1>
               Hello! Your Order is successfully Placed.
-              <GiConfirmed />
+              <GiConfirmed className="icon" />
             </h1>
             <p>with Transaction ID : {transactionid}</p>
           </div>

@@ -80,7 +80,7 @@ export default function CheckOutFail() {
           <div style={{ boxShadow: "0rem 0rem 2rem green inset" }}>
             <h1 style={{ color: "red" }}>
               Hello! Your Order is Cancelled.
-              <GiConfirmed />
+              <GiConfirmed className="icon" />
             </h1>
             <p>with Transaction ID : {transactionid}</p>
           </div>

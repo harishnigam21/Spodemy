@@ -72,13 +72,13 @@ const Nav = ({user,updateforlogout}) => {
                     <p style={{margin:'0',alignSelf:'center',color:'white',textAlign:'center'}}>Welcome {user.firstname} as "{user.userType}"</p>
                 </li>
                 <li className="rightlist">
-                    <li style={{margin:'auto',marginRight:'0.5rem'}} className="profile"><CgProfile onClick={()=>setProfile(!profile)}/></li>
+                    <li style={{margin:'auto',marginRight:'0.5rem'}} className="profile"><CgProfile className="icon" onClick={()=>setProfile(!profile)}/></li>
                     {
                         profile
                         ?
                         <div className="profileList" onMouseLeave={()=>setProfile(!profile)}>
                             <ol>
-                                <li style={{margin:'auto',fontSize:'2rem',marginRight:'0.5rem'}} className="profile" onClick={()=>setProfile(!profile)}><CgProfile id="profileToogle"/></li>
+                                <li style={{margin:'auto',fontSize:'2rem',marginRight:'0.5rem'}} className="profile" onClick={()=>setProfile(!profile)}><CgProfile className="icon" id="profileToogle"/></li>
                                 <li>Your Account</li>
                                 <li>Your Whish List</li>
                                 <li><Link to={updateforlogout} style={{textDecoration:'none',color:'white'}}>Logout</Link></li>

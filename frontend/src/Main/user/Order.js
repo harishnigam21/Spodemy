@@ -1,6 +1,7 @@
 /* eslint-disable no-useless-concat */
 import { useState, useEffect, useRef } from "react";
 import { FaHome } from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import pullUser from "../../usefullFunction/directuser";
@@ -8,6 +9,8 @@ import pullUser from "../../usefullFunction/directuser";
 export default function Order() {
   const [orderItem, setOrderItem] = useState([]);
   const [showError, setShowError] = useState(true);
+  const [showOrderDetails, setShowOrderDetails] = useState(false);
+  const [showfilter, setShowfilter] = useState(false);
 
   //pull User, who are not signed in
   const params = useParams();
@@ -84,15 +87,29 @@ export default function Order() {
           className="link"
           style={{ color: "white", fontSize: "larger", marginRight: "1rem" }}
         >
-          <FaHome />
+          <FaHome className="icon" />
         </Link>
         Your Order
       </h1>
       <div className="filter">
-        <strong>FILTER{">>>"}</strong>
-        <button type="button">Success</button>
-        <button type="button">Failed</button>
-        <button type="button">Canceled</button>
+        <strong onClick={() => setShowfilter(!showfilter)}>FILTER</strong>
+        {showfilter ? (
+          <>{">>>"}</>
+        ) : (
+          <FaChevronDown
+            className="icon"
+            style={{ color: "blue", transform: "rotate(270deg)" }}
+          />
+        )}
+        {showfilter ? (
+          <>
+            <button type="button">Success</button>
+            <button type="button">Failed</button>
+            <button type="button">Canceled</button>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
       {showError ? (
         <h1
@@ -106,29 +123,50 @@ export default function Order() {
         orderItem.map((item) => (
           <div key={item.id} className="orderItem">
             <div className="orderBar">
-              <div className="orderBarItem">
-                <strong>ORDER PLACED</strong>
-                <p>
-                  {item.createdAt.slice(0, 10)} at{" "}
-                  {item.createdAt.slice(12, 16)}
-                </p>
-              </div>
-              <div className="orderBarItem">
-                <strong>TOTAL</strong>
-                <p>₹{calculateTotal(item)}</p>
-              </div>
-              <div className="orderBarItem">
-                <strong>ITEM's</strong>
-                <p>{calculateTotalQuan(item)}</p>
-              </div>
-              <div className="orderBarItem">
-                <strong>SHIP TO</strong>
-                <p>from DB</p>
-              </div>
-              <div className="orderBarItem">
-                <strong>ORDER ID</strong>
-                <p>{item.transactionid}</p>
-              </div>
+              <strong
+                className="orderBarItem"
+                onClick={() => setShowOrderDetails(!showOrderDetails)}
+              >
+                Order Details
+                {showOrderDetails ? (
+                  <strong style={{ color: "red" }}>{">>>"}</strong>
+                ) : (
+                  <></>
+                )}
+              </strong>
+              {showOrderDetails ? (
+                <>
+                  <div className="orderBarItem">
+                    <strong>ORDER PLACED</strong>
+                    <p>
+                      {item.createdAt.slice(0, 10)} at{" "}
+                      {item.createdAt.slice(12, 16)}
+                    </p>
+                  </div>
+                  <div className="orderBarItem">
+                    <strong>TOTAL</strong>
+                    <p>₹{calculateTotal(item)}</p>
+                  </div>
+                  <div className="orderBarItem">
+                    <strong>ITEM's</strong>
+                    <p>{calculateTotalQuan(item)}</p>
+                  </div>
+                  <div className="orderBarItem">
+                    <strong>SHIP TO</strong>
+                    <p>from DB</p>
+                  </div>
+                  <div className="orderBarItem">
+                    <strong>ORDER ID</strong>
+                    <p>{item.transactionid}</p>
+                  </div>
+                </>
+              ) : (
+                <FaChevronDown
+                  className="icon"
+                  style={{ color: "blue" }}
+                  onClick={() => setShowOrderDetails(!showOrderDetails)}
+                />
+              )}
             </div>
             <div className="otherdetails">
               <div className="orderLS">

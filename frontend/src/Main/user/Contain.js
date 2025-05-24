@@ -5,7 +5,6 @@ import pullUser from "../../usefullFunction/directuser";
 
 import { FaCartArrowDown } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
-import { IoSend } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -195,6 +194,7 @@ export function Contain() {
     <div className="Contain">
       <div className="searchboxdiv">
         <FaSearch
+          className="icon"
           style={{ color: "white", fontSize: "2rem", marginRight: "0.5rem" }}
         />
         <input
@@ -203,9 +203,6 @@ export function Contain() {
           id="searchbox"
           placeholder="Search for your Contain here..."
           onChange={(e) => setSearchbarvalue(e.target.value)}
-        />
-        <IoSend
-          style={{ color: "white", fontSize: "2rem", marginLeft: "0.5rem" }}
         />
       </div>
       {product.length !== 0 ? (
@@ -243,7 +240,7 @@ export function Contain() {
                   </button>
                   <button type="button">Buy Now</button>
                   <FaHeart
-                    className="wish"
+                    className="wish icon"
                     id={`wish${item.ProductId}`}
                     onClick={() => onClickWL(item.ProductId)}
                   />
@@ -315,7 +312,10 @@ export function Contain() {
 
       <button className="atcpop" type="button">
         <Link to={updateforatc} style={{ textDecoration: "none" }}>
-          <FaCartArrowDown style={{ fontSize: "2rem", color: "white" }} />
+          <FaCartArrowDown
+            className="icon"
+            style={{ fontSize: "2rem", color: "white" }}
+          />
           {iteminatc}
         </Link>
       </button>
