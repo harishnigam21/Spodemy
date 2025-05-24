@@ -300,7 +300,6 @@ export function Contain() {
                       className="wish"
                       id={`wish${item.ProductId}`}
                       onClick={() => onClickWL(item.ProductId)}
-                      style={{alignSelf:"center"}}
                     />
                   </div>
                 </div>
