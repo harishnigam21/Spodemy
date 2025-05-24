@@ -296,6 +296,11 @@ export function Contain() {
                       {buttonStates[item.ProductId]?.text || "Add to cart"}
                     </button>
                     <button type="button">Buy Now</button>
+                    <FaHeart
+                      className="wish"
+                      id={`wish${item.ProductId}`}
+                      onClick={() => onClickWL(item.ProductId)}
+                    />
                   </div>
                 </div>
               ))
