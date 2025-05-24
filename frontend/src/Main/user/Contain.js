@@ -80,9 +80,9 @@ export function Contain() {
         credentials: "include",
       });
       if (response.ok) {
-        const data = (await response.json()).obj;
-        setWhishlistState(JSON.parse(data));
-        console.log((await response.json()).Message);
+        const data = await response.json();
+        setWhishlistState(JSON.parse(data.obj));
+        console.log(data.Message);
       } else {
         console.log((await response.json()).Message);
       }
