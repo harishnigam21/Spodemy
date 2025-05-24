@@ -191,7 +191,6 @@ export function Contain() {
       );
     }
   };
-  console.log(whishlistState);
   return (
     <div className="Contain">
       <div className="searchboxdiv">
