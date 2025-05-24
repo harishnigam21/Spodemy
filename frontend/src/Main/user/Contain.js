@@ -152,7 +152,6 @@ export function Contain() {
       }
     };
     postWL();
-    //TODO:solve it first then move forward
   }, [whishlistState]);
 
   const handleAddToCart = (productId) => {
