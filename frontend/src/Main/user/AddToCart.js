@@ -2,8 +2,10 @@ import { MdDelete } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { useEffect, useState, useRef } from "react";
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
+import { useParams } from "react-router-dom";
+import pullUser from "../../usefullFunction/directuser";
 
 export default function AddToCart() {
   const [cartItem, setCartitem] = useState([]);
@@ -14,6 +16,11 @@ export default function AddToCart() {
   const errorRef = useRef(null);
   const currentLocation = window.location.href;
   const newUrl = currentLocation.replace("/yourcart", "");
+
+  //pull User, who are not signed in
+  const params = useParams();
+  const emailenc = params.email;
+  pullUser(emailenc);
 
   useEffect(() => {
     const getcartitemurl = "https://spodemy.vercel.app/getcartitem";
@@ -96,7 +103,7 @@ export default function AddToCart() {
       for (let i = 0; i < quantities.length; i++) {
         result += quantities[i].quantity;
       }
-      setTotalItem(result); 
+      setTotalItem(result);
     };
     totalitem();
   }, [quantities, totalItem, cartItem]);

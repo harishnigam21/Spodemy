@@ -1,13 +1,19 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { GiConfirmed } from "react-icons/gi";
+import pullUser from "../../usefullFunction/directuser";
+
 export default function CheckOutFail() {
   const h1Ref = useRef();
   const params = useParams();
   const transactionid = params.transactionid;
   const transactionState = "FAILED";
   const [show, setShow] = useState(false);
-  const currentLocation = window.location.href;
+
+  //pull User, who are not signed in
+  const emailenc = params.email;
+  pullUser(emailenc);
+
   function removeLastTwoParams(url, upto) {
     try {
       const urlObj = new URL(url);
@@ -25,6 +31,8 @@ export default function CheckOutFail() {
   // const returnToCartURL = removeLastTwoParams(currentLocation,2);
   useEffect(() => {
     const verifyTransURL = "https://spodemy.vercel.app/verifytransaction";
+    const currentLocation = window.location.href;
+
     const verifyTrans = async () => {
       const response = fetch(verifyTransURL, {
         method: "POST",
@@ -64,7 +72,7 @@ export default function CheckOutFail() {
       }
     };
     verifyTrans();
-  }, []);
+  }, [transactionid]);
   return (
     <div>
       {show ? (

@@ -1,14 +1,15 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { GiConfirmed } from "react-icons/gi";
+import pullUser from "../../usefullFunction/directuser";
+
 export default function CheckOutPass() {
   const h1Ref = useRef();
   const params = useParams();
   const transactionid = params.transactionid;
   const transactionState = "SUCCESS";
   const [show, setShow] = useState(false);
-  const currentLocation = window.location.href;
-  function removeLastTwoParams(url,upto) {
+  function removeLastTwoParams(url, upto) {
     try {
       const urlObj = new URL(url);
       const pathSegments = urlObj.pathname.split("/").filter(Boolean);
@@ -22,8 +23,15 @@ export default function CheckOutPass() {
       return url; // Return original URL if it's invalid
     }
   }
+
+  //pull User, who are not signed in
+  const emailenc = params.email;
+  pullUser(emailenc);
+  
   useEffect(() => {
     const verifyTransURL = "https://spodemy.vercel.app/verifytransaction";
+    const currentLocation = window.location.href;
+
     const verifyTrans = async () => {
       const response = fetch(verifyTransURL, {
         method: "POST",
@@ -35,8 +43,10 @@ export default function CheckOutPass() {
         setShow(true);
         console.log("successfully Verified User");
         setTimeout(() => {
-            window.location.replace(`${removeLastTwoParams(currentLocation,3)}/yourorder`);//change to order page, make order page assign it to index.js 
-          }, 5000);
+          window.location.replace(
+            `${removeLastTwoParams(currentLocation, 3)}/yourorder`
+          ); //change to order page, make order page assign it to index.js
+        }, 5000);
       } else {
         setShow(false);
         if ((await response).status === 401) {
@@ -55,13 +65,13 @@ export default function CheckOutPass() {
           }
           console.log("Sending back to your Cart");
           setTimeout(() => {
-            window.location.replace(removeLastTwoParams(currentLocation,2));
+            window.location.replace(removeLastTwoParams(currentLocation, 2));
           }, 5000);
         }
       }
     };
     verifyTrans();
-  }, [transactionid,currentLocation]);
+  }, [transactionid]);
   return (
     <div>
       {show ? (
@@ -73,12 +83,14 @@ export default function CheckOutPass() {
             </h1>
             <p>with Transaction ID : {transactionid}</p>
           </div>
-          <strong style={{color:"white",padding:"2rem" }}>Returning to Your Order in 5s</strong>
+          <strong style={{ color: "white", padding: "2rem" }}>
+            Returning to Your Order in 5s
+          </strong>
         </div>
       ) : (
         <h1 className="h1error" ref={h1Ref}>
-          Don't try to reach Directly, Sending back to you at your previous
-          page within 5s.
+          Don't try to reach Directly, Sending back to you at your previous page
+          within 5s.
         </h1>
       )}
     </div>

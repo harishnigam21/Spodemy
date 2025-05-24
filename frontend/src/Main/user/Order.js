@@ -3,10 +3,18 @@
 import { useState, useEffect, useRef } from "react";
 import { FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import pullUser from "../../usefullFunction/directuser";
 
 export default function Order() {
   const [orderItem, setOrderItem] = useState([]);
   const [showError, setShowError] = useState(true);
+
+  //pull User, who are not signed in
+  const params = useParams();
+  const emailenc = params.email;
+  pullUser(emailenc);
+
   const errorRef = useRef(null);
   useEffect(() => {
     const getOrderitemUrl = "https://spodemy.vercel.app/getorderitem";

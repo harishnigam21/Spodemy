@@ -1,4 +1,8 @@
 import { useState, useEffect, useRef } from "react";
+
+import { useParams } from "react-router-dom";
+import pullUser from "../../usefullFunction/directuser";
+
 import { FaCartArrowDown } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { IoSend } from "react-icons/io5";
@@ -18,6 +22,11 @@ export function Contain() {
   const wishlisturl = "https://spodemy.vercel.app/wishlist";
   const getcartdataurl = "https://spodemy.vercel.app/getcartdata";
   const getProducturl = "https://spodemy.vercel.app/getallproductdata";
+
+  //pull User, who are not signed in
+  const params = useParams();
+  const emailenc = params.email;
+  pullUser(emailenc);
 
   useEffect(() => {
     const getProduct = async () => {
