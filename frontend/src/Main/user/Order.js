@@ -9,7 +9,7 @@ import pullUser from "../../usefullFunction/directuser";
 export default function Order() {
   const [orderItem, setOrderItem] = useState([]);
   const [showError, setShowError] = useState(true);
-  const [showOrderDetails, setShowOrderDetails] = useState(false);
+  const [showOrderDetails, setShowOrderDetails] = useState([]);
   const [showfilter, setShowfilter] = useState(false);
 
   //pull User, who are not signed in
@@ -31,6 +31,13 @@ export default function Order() {
         const data = await response.json();
         console.log(data.Message);
         setOrderItem(data.orderItems);
+        for (let i = 0; i < data.orderItems.length; i++) {
+          const newObj = {
+            id: data.orderItems[i].id,
+            status: false,
+          };
+          setShowOrderDetails((preItem) => [...preItem, newObj]);
+        }
       } else {
         setShowError(true);
         const data = await response.json();
@@ -92,13 +99,19 @@ export default function Order() {
         Your Order
       </h1>
       <div className="filter">
-        <strong onClick={() => setShowfilter(!showfilter)}>FILTER</strong>
+        <strong
+          onClick={() => setShowfilter(!showfilter)}
+          style={{ cursor: "pointer" }}
+        >
+          FILTER
+        </strong>
         {showfilter ? (
           <>{">>>"}</>
         ) : (
           <FaChevronDown
             className="icon"
             style={{ color: "blue", transform: "rotate(270deg)" }}
+            onClick={() => setShowfilter(!showfilter)}
           />
         )}
         {showfilter ? (
@@ -125,16 +138,28 @@ export default function Order() {
             <div className="orderBar">
               <strong
                 className="orderBarItem"
-                onClick={() => setShowOrderDetails(!showOrderDetails)}
+                onClick={() => {
+                  setShowOrderDetails((preitem) =>
+                    preitem.map((Initem) => {
+                      if (Initem.id === item.id) {
+                        return { ...Initem, status: !Initem.status };
+                      }
+                      return Initem;
+                    })
+                  );
+                }}
+                style={{ cursor: "pointer" }}
               >
                 Order Details
-                {showOrderDetails ? (
+                {showOrderDetails.find((Initem) => Initem.id === item.id)
+                  .status ? (
                   <strong style={{ color: "red" }}>{">>>"}</strong>
                 ) : (
                   <></>
                 )}
               </strong>
-              {showOrderDetails ? (
+              {showOrderDetails.find((Initem) => Initem.id === item.id)
+                .status ? (
                 <>
                   <div className="orderBarItem">
                     <strong>ORDER PLACED</strong>
@@ -164,7 +189,16 @@ export default function Order() {
                 <FaChevronDown
                   className="icon"
                   style={{ color: "blue" }}
-                  onClick={() => setShowOrderDetails(!showOrderDetails)}
+                  onClick={() => {
+                    setShowOrderDetails((preitem) =>
+                      preitem.map((Initem) => {
+                        if (Initem.id === item.id) {
+                          return { ...Initem, status: !Initem.status };
+                        }
+                        return Initem;
+                      })
+                    );
+                  }}
                 />
               )}
             </div>
