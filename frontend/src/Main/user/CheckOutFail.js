@@ -90,8 +90,7 @@ export default function CheckOutFail() {
         </div>
       ) : (
         <h1 className="h1error" ref={h1Ref}>
-          Don't try to reach Directly, Sending back to you at your previous page
-          within 5s.
+          Loading...
         </h1>
       )}
     </div>

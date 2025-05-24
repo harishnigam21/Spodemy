@@ -27,7 +27,7 @@ export default function CheckOutPass() {
   //pull User, who are not signed in
   const emailenc = params.email;
   pullUser(emailenc);
-  
+
   useEffect(() => {
     const verifyTransURL = "https://spodemy.vercel.app/verifytransaction";
     const currentLocation = window.location.href;
@@ -89,8 +89,7 @@ export default function CheckOutPass() {
         </div>
       ) : (
         <h1 className="h1error" ref={h1Ref}>
-          Don't try to reach Directly, Sending back to you at your previous page
-          within 5s.
+          Loading...
         </h1>
       )}
     </div>
