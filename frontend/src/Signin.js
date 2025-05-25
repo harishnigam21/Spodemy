@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import Loader from "./Loarder.js";
 const Signin = ({ logo }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const signinRef = useRef(null);
   const signinurl = "https://spodemy.vercel.app/signin";
 
   const responseMessage = async (response) => {
     const statusMessage = JSON.parse(JSON.stringify(await response.json()));
-    alert(statusMessage.Message);
     if (response.ok) {
       if (statusMessage.userType === "Admin") {
         window.location.replace(`/main/admin/${statusMessage.email}`);
@@ -17,6 +18,8 @@ const Signin = ({ logo }) => {
         alert("You are trying to reach in wrong way");
         window.location.replace("/signin");
       }
+    } else {
+      alert(statusMessage.Message);
     }
   };
 
@@ -30,6 +33,9 @@ const Signin = ({ logo }) => {
     //I have invested more than 5 hour to understand that why credential and when to use - what I was doing, I have included credential in Main.js where I was using cookies that is generated during Signin and I have not included credential here, when I was sending request to sign in and to generate cookie, due to which cookie is not generating at browser side, and I have searched for loots and I didn't get anything.
     //Now, got that how to use credentials.
     if (response.ok) {
+      if (signinRef.current) {
+        signinRef.current.style.display = "flex";
+      }
       document.getElementById("emailerror").innerText = "";
       responseMessage(response);
     } else if (response.status === 404) {
@@ -90,6 +96,11 @@ const Signin = ({ logo }) => {
           </Link>
           ..?
         </p>
+      </div>
+      <div ref={signinRef} className="hiddendiv">
+        <h1>
+          SIGNING YOU IN <Loader />
+        </h1>
       </div>
     </form>
   );
