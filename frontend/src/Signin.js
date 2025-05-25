@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
 const Signin = ({ logo }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,11 +11,9 @@ const Signin = ({ logo }) => {
     if (response.ok) {
       if (statusMessage.userType === "Admin") {
         window.location.replace(`/main/admin/${statusMessage.email}`);
-      }
-      else if(statusMessage.userType==="User"){
+      } else if (statusMessage.userType === "User") {
         window.location.replace(`/main/user/${statusMessage.email}`);
-      }
-      else{
+      } else {
         alert("You are trying to reach in wrong way");
         window.location.replace("/signin");
       }

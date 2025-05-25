@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { GiConfirmed } from "react-icons/gi";
 import pullUser from "../../usefullFunction/directuser";
+import Loader from "../../Loarder";
 
 export default function CheckOutFail() {
   const h1Ref = useRef();
@@ -52,6 +53,7 @@ export default function CheckOutFail() {
         setShow(false);
         if ((await response).status === 401) {
           if (h1Ref.current) {
+            h1Ref.current.style.backgroundImage = "linear-gradient(red)";
             h1Ref.current.textContent =
               "You are not authorized person, Sending back you to Sign In page within 5s";
           }
@@ -61,6 +63,7 @@ export default function CheckOutFail() {
           }, 5000);
         } else if ((await response).status === 406) {
           if (h1Ref.current) {
+            h1Ref.current.style.backgroundImage = "linear-gradient(red)";
             h1Ref.current.textContent =
               "Looks like you are trying to reach this page Directly, this is not authorized, Sending back to your State in 5s";
           }
@@ -89,9 +92,11 @@ export default function CheckOutFail() {
           </strong>
         </div>
       ) : (
-        <h1 className="h1error" ref={h1Ref}>
-          Loading...
-        </h1>
+        <div id="loading">
+          <h1 ref={h1Ref}>
+            LOADING <Loader />
+          </h1>
+        </div>
       )}
     </div>
   );

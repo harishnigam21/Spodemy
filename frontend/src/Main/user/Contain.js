@@ -7,6 +7,7 @@ import { FaCartArrowDown } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Loader from "../../Loarder";
 
 export function Contain() {
   const [product, setProduct] = useState([]);
@@ -41,6 +42,7 @@ export function Contain() {
         } else {
           console.log("There is nothing to show you currently");
           if (errorRef.current) {
+            errorRef.current.style.backgroundImage = "linear-gradient(red)";
             errorRef.current.textContent =
               "Sorry!, There is not any product to list currently";
           }
@@ -305,9 +307,11 @@ export function Contain() {
           )}
         </div>
       ) : (
-        <h1 ref={errorRef} style={{ color: "red", textAlign: "center" }}>
-          Loading ...
-        </h1>
+        <div id="loading">
+          <h1 ref={errorRef}>
+            LOADING <Loader />
+          </h1>
+        </div>
       )}
 
       <button className="atcpop" type="button">

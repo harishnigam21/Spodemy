@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { useParams } from "react-router-dom";
 import pullUser from "../../usefullFunction/directuser";
+import Loader from "../../Loarder";
 
 export default function AddToCart() {
   const [cartItem, setCartitem] = useState([]);
@@ -38,6 +39,8 @@ export default function AddToCart() {
           setCartitem(data);
           if (data.length === 0) {
             if (errorRef.current) {
+              errorRef.current.style.backgroundImage =
+                "linear-gradient(red)";
               errorRef.current.textContent = "Looks like your cart is empty";
             }
           }
@@ -183,9 +186,12 @@ export default function AddToCart() {
   };
   return (
     <div className="maincartdiv">
-      <h1>
+      <h1 id="yourorder">
         <Link to={newUrl}>
-          <FaHome className="icon" style={{ color: "white", marginRight: "1rem" }} />
+          <FaHome
+            className="icon"
+            style={{ color: "white", marginRight: "1rem" }}
+          />
         </Link>
         Your Cart
       </h1>
@@ -280,8 +286,10 @@ export default function AddToCart() {
           );
         })
       ) : (
-        <div className="cartdberror">
-          <h1 ref={errorRef}>Loading...</h1>
+        <div id="loading">
+          <h1 ref={errorRef}>
+            LOADING <Loader />
+          </h1>
         </div>
       )}
       <div className="continueShopping">

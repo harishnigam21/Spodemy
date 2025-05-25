@@ -5,6 +5,7 @@ import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import pullUser from "../../usefullFunction/directuser";
+import Loader from "../../Loarder";
 
 export default function Order() {
   const [orderItem, setOrderItem] = useState([]);
@@ -43,6 +44,7 @@ export default function Order() {
         const data = await response.json();
         console.log(data.Message);
         if (errorRef.current) {
+          errorRef.current.style.backgroundImage = "linear-gradient(red)";
           errorRef.current.textContent = data.Message;
         }
         if (response.status === 401) {
@@ -125,13 +127,11 @@ export default function Order() {
         )}
       </div>
       {showError ? (
-        <h1
-          ref={errorRef}
-          className="errorMsg"
-          style={{ textAlign: "center", color: "red", padding: "1rem" }}
-        >
-          Loading...
-        </h1>
+        <div id="loading">
+          <h1 ref={errorRef}>
+            LOADING <Loader />
+          </h1>
+        </div>
       ) : (
         orderItem.map((item) => (
           <div key={item.id} className="orderItem">
