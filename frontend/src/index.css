@@ -124,6 +124,12 @@ code {
     align-self: center;
   }
 }
+.homebar{
+  align-items: center;
+  li{
+    margin: 0 1.5rem;
+  }
+}
 .profileList {
   display: flex;
   flex-direction: column;
@@ -1068,7 +1074,13 @@ code {
   width: 0;
   height: 0;
 }
-
+.signout {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
 /*Media Query for mobile screen*/
 @media only screen and (max-width: 780px) {
   .signin input {

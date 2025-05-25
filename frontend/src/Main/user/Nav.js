@@ -16,6 +16,7 @@ const Nav = ({ user, updateforlogout }) => {
     width: window.innerWidth,
     height: window.innerHeight,
   });
+  const location = useLocation();
   useEffect(() => {
     const handleResize = () => {
       setScreenSize({
@@ -26,7 +27,6 @@ const Nav = ({ user, updateforlogout }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  const location = useLocation();
   return screenSize.width <= 780 ? (
     <nav className="navbar">
       <div className="bar">
@@ -39,8 +39,7 @@ const Nav = ({ user, updateforlogout }) => {
             <li>
               <ImCross className="icon" onClick={() => setBarIcon(!barIcon)} />
             </li>
-            <li>Hello! {user.firstname}
-            </li>
+            <li>Hello! {user.firstname}</li>
             <li className="list">
               <Link className="link" to={location.pathname}>
                 Home
@@ -235,9 +234,7 @@ const Nav = ({ user, updateforlogout }) => {
         </div>
         <li className="logo">
           <img src={logo} alt="refresh" />
-          <p>
-            Welcome {user.firstname} !
-          </p>
+          <p>Welcome {user.firstname} !</p>
         </li>
         <div className="rightlist">
           <li className="profile">

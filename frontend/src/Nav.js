@@ -1,80 +1,232 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import logo from './images/logo.png';
-import arrowsymbol from './symbols/arrowhead_down.png'
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { FaCaretDown } from "react-icons/fa";
+import { TiThMenu } from "react-icons/ti";
+import { ImCross } from "react-icons/im";
+import logo from "./images/logo.png";
 const Nav = () => {
-    const [category,setCategory] = useState(false);
-    const [indoor,setIndoor] = useState(false);
-    const [outdoor,setOutdoor] = useState(false);
-    
-    return(
-        <nav className="navbar" style={{position:"fixed"}}>
-            <ul className="bar">
-                <li className="leftlist" >
-                    <li className="list"><Link className="link" to='/'>Home</Link></li>
-                    <li className="list" id="category" style={{color:'white',listStyle:'none'}} >
-                        <p style={{margin:'0',color:"black"}} onClick={()=>{setCategory(!category);setIndoor(false);setOutdoor(false)}}>Categories<img src={arrowsymbol} id={category?'arr1':'arr1alt'} alt="refresh"/></p>
-                        
-                        {
-                            category
-                            ?
-                            <div className="categorylist">
-                                <div className="indoor">
-                                <p style={{margin:'0'}} onClick={()=>setIndoor(!indoor)}>Indoor<img id={indoor?'arr2':'arr2alt'} src={arrowsymbol}alt="refresh"/></p>
-                                {
-                                    indoor
-                                    ?
-                                    <ul className="indoorlist">
-                                        <li>Chess</li>
-                                        <li>Carom</li>
-                                        <li>Pool</li>
-                                        <li>Ludo</li>
-                                        <li>Cards</li>
-                                        <li>Musical Chair</li>
-                                        <li>Table Tennis</li>
-                                        <li>Monopoly</li>
-                                    </ul>
-                                    :
-                                    <></>
-                                }
-                                </div>
-                                <div className="outdoor">
-                                <p style={{margin:'0'}} onClick={()=>setOutdoor(!outdoor)}>Outdoor<img src={arrowsymbol} id={outdoor?'arr3':'arr3alt'} alt="refresh"/></p>
-                                
-                                {
-                                    outdoor
-                                    ?
-                                    <ul className="outdoorlist">
-                                        <li>Cricket</li>
-                                        <li>Football</li>
-                                        <li>Basketball</li>
-                                        <li>Hockey</li>
-                                        <li>kho-kho</li>
-                                        <li>bowling</li>
-                                    </ul>
-                                    :
-                                    <></>
-                                }
-                                </div>
-                            </div>
-                            :
-                            <></>
-                        }
-                        </li>
-                    <li className="list"><Link className="link" to='/blogs'>Blogs</Link></li>
-                    <li className="list"><Link className="link" to='/about'>About Us</Link></li>
-                </li>
-                <li  className="homelogo">
-                    <Link to='/'>
-                        <img src={logo} alt="refresh"/>
-                    </Link>
-                </li>
-                <li className="rightlist">
-                    <li className="list"><Link className="link" to='/signin'>Sign In</Link></li>
-                    <li className="list"><Link className="link" to='/signup'>Sign Up</Link></li>
-                </li>
-            </ul>
-        </nav>
-    );
-}
+  const [category, setCategory] = useState(false);
+  const [indoor, setIndoor] = useState(false);
+  const [outdoor, setOutdoor] = useState(false);
+  const [barIcon, setBarIcon] = useState(false);
+  const [screenSize, setScreenSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  return screenSize.width <= 780 ? (
+    <nav className="navbar">
+      <div className="bar">
+        <TiThMenu
+          className="menubar icon"
+          onClick={() => setBarIcon(!barIcon)}
+        />
+        {barIcon ? (
+          <div className="leftlist">
+            <li>
+              <ImCross className="icon" onClick={() => setBarIcon(!barIcon)} />
+            </li>
+            <li className="list">
+              <Link className="link" to={location.pathname}>
+                Home
+              </Link>
+            </li>
+            <li className="list" id="category">
+              <p
+                onClick={() => {
+                  setCategory(!category);
+                  setIndoor(false);
+                  setOutdoor(false);
+                }}
+              >
+                Categories
+                <FaCaretDown className="icon" />
+              </p>
+
+              {category ? (
+                <div className="categorylist">
+                  <div className="indoor">
+                    <p onClick={() => setIndoor(!indoor)}>
+                      Indoor
+                      <FaCaretDown className="icon" />
+                    </p>
+                    {indoor ? (
+                      <ul className="indoorlist">
+                        <li>Chess</li>
+                        <li>Carom</li>
+                        <li>Pool</li>
+                        <li>Ludo</li>
+                        <li>Cards</li>
+                        <li>Musical Chair</li>
+                        <li>Table Tennis</li>
+                        <li>Monopoly</li>
+                      </ul>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
+                  <div className="outdoor">
+                    <p onClick={() => setOutdoor(!outdoor)}>
+                      Outdoor
+                      <FaCaretDown className="icon" />
+                    </p>
+
+                    {outdoor ? (
+                      <ul className="outdoorlist">
+                        <li>Cricket</li>
+                        <li>Football</li>
+                        <li>Basketball</li>
+                        <li>Hockey</li>
+                        <li>kho-kho</li>
+                        <li>bowling</li>
+                      </ul>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <></>
+              )}
+            </li>
+            <li className="list">
+              <Link className="link" to="/blogs">
+                Blogs
+              </Link>
+            </li>
+            <li className="list">
+              <Link className="link" to="/about">
+                About Us
+              </Link>
+            </li>
+          </div>
+        ) : (
+          <></>
+        )}
+        <li className="logo">
+          <img src={logo} alt="refresh" />
+        </li>
+        <div className="rightlist homebar">
+          <li className="list">
+            <Link className="link" to="/signin">
+              Sign In
+            </Link>
+          </li>
+          <li className="list">
+            <Link className="link" to="/signup">
+              Sign Up
+            </Link>
+          </li>
+        </div>
+      </div>
+    </nav>
+  ) : (
+    <nav className="navbar">
+      <div className="bar">
+        <div className="leftlist">
+          <li className="list">
+            <Link className="link" to={location.pathname}>
+              Home
+            </Link>
+          </li>
+          <li className="list" id="category">
+            <p
+              onClick={() => {
+                setCategory(!category);
+                setIndoor(false);
+                setOutdoor(false);
+              }}
+            >
+              Categories
+              <FaCaretDown className="icon" />
+            </p>
+
+            {category ? (
+              <div className="categorylist">
+                <div className="indoor">
+                  <p onClick={() => setIndoor(!indoor)}>
+                    Indoor
+                    <FaCaretDown className="icon" />
+                  </p>
+                  {indoor ? (
+                    <ul className="indoorlist">
+                      <li>Chess</li>
+                      <li>Carom</li>
+                      <li>Pool</li>
+                      <li>Ludo</li>
+                      <li>Cards</li>
+                      <li>Musical Chair</li>
+                      <li>Table Tennis</li>
+                      <li>Monopoly</li>
+                    </ul>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+                <div className="outdoor">
+                  <p onClick={() => setOutdoor(!outdoor)}>
+                    Outdoor
+                    <FaCaretDown className="icon" />
+                  </p>
+
+                  {outdoor ? (
+                    <ul className="outdoorlist">
+                      <li>Cricket</li>
+                      <li>Football</li>
+                      <li>Basketball</li>
+                      <li>Hockey</li>
+                      <li>kho-kho</li>
+                      <li>bowling</li>
+                    </ul>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <></>
+            )}
+          </li>
+          <li className="list">
+            <Link className="link" to="/blogs">
+              Blogs
+            </Link>
+          </li>
+          <li className="list">
+            <Link className="link" to="/about">
+              About Us
+            </Link>
+          </li>
+        </div>
+        <li className="logo">
+          <img src={logo} alt="refresh" />
+        </li>
+        <div className="rightlist homebar">
+          <li className="list">
+            <Link className="link" to="/signin">
+              Sign In
+            </Link>
+          </li>
+          <li className="list">
+            <Link className="link" to="/signup">
+              Sign Up
+            </Link>
+          </li>
+        </div>
+      </div>
+    </nav>
+  );
+};
 export default Nav;
