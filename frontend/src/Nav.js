@@ -34,10 +34,11 @@ const Nav = () => {
           onClick={() => setBarIcon(!barIcon)}
         />
         {barIcon ? (
-          <div className="leftlist">
+          <div className="leftlist" style={{ zIndex: "1" }}>
             <li>
               <ImCross className="icon" onClick={() => setBarIcon(!barIcon)} />
             </li>
+            <li></li>
             <li className="list">
               <Link className="link" to={location.pathname}>
                 Home
@@ -56,7 +57,7 @@ const Nav = () => {
               </p>
 
               {category ? (
-                <div className="categorylist">
+                <div className="categorylist" style={{ zIndex: "1" }}>
                   <div className="indoor">
                     <p onClick={() => setIndoor(!indoor)}>
                       Indoor
@@ -111,6 +112,16 @@ const Nav = () => {
                 About Us
               </Link>
             </li>
+            <li className="list">
+              <Link className="link" to="/signin">
+                Sign In
+              </Link>
+            </li>
+            <li className="list">
+              <Link className="link" to="/signup">
+                Sign Up
+              </Link>
+            </li>
           </div>
         ) : (
           <></>
@@ -118,18 +129,6 @@ const Nav = () => {
         <li className="logo">
           <img src={logo} alt="refresh" />
         </li>
-        <div className="rightlist homebar">
-          <li className="list">
-            <Link className="link" to="/signin">
-              Sign In
-            </Link>
-          </li>
-          <li className="list">
-            <Link className="link" to="/signup">
-              Sign Up
-            </Link>
-          </li>
-        </div>
       </div>
     </nav>
   ) : (
@@ -154,7 +153,7 @@ const Nav = () => {
             </p>
 
             {category ? (
-              <div className="categorylist">
+              <div className="categorylist" style={{ zIndex: "1" }}>
                 <div className="indoor">
                   <p onClick={() => setIndoor(!indoor)}>
                     Indoor
