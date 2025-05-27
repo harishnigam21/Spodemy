@@ -39,8 +39,7 @@ export default function AddToCart() {
           setCartitem(data);
           if (data.length === 0) {
             if (errorRef.current) {
-              errorRef.current.style.backgroundImage =
-                "linear-gradient(red)";
+              errorRef.current.style.backgroundImage = "linear-gradient(red)";
               errorRef.current.textContent = "Looks like your cart is empty";
             }
           }
@@ -91,7 +90,12 @@ export default function AddToCart() {
 
   //total price and total items in cart
   useEffect(() => {
-    setUpdcheckstatus(true);
+    if (quantities.length === 0) {
+      setUpdcheckstatus(false);
+      document.getElementById("paybtn").disabled = "true";
+    } else {
+      setUpdcheckstatus(true);
+    }
     const totalprice = () => {
       let result = 0;
       for (let i = 0; i < quantities.length; i++) {
@@ -325,6 +329,7 @@ export default function AddToCart() {
           </p>
         </div>
         <button
+          id="paybtn"
           disabled={updcheckstatus}
           className="checkout"
           type="button"
