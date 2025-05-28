@@ -5,7 +5,6 @@ import { FaCartArrowDown } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import Nav from "./Nav";
 import Loader from "../../Loarder";
 
 export function Contain() {
