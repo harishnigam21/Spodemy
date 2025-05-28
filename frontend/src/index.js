@@ -10,6 +10,7 @@ import Changepassword from './Changepassword';
 import MainAdmin from './Main/admin/Main';
 import SignoutAdmin from "./Main/admin/Signout";
 import MainUser from './Main/user/Main';
+import ShopContain from './Main/user/ShopContain';
 import AddToCart from './Main/user/AddToCart';
 import CheckOutPass from './Main/user/CheckOutPass';
 import CheckOutFail from './Main/user/CheckOutFail';
@@ -51,19 +52,23 @@ const router = createBrowserRouter([
     element: <MainUser/>
   },
   {
-    path: "main/user/:email/yourcart",
+    path: "/main/user/:email/shop",
+    element: <ShopContain/>
+  },
+  {
+    path: "main/user/:email/shop/yourcart",
     element:<AddToCart/>
   },
   {
-    path: "main/user/:email/yourcart/:transactionid/paymentSuccess",
+    path: "main/user/:email/shop/yourcart/:transactionid/paymentSuccess",
     element:<CheckOutPass/>
   },
   {
-    path: "main/user/:email/yourcart/:transactionid/paymentFail",
+    path: "main/user/:email/shop/yourcart/:transactionid/paymentFail",
     element:<CheckOutFail/>
   },
   {
-    path: "main/user/:email/yourorder",
+    path: "main/user/:email/shop/yourorder",
     element:<Order/>
   },
   {

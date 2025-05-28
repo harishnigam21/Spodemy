@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef } from "react";
-
 import { useParams } from "react-router-dom";
 import pullUser from "../../usefullFunction/directuser";
-
 import { FaCartArrowDown } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Nav from "./Nav";
 import Loader from "../../Loarder";
 
 export function Contain() {
@@ -194,6 +193,7 @@ export function Contain() {
   };
   return (
     <div className="Contain">
+      {/* <Nav /> */}
       <div className="searchboxdiv">
         <FaSearch
           className="icon"

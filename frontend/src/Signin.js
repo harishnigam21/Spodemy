@@ -10,14 +10,16 @@ const Signin = ({ logo }) => {
   const responseMessage = async (response) => {
     const statusMessage = JSON.parse(JSON.stringify(await response.json()));
     if (response.ok) {
-      if (statusMessage.userType === "Admin") {
-        window.location.replace(`/main/admin/${statusMessage.email}`);
-      } else if (statusMessage.userType === "User") {
-        window.location.replace(`/main/user/${statusMessage.email}`);
-      } else {
-        alert("You are trying to reach in wrong way");
-        window.location.replace("/signin");
-      }
+      setTimeout(() => {
+        if (statusMessage.userType === "Admin") {
+          window.location.replace(`/main/admin/${statusMessage.email}`);
+        } else if (statusMessage.userType === "User") {
+          window.location.replace(`/main/user/${statusMessage.email}`);
+        } else {
+          alert("You are trying to reach in wrong way");
+          window.location.replace("/signin");
+        }
+      }, 2000);
     } else {
       alert(statusMessage.Message);
     }

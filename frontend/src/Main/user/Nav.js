@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { CgProfile } from "react-icons/cg";
 import { FaCaretDown } from "react-icons/fa";
 import { TiThMenu } from "react-icons/ti";
 import { ImCross } from "react-icons/im";
@@ -121,19 +120,23 @@ const Nav = ({ user, updateforlogout }) => {
           <img src={logo} alt="refresh" />
         </li>
         <div className="rightlist">
-          <li className="profile">
-            <CgProfile
-              className="pro icon"
-              onMouseEnter={() => setProfile(!profile)}
-            />
+          <li
+            className="profile icon"
+            onMouseEnter={() => setProfile(!profile)}
+          >
+            {user.firstname && user.lastname
+              ? user.firstname[0] + user.lastname[0]
+              : "PR"}
           </li>
           {profile ? (
             <div
               className="profileList"
               onMouseLeave={() => setProfile(!profile)}
             >
-              <li className="profile" onClick={() => setProfile(!profile)}>
-                <CgProfile className="icon" id="profileToogle" />
+              <li className="profile icon" onClick={() => setProfile(!profile)}>
+                {user.firstname && user.lastname
+                  ? user.firstname[0] + user.lastname[0]
+                  : "PR"}
               </li>
               <li>Your Account</li>
               <li>Your Whish List</li>
@@ -237,19 +240,23 @@ const Nav = ({ user, updateforlogout }) => {
           <p>Welcome {user.firstname} !</p>
         </li>
         <div className="rightlist">
-          <li className="profile">
-            <CgProfile
-              className="pro icon"
-              onMouseEnter={() => setProfile(!profile)}
-            />
+          <li
+            className="profile icon"
+            onMouseEnter={() => setProfile(!profile)}
+          >
+            {user.firstname && user.lastname
+              ? user.firstname[0] + user.lastname[0]
+              : "PR"}
           </li>
           {profile ? (
             <div
               className="profileList"
               onMouseLeave={() => setProfile(!profile)}
             >
-              <li className="profile" onClick={() => setProfile(!profile)}>
-                <CgProfile className="icon" id="profileToogle" />
+              <li className="profile icon" onClick={() => setProfile(!profile)}>
+                {user.firstname && user.lastname
+                  ? user.firstname[0] + user.lastname[0]
+                  : "PR"}
               </li>
               <li>Your Account</li>
               <li>Your Whish List</li>

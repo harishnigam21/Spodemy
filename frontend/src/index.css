@@ -8,6 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 button,
 .icon {
   cursor: pointer;
@@ -15,9 +16,11 @@ button,
 li {
   list-style: none;
 }
+img {
+  cursor: pointer;
+}
 .link {
   text-decoration: "none";
-  color: "black";
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -41,14 +44,7 @@ code {
   border-radius: 50%;
   animation: rotate 0.5s linear 0s infinite normal none;
 }
-@keyframes rotate {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+
 #loading {
   display: flex;
   flex-direction: row;
@@ -120,8 +116,15 @@ code {
   justify-content: end;
   .profile {
     margin: 0.5rem;
-    font-size: x-large;
     align-self: center;
+    background-color: black;
+    color: white;
+    font-size: small;
+    padding: 0.3rem;
+    border-radius: 50%;
+  }
+  .profile:hover {
+    color: red;
   }
 }
 .homebar {
@@ -131,8 +134,10 @@ code {
   }
 }
 .profileList {
+  position: absolute;
   display: flex;
   flex-direction: column;
+  animation: listFade 0.5s ease-in-out forwards;
 }
 
 .homelogo {
@@ -228,6 +233,7 @@ code {
   background-color: gray;
   padding: 2rem;
   border-radius: 0rem 0 5rem 5rem;
+  animation: listFade 0.5s ease-in-out forwards;
   z-index: 1;
   ol {
     padding: 0;
@@ -265,6 +271,7 @@ code {
   margin: 0;
   font-family: Georgia, "Times New Roman", Times, serif;
   text-shadow: 5px 5px 10px red;
+  animation: fadeItems 1s ease-in-out;
 }
 
 .querydiv {
@@ -398,7 +405,7 @@ code {
   width: 100%;
   height: 100%;
   background-color: black;
-  opacity:0.95;
+  opacity: 0.95;
   color: white;
   h1 {
     display: flex;
@@ -709,6 +716,33 @@ code {
   color: white;
 }
 /*Change password end*/
+.listallservice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: white;
+  h1 {
+    text-shadow: 5px 1px 10px red;
+  }
+  div {
+    border: 0.1rem solid white;
+    border-radius: 1rem;
+    box-shadow: 0 0 1.5rem red inset;
+    animation: fadeItems 1s ease-in-out forwards;
+    transition: all 0.5s ease-in-out;
+    margin: 1rem;
+    h2 {
+      color: white;
+      margin: 1rem;
+    }
+  }
+  div:hover {
+    margin: 1.5rem;
+    box-shadow: 0 0 1.5rem blue inset;
+  }
+}
 
 .productList {
   display: flex;
@@ -743,6 +777,7 @@ code {
       flex-grow: 1;
     }
     img {
+      pointer-events: none;
       max-width: 90%;
       max-height: 15rem;
       flex-grow: 1;
@@ -1136,6 +1171,7 @@ code {
     box-shadow: 0 0 1rem rgb(50, 48, 48) inset;
     li {
       margin: 0.5rem 1rem;
+      animation: listFade 0.5s ease-in-out forwards;
     }
   }
   .leftlist li:nth-child(1) {
@@ -1179,6 +1215,7 @@ code {
         font-weight: bolder;
       }
       img {
+        pointer-events: none;
         max-width: 40%;
         max-height: 15rem;
       }
@@ -1199,7 +1236,6 @@ code {
         }
       }
       div {
-        padding: 0.5rem;
         button {
           padding: 0.5rem;
           border-radius: 0.5rem;
@@ -1223,5 +1259,31 @@ code {
   }
   .order {
     width: 95%;
+  }
+}
+@keyframes listFade {
+  0% {
+    transform: translateY(-5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes fadeItems {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

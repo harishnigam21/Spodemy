@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import pullUser from "../../usefullFunction/directuser";
 import Nav from "./Nav";
-import Contain from "./Contain";
-const Main = () => { 
+const Main = () => {
   const [user, setUser] = useState({});
   const params = useParams();
   const emailenc = params.email;
@@ -32,7 +31,27 @@ const Main = () => {
   return (
     <main>
       <Nav user={user} updateforlogout={updateforlogout} />
-      <Contain user={user} />
+      <div className="listallservice">
+        <h1>Select Services</h1>
+        <div>
+          <h2>Sports Academy's</h2>
+        </div>
+        <div>
+          <h2>Tournament's</h2>
+        </div>
+        <Link to={`${window.location.href}/shop`} className="link">
+          <div>
+            <h2>Sport Shop's</h2>
+          </div>
+        </Link>
+        <div>
+          <h2>e-Sport's</h2>
+        </div>
+        <div>
+          <h2>Gym's</h2>
+        </div>
+      </div>
+      {/* <Contain user={user} /> */}
     </main>
   );
 };
