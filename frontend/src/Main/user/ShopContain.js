@@ -1,10 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import pullUser from "../../usefullFunction/directuser";
-import { FaCartArrowDown } from "react-icons/fa";
-import { FaSearch } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaCartArrowDown, FaArrowLeft, FaHeart } from "react-icons/fa";
 import Loader from "../../Loarder";
 
 export function Contain() {
@@ -194,10 +191,7 @@ export function Contain() {
     <div className="Contain">
       {/* <Nav /> */}
       <div className="searchboxdiv">
-        <FaSearch
-          className="icon"
-          style={{ color: "white", fontSize: "2rem", marginRight: "0.5rem" }}
-        />
+        <FaArrowLeft className="icon prebtn" style={{ color: "white" }} /> //TODO:add functionality here
         <input
           type="search"
           name="searchbox"

@@ -1,83 +1,85 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter,RouterProvider} from "react-router-dom";
-import './index.css';
-import App from './App';
-import Signin from './Signin';
-import Signup from './Signup';
-import Forgotpwd from './Forgotpwd';
-import Changepassword from './Changepassword';
-import MainAdmin from './Main/admin/Main';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+import Signin from "./Signin";
+import Signup from "./Signup";
+import Forgotpwd from "./Forgotpwd";
+import Changepassword from "./Changepassword";
+import MainAdmin from "./Main/admin/Main";
 import SignoutAdmin from "./Main/admin/Signout";
-import MainUser from './Main/user/Main';
-import ShopContain from './Main/user/ShopContain';
-import AddToCart from './Main/user/AddToCart';
-import CheckOutPass from './Main/user/CheckOutPass';
-import CheckOutFail from './Main/user/CheckOutFail';
-import Order from './Main/user/Order';
+import MainUser from "./Main/user/Main";
+import ShopContain from "./Main/user/ShopContain";
+import AddToCart from "./Main/user/AddToCart";
+import CheckOutPass from "./Main/user/CheckOutPass";
+import CheckOutFail from "./Main/user/CheckOutFail";
+import Order from "./Main/user/Order";
 import SignoutUser from "./Main/user/Signout";
-import logo from './images/logo.png';
+import logo from "./images/logo.png";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>
+    element: <App />,
   },
   {
     path: "/signin",
-    element: <Signin logo={logo}/>
+    element: <Signin logo={logo} />,
   },
   {
     path: "/signup",
-    element: <Signup logo={logo}/>
+    element: <Signup logo={logo} />,
   },
   {
     path: "/forgotpwd",
-    element: <Forgotpwd/>
+    element: <Forgotpwd />,
   },
   {
     path: "/forgotpwd/:email/changepassword",
-    element: <Changepassword/>
+    element: <Changepassword />,
   },
   {
     path: "/main/admin/:email",
-    element: <MainAdmin/>
+    element: <MainAdmin />,
   },
   {
     path: "/main/admin/:email/signout",
-    element: <SignoutAdmin/>
-  },   
-  {
-    path: "/main/user/:email",
-    element: <MainUser/>
+    element: <SignoutAdmin />,
   },
   {
-    path: "/main/user/:email/shop",
-    element: <ShopContain/>
+    path: "/main/user/:email",
+    element: <MainUser />,
+    children: [
+      {
+        path: "/main/user/:email/:service",
+        element: <ShopContain />,
+      },
+    ],
   },
   {
     path: "main/user/:email/shop/yourcart",
-    element:<AddToCart/>
+    element: <AddToCart />,
   },
   {
     path: "main/user/:email/shop/yourcart/:transactionid/paymentSuccess",
-    element:<CheckOutPass/>
+    element: <CheckOutPass />,
   },
   {
     path: "main/user/:email/shop/yourcart/:transactionid/paymentFail",
-    element:<CheckOutFail/>
+    element: <CheckOutFail />,
   },
   {
     path: "main/user/:email/shop/yourorder",
-    element:<Order/>
+    element: <Order />,
   },
   {
     path: "/main/user/:email/signout",
-    element: <SignoutUser/>
-  }   
+    element: <SignoutUser />,
+  },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />

@@ -13,6 +13,12 @@ button,
 .icon {
   cursor: pointer;
 }
+.prebtn{
+  position: absolute;
+  left: 0;
+  font-size: x-large;
+  margin:0 1rem;
+}
 li {
   list-style: none;
 }
@@ -30,7 +36,9 @@ code {
 .App {
   text-align: center;
 }
-
+.outlet{
+  animation: fadeItems 1s ease-in forwards;
+}
 /*Home page start*/
 .loarder {
   margin: 1rem;
@@ -844,8 +852,8 @@ code {
 }
 .searchboxdiv {
   display: flex;
-  padding: 1rem;
-  margin: 0.5rem;
+  padding: 1rem 0;
+  margin: 0.5rem 0;
   justify-content: center;
   align-items: center;
 
@@ -867,13 +875,15 @@ code {
   }
 }
 .atcpop {
-  position: fixed;
+  display: flex;
+  justify-self: end;
+  align-self: flex-end;
+  position: sticky;
   background-color: rgb(36, 173, 36);
   color: black;
   font-weight: 900;
   font-size: larger;
   bottom: 0;
-  right: 0;
   padding: 1rem;
   border-radius: 0rem 2rem;
 }
@@ -1257,7 +1267,7 @@ code {
   }
   .searchboxdiv {
     input {
-      min-width: 100%;
+      min-width: 80%;
     }
   }
   .order {
