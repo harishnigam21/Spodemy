@@ -1161,6 +1161,7 @@ code {
   .leftlist {
     display: flex;
     position: absolute;
+    z-index: 1;
     flex-direction: column;
     background-color: gray;
     overflow: visible;
