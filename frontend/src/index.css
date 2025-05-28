@@ -1152,7 +1152,9 @@ code {
     display: grid;
     grid-template-columns: 100%;
   }
-
+  .hiddendiv{
+    opacity: 0.95;
+  }
   .menubar {
     align-self: center;
     font-size: x-large;
