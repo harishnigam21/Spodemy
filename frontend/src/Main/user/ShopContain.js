@@ -191,7 +191,7 @@ export function Contain() {
     <div className="Contain">
       {/* <Nav /> */}
       <div className="searchboxdiv">
-        <FaArrowLeft className="icon prebtn" style={{ color: "white" }} /> //TODO:add functionality here
+        <FaArrowLeft className="icon prebtn" style={{ color: "white" }} />
         <input
           type="search"
           name="searchbox"

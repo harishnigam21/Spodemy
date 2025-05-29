@@ -21,9 +21,14 @@ const Main = () => {
       params.service === undefined
         ? (section1Ref.current.style.display = "flex")
         : (section1Ref.current.style.display = "none");
-    }
-    if (section2Ref.current) {
-      if (params.service === "shop" || params.service === "academy" || params.service === "esport" || params.service === "gym" || params.service === "tournament") {
+    } else if (section2Ref.current) {
+      if (
+        params.service === "shop" ||
+        params.service === "academy" ||
+        params.service === "esport" ||
+        params.service === "gym" ||
+        params.service === "tournament"
+      ) {
         section2Ref.current.style.display = "block";
       } else {
         section2Ref.current.style.display = "none";
