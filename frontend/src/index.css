@@ -9,11 +9,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1 {
+  text-align: center;
+}
 button,
 .icon {
   cursor: pointer;
 }
-.prebtn{
+.prebtn {
   position: absolute;
   left: 0;
   font-size: x-large;
@@ -35,7 +38,7 @@ code {
 .App {
   text-align: center;
 }
-.outlet{
+.outlet {
   animation: fadeItems 1s ease-in forwards;
 }
 /*Home page start*/
@@ -1161,7 +1164,7 @@ code {
     display: grid;
     grid-template-columns: 100%;
   }
-  .hiddendiv{
+  .hiddendiv {
     opacity: 0.95;
   }
   .menubar {
