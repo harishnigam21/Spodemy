@@ -7,7 +7,6 @@ const Main = () => {
   const section1Ref = useRef(null);
   const section2Ref = useRef(null);
   const errorRef = useRef(null);
-  const [section, setSection] = useState(true);
   const params = useParams();
   const emailenc = params.email;
   const currentLocation = window.location.href;
@@ -90,7 +89,7 @@ const Main = () => {
           justifyContent: "center",
           alignItems: "center",
         }}
-      ></h1>
+      >.</h1>
     </main>
   );
 };

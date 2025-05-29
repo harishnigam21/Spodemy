@@ -77,6 +77,10 @@ const router = createBrowserRouter([
     path: "/main/user/:email/signout",
     element: <SignoutUser />,
   },
+  {
+    path: "/main/user/:email/:service/signout",
+    element: <SignoutUser />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

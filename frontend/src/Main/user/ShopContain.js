@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import pullUser from "../../usefullFunction/directuser";
 import { FaCartArrowDown, FaArrowLeft, FaHeart } from "react-icons/fa";
 import Loader from "../../Loarder";
-
+import removeSegment from "../../usefullFunction/removeSegment";
 export function Contain() {
   const [product, setProduct] = useState([]);
   const [iteminatc, setIteminatc] = useState(0);
@@ -18,8 +18,7 @@ export function Contain() {
   const getcartdataurl = "https://spodemy.vercel.app/getcartdata";
   const getProducturl = "https://spodemy.vercel.app/getallproductdata";
 
-  const navigate = useNavigate();
-
+  const backUrl = removeSegment(window.location.pathname, 1);
   //pull User, who are not signed in
   const params = useParams();
   const emailenc = params.email;
@@ -191,14 +190,11 @@ export function Contain() {
   };
   return (
     <div className="Contain">
-      {/* <Nav /> */}
       <div className="searchboxdiv">
         <FaArrowLeft
           className="icon prebtn"
           style={{ color: "red" }}
-          onClick={() => {
-            navigate(-1);
-          }}
+          onClick={()=>window.location.pathname=`/${backUrl}`}
         />
         <input
           type="search"
