@@ -39,7 +39,7 @@ code {
   text-align: center;
 }
 .outlet {
-  animation: fadeItems 2s ease-in forwards;
+  animation: fadeItems 1s ease-in forwards;
 }
 /*Home page start*/
 .loarder {
