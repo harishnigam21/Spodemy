@@ -126,7 +126,7 @@ const Nav = ({ user, updateforlogout }) => {
           >
             {user.firstname && user.lastname
               ? user.firstname[0] + user.lastname[0]
-              : "PR"}
+              : "XY"}
           </li>
           {profile ? (
             <div
@@ -136,7 +136,7 @@ const Nav = ({ user, updateforlogout }) => {
               <li className="profile icon" onClick={() => setProfile(!profile)}>
                 {user.firstname && user.lastname
                   ? user.firstname[0] + user.lastname[0]
-                  : "PR"}
+                  : "XY"}
               </li>
               <li>Your Account</li>
               <li>Your Whish List</li>
@@ -246,7 +246,7 @@ const Nav = ({ user, updateforlogout }) => {
           >
             {user.firstname && user.lastname
               ? user.firstname[0] + user.lastname[0]
-              : "PR"}
+              : "XY"}
           </li>
           {profile ? (
             <div
@@ -256,7 +256,7 @@ const Nav = ({ user, updateforlogout }) => {
               <li className="profile icon" onClick={() => setProfile(!profile)}>
                 {user.firstname && user.lastname
                   ? user.firstname[0] + user.lastname[0]
-                  : "PR"}
+                  : "XY"}
               </li>
               <li>Your Account</li>
               <li>Your Whish List</li>
