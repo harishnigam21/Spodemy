@@ -16,7 +16,6 @@ const Main = () => {
   pullUser(emailenc);
   //for user who signed in and then we fetch user information
   useEffect(() => {
-    console.log(params.service);
     if (section1Ref.current) {
       params.service === undefined
         ? (section1Ref.current.style.display = "flex")
