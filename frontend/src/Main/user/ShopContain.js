@@ -191,11 +191,12 @@ export function Contain() {
   return (
     <div className="Contain">
       <div className="searchboxdiv">
+    <Link to=`/${backUrl}`>
         <FaArrowLeft
           className="icon prebtn"
           style={{ color: "red" }}
-          onClick={()=>window.location.pathname=`/${backUrl}`}
         />
+    </Link>
         <input
           type="search"
           name="searchbox"
