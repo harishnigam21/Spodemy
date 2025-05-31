@@ -10,11 +10,11 @@ import Changepassword from "./Changepassword";
 import MainAdmin from "./Main/admin/Main";
 import SignoutAdmin from "./Main/admin/Signout";
 import MainUser from "./Main/user/Main";
-import ShopContain from "./Main/user/ShopContain";
-import AddToCart from "./Main/user/AddToCart";
-import CheckOutPass from "./Main/user/CheckOutPass";
-import CheckOutFail from "./Main/user/CheckOutFail";
-import Order from "./Main/user/Order";
+import ServiceLoader from "./Main/user/ServiceLoader";
+import AddToCart from "./Main/user/shop/AddToCart";
+import CheckOutPass from "./Main/user/shop/CheckOutPass";
+import CheckOutFail from "./Main/user/shop/CheckOutFail";
+import Order from "./Main/user/shop/Order";
 import SignoutUser from "./Main/user/Signout";
 import logo from "./images/logo.png";
 
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/main/user/:email/:service",
-        element: <ShopContain />,
+        element: <ServiceLoader />,
       },
     ],
   },

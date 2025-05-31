@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
-import pullUser from "../../usefullFunction/directuser";
+import pullUser from "../../../usefullFunction/directuser";
 import { FaCartArrowDown, FaArrowLeft, FaHeart } from "react-icons/fa";
-import Loader from "../../Loarder";
-import removeSegment from "../../usefullFunction/removeSegment";
-export function Contain() {
+import Loader from "../../../Loarder";
+import removeSegment from "../../../usefullFunction/removeSegment";
+export default function Contain() {
   const [product, setProduct] = useState([]);
   const [iteminatc, setIteminatc] = useState(0);
   const [itemidsinatc, setItemidsinatc] = useState([]);
@@ -321,5 +321,3 @@ export function Contain() {
     </div>
   );
 }
-
-export default Contain;

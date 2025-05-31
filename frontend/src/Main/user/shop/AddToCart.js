@@ -5,8 +5,8 @@ import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { useParams } from "react-router-dom";
-import pullUser from "../../usefullFunction/directuser";
-import Loader from "../../Loarder";
+import pullUser from "../../../usefullFunction/directuser";
+import Loader from "../../../Loarder";
 
 export default function AddToCart() {
   const [cartItem, setCartitem] = useState([]);

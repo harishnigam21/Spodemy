@@ -1150,6 +1150,23 @@ code {
   right: 0;
   left: 0;
 }
+
+.notavailable {
+  display: flex;
+  height: 90vh;
+  flex-direction: column;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  h1{
+    color: red;
+  }
+  p{
+    color: red;
+  }
+}
+
 /*Media Query for mobile screen*/
 @media only screen and (max-width: 780px) {
   .signin input {

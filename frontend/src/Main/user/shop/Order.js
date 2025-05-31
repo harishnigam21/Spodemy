@@ -4,8 +4,8 @@ import { FaHome } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import pullUser from "../../usefullFunction/directuser";
-import Loader from "../../Loarder";
+import pullUser from "../../../usefullFunction/directuser";
+import Loader from "../../../Loarder";
 
 export default function Order() {
   const [orderItem, setOrderItem] = useState([]);

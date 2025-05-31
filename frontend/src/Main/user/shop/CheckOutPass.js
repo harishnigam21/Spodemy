@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { GiConfirmed } from "react-icons/gi";
-import pullUser from "../../usefullFunction/directuser";
-import Loader from "../../Loarder";
+import pullUser from "../../../usefullFunction/directuser";
+import Loader from "../../../Loarder";
 
 export default function CheckOutPass() {
   const h1Ref = useRef();
