@@ -177,9 +177,10 @@ code {
   position: absolute;
   flex-direction: column;
   background-color: rgb(29, 27, 27, 0.8);
-  border: 0.2rem solid red;
+  border: 0.2rem solid blu;
   border-radius: 3rem 0 3rem 0;
   box-shadow: 0.1rem 0.1rem 3rem red inset;
+  z-index: 1;
   div {
     margin: 1rem 5rem;
     p {
