@@ -60,36 +60,38 @@ const Main = () => {
       <Nav user={user} updateforlogout={updateforlogout} />
       <div ref={section1Ref} className="listallservice">
         <h1>Select Services</h1>
-        <Link to={`${window.location.href}/academy`} className="link">
-          <div>
-            <h2>Sports Academy's</h2>
-          </div>
-        </Link>
-        <Link to={`${window.location.href}/tournament`} className="link">
-          <div>
-            <h2>Tournament's</h2>
-          </div>
-        </Link>
-        <Link to={`${window.location.href}/shop`} className="link">
-          <div>
-            <h2>Sport Shop's</h2>
-          </div>
-        </Link>
-        <Link to={`${window.location.href}/spoblogs`} className="link">
-          <div>
-            <h2>Sport Blog's</h2>
-          </div>
-        </Link>
-        <Link to={`${window.location.href}/esport`} className="link">
-          <div>
-            <h2>e-Sport's</h2>
-          </div>
-        </Link>
-        <Link to={`${window.location.href}/gym`} className="link">
-          <div>
-            <h2>Gym's</h2>
-          </div>
-        </Link>
+        <div className="innerDiv">
+          <Link to={`${window.location.href}/academy`} className="link">
+            <div>
+              <h2>Sports Academy's</h2>
+            </div>
+          </Link>
+          <Link to={`${window.location.href}/tournament`} className="link">
+            <div>
+              <h2>Tournament's</h2>
+            </div>
+          </Link>
+          <Link to={`${window.location.href}/shop`} className="link">
+            <div>
+              <h2>Sport Shop's</h2>
+            </div>
+          </Link>
+          <Link to={`${window.location.href}/spoblogs`} className="link">
+            <div>
+              <h2>Sport Blog's</h2>
+            </div>
+          </Link>
+          <Link to={`${window.location.href}/esport`} className="link">
+            <div>
+              <h2>e-Sport's</h2>
+            </div>
+          </Link>
+          <Link to={`${window.location.href}/gym`} className="link">
+            <div>
+              <h2>Gym's</h2>
+            </div>
+          </Link>
+        </div>
       </div>
       <div ref={section2Ref} className="outlet">
         <Outlet />
@@ -102,7 +104,9 @@ const Main = () => {
           justifyContent: "center",
           alignItems: "center",
         }}
-      >.</h1>
+      >
+        .
+      </h1>
     </main>
   );
 };
