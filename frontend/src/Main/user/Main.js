@@ -59,38 +59,122 @@ const Main = () => {
     <main style={{ position: "relative" }}>
       <Nav user={user} updateforlogout={updateforlogout} />
       <div ref={section1Ref} className="listallservice">
-        <h1>Select Services</h1>
+        <header>Select Services</header>
         <div className="innerDiv">
-          <Link to={`${window.location.href}/academy`} className="link">
+          <section>
             <div>
-              <h2>Sports Academy's</h2>
+              <strong>Sports Academy's</strong>
+              <p id="serviceInfo">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
+                nihil in suscipit quisquam qui amet sapiente exercitationem
+                officia consequuntur ex. Fuga voluptate dolorum aut eum
+                accusamus reprehenderit provident natus neque!
+              </p>
+              <iframe
+                src={`/main/user/${emailenc}/academy`}
+                name="serviceDemo"
+                title="demo service"
+              ></iframe>
+              <Link className="link" to={`${window.location.href}/academy`}>
+                <button type="button">Visit there</button>
+              </Link>
             </div>
-          </Link>
-          <Link to={`${window.location.href}/tournament`} className="link">
+          </section>
+          <section>
             <div>
-              <h2>Tournament's</h2>
+              <strong>Tournament's</strong>
+              <p id="serviceInfo">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
+                nihil in suscipit quisquam qui amet sapiente exercitationem
+                officia consequuntur ex. Fuga voluptate dolorum aut eum
+                accusamus reprehenderit provident natus neque!
+              </p>
+              <iframe
+                src={`/main/user/${emailenc}/academy`}
+                name="serviceDemo"
+                title="demo service"
+              ></iframe>
+              <Link className="link" to={`${window.location.href}/academy`}>
+                <button type="button">Visit there</button>
+              </Link>
             </div>
-          </Link>
-          <Link to={`${window.location.href}/shop`} className="link">
+          </section>
+          <section>
             <div>
-              <h2>Sport Shop's</h2>
+              <strong>Sport Shop's</strong>
+              <p id="serviceInfo">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
+                nihil in suscipit quisquam qui amet sapiente exercitationem
+                officia consequuntur ex. Fuga voluptate dolorum aut eum
+                accusamus reprehenderit provident natus neque!
+              </p>
+              <iframe
+                src={`/main/user/${emailenc}/shop`}
+                name="serviceDemo"
+                title="demo service"
+              ></iframe>
+              <Link className="link" to={`${window.location.href}/shop`}>
+                <button type="button">Visit there</button>
+              </Link>
             </div>
-          </Link>
-          <Link to={`${window.location.href}/spoblogs`} className="link">
+          </section>
+          <section>
             <div>
-              <h2>Sport Blog's</h2>
+              <strong>Sport Blog's</strong>
+              <p id="serviceInfo">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
+                nihil in suscipit quisquam qui amet sapiente exercitationem
+                officia consequuntur ex. Fuga voluptate dolorum aut eum
+                accusamus reprehenderit provident natus neque!
+              </p>
+              <iframe
+                src={`/main/user/${emailenc}/spoblogs`}
+                name="serviceDemo"
+                title="demo service"
+              ></iframe>
+              <Link className="link" to={`${window.location.href}/spoblogs`}>
+                <button type="button">Visit there</button>
+              </Link>
             </div>
-          </Link>
-          <Link to={`${window.location.href}/esport`} className="link">
+          </section>
+          <section>
             <div>
-              <h2>e-Sport's</h2>
+              <strong>e-Sport's</strong>
+              <p id="serviceInfo">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
+                nihil in suscipit quisquam qui amet sapiente exercitationem
+                officia consequuntur ex. Fuga voluptate dolorum aut eum
+                accusamus reprehenderit provident natus neque!
+              </p>
+              <iframe
+                src={`/main/user/${emailenc}/esport`}
+                name="serviceDemo"
+                title="demo service"
+              ></iframe>
+              <Link className="link" to={`${window.location.href}/esport`}>
+                <button type="button">Visit there</button>
+              </Link>
             </div>
-          </Link>
-          <Link to={`${window.location.href}/gym`} className="link">
+          </section>
+          <section>
             <div>
-              <h2>Gym's</h2>
+              <strong>Gym's</strong>
+              <p id="serviceInfo">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
+                nihil in suscipit quisquam qui amet sapiente exercitationem
+                officia consequuntur ex. Fuga voluptate dolorum aut eum
+                accusamus reprehenderit provident natus neque!
+              </p>
+              <iframe
+                src={`/main/user/${emailenc}/gym`}
+                name="serviceDemo"
+                title="demo service"
+              ></iframe>
+              <Link className="link" to={`${window.location.href}/gym`}>
+                <button type="button">Visit there</button>
+              </Link>
             </div>
-          </Link>
+          </section>
         </div>
       </div>
       <div ref={section2Ref} className="outlet">

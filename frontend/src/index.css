@@ -8,13 +8,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-h1 {
-  font-size: clamp(1rem,2vw,4rem);
-  text-align: center;
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
-h2{
-  font-size: clamp(0.5vw,1vw,3rem);
+h1,
+h2 {
   text-align: center;
 }
 button,
@@ -248,7 +247,7 @@ code {
   padding: 2rem;
   border-radius: 0rem 0 5rem 5rem;
   animation: listFade 0.5s ease-in-out alternate forwards;
-  z-index: 1;
+  z-index: 2;
   ol {
     padding: 0;
   }
@@ -731,48 +730,114 @@ code {
 }
 /*Change password end*/
 .listallservice {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  box-sizing: border-box;
-  align-items: center;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
   color: white;
-  h1 {
-    text-shadow: 5px 1px 10px red;
+  header {
+    width: 100%;
+    background-color: black;
+    position: sticky;
+    top: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-radius: 0 0 1rem 1rem;
+    z-index: 1;
   }
   .innerDiv {
+    width: 100%;
     display: flex;
-    flex-direction: row;
     box-sizing: border-box;
+    flex-direction: row;
     flex-wrap: wrap;
-
-    div {
+    section {
       display: flex;
-      flex-direction: column;
-      box-sizing: border-box;
-      flex-wrap: wrap;
-      width: 25vw;
       justify-content: center;
-      align-items: center;
-      border: 0.1rem solid white;
-      border-radius: 1rem;
-      box-shadow: 0 0 1.5rem red inset;
-      animation: fadeItems 1s ease-in-out alternate forwards;
-      transition: all 0.5s ease-in-out;
-      h2 {
-        margin: 0;
+      box-sizing: border-box;
+      width: 8rem;
+      height: 10rem;
+      flex-grow: 1;
+      margin: 0.5rem;
+      transition: all 1s ease;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        border: 0.2rem solid white;
+        background-color: black;
         color: white;
+        border-radius: 10px;
+        box-sizing: border-box;
+        box-shadow: 0.1rem 0.1rem 2rem red inset;
+        transition: all 0.5s ease-in-out;
+        overflow: hidden;
+        strong {
+          width: 100%;
+          background-color: black;
+          position: sticky;
+          top: 0;
+          color: aqua;
+          text-align: center;
+          font-size: 1rem;
+          word-wrap: break-word;
+        }
+
+        p {
+          margin: 0;
+          min-height: 2rem;
+          overflow: hidden;
+          font-size: small;
+          text-align: center;
+          word-wrap: break-word;
+        }
+        iframe {
+          width: 90%;
+          height: 100%;
+        }
+        button {
+          margin: 1rem 0rem;
+          padding: 0.5rem 1rem;
+          background-color: black;
+          color: white;
+          font-weight: bolder;
+          border: 0.2rem solid aqua;
+          border-radius: 2rem;
+          box-shadow: 0.1rem 0.1rem 1rem aqua inset;
+        }
+        button:hover {
+          border: 0.2rem solid green;
+          box-shadow: 0.1rem 0.1rem 1rem green inset;
+        }
       }
+      div::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+      div:hover {
+        box-shadow: 0.1rem 0.1rem 2rem blue inset;
+        p {
+          height: auto;
+          overflow: visible;
+        }
+      }
+      animation: fadeItems ease-in-out 1s forwards;
     }
-    div:hover {
-      margin: 1.5rem;
-      box-shadow: 0 0 1.5rem blue inset;
+    section:hover {
+      width: 50%;
+      height: auto;
     }
   }
 }
-
+#serviceInfo {
+  margin: 0;
+  padding: 0.5rem;
+}
 .productList {
   display: flex;
   flex-direction: column;
@@ -1212,7 +1277,7 @@ code {
   .leftlist {
     display: flex;
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     flex-direction: column;
     background-color: gray;
     overflow: visible;
