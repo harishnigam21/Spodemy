@@ -35,6 +35,7 @@ export default function AddToCart() {
       });
       if (response.ok) {
         const data = (await response.json()).cartitem;
+        errorRef.current.textContent = data;
         if (data) {
           setCartitem(data);
           if (data.length === 0 || cartItem.length === 0) {
