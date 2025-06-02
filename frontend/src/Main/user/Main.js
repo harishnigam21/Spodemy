@@ -2,6 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useParams, Outlet } from "react-router-dom";
 import pullUser from "../../usefullFunction/directuser";
 import Nav from "./Nav";
+import academy from "../../images/academy.png";
+import esport from "../../images/esport.png";
+import gym from "../../images/gym.png";
+import shop from "../../images/shop.png";
+import spoblogs from "../../images/spoblogs.png";
+import tournament from "../../images/tournament.png";
 const Main = () => {
   const [user, setUser] = useState({});
   const section1Ref = useRef(null);
@@ -70,11 +76,7 @@ const Main = () => {
                 officia consequuntur ex. Fuga voluptate dolorum aut eum
                 accusamus reprehenderit provident natus neque!
               </p>
-              <iframe
-                src={`/main/user/${emailenc}/academy`}
-                name="serviceDemo"
-                title="demo service"
-              ></iframe>
+              <img src={academy} alt="refresh"/>
               <Link className="link" to={`${window.location.href}/academy`}>
                 <button type="button">Visit there</button>
               </Link>
@@ -89,12 +91,8 @@ const Main = () => {
                 officia consequuntur ex. Fuga voluptate dolorum aut eum
                 accusamus reprehenderit provident natus neque!
               </p>
-              <iframe
-                src={`/main/user/${emailenc}/academy`}
-                name="serviceDemo"
-                title="demo service"
-              ></iframe>
-              <Link className="link" to={`${window.location.href}/academy`}>
+              <img src={tournament} alt="refresh"/>
+              <Link className="link" to={`${window.location.href}/tournament`}>
                 <button type="button">Visit there</button>
               </Link>
             </div>
@@ -108,11 +106,7 @@ const Main = () => {
                 officia consequuntur ex. Fuga voluptate dolorum aut eum
                 accusamus reprehenderit provident natus neque!
               </p>
-              <iframe
-                src={`/main/user/${emailenc}/shop`}
-                name="serviceDemo"
-                title="demo service"
-              ></iframe>
+              <img src={shop} alt="refresh"/>
               <Link className="link" to={`${window.location.href}/shop`}>
                 <button type="button">Visit there</button>
               </Link>
@@ -127,11 +121,7 @@ const Main = () => {
                 officia consequuntur ex. Fuga voluptate dolorum aut eum
                 accusamus reprehenderit provident natus neque!
               </p>
-              <iframe
-                src={`/main/user/${emailenc}/spoblogs`}
-                name="serviceDemo"
-                title="demo service"
-              ></iframe>
+              <img src={spoblogs} alt="refresh"/>
               <Link className="link" to={`${window.location.href}/spoblogs`}>
                 <button type="button">Visit there</button>
               </Link>
@@ -146,11 +136,7 @@ const Main = () => {
                 officia consequuntur ex. Fuga voluptate dolorum aut eum
                 accusamus reprehenderit provident natus neque!
               </p>
-              <iframe
-                src={`/main/user/${emailenc}/esport`}
-                name="serviceDemo"
-                title="demo service"
-              ></iframe>
+              <img src={esport} alt="refresh"/>
               <Link className="link" to={`${window.location.href}/esport`}>
                 <button type="button">Visit there</button>
               </Link>
@@ -165,11 +151,7 @@ const Main = () => {
                 officia consequuntur ex. Fuga voluptate dolorum aut eum
                 accusamus reprehenderit provident natus neque!
               </p>
-              <iframe
-                src={`/main/user/${emailenc}/gym`}
-                name="serviceDemo"
-                title="demo service"
-              ></iframe>
+              <img src={gym} alt="refresh"/>
               <Link className="link" to={`${window.location.href}/gym`}>
                 <button type="button">Visit there</button>
               </Link>

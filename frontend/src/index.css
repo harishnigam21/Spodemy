@@ -796,7 +796,7 @@ code {
           text-align: center;
           word-wrap: break-word;
         }
-        iframe {
+        img {
           width: 90%;
           height: 100%;
         }
@@ -822,7 +822,7 @@ code {
       div:hover {
         box-shadow: 0.1rem 0.1rem 2rem blue inset;
         p {
-          height: auto;
+          height: 100%;
           overflow: visible;
         }
       }
@@ -1376,6 +1376,23 @@ code {
   }
   .order {
     width: 95%;
+  }
+  .listallservice {
+    .innerDiv {
+      section {
+        div:hover {
+          box-shadow: 0.1rem 0.1rem 2rem blue inset;
+          p {
+            height:100%;
+            overflow: visible;
+          }
+        }
+      }
+      section:hover {
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 }
 @keyframes listFade {
