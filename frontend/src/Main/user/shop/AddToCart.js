@@ -37,7 +37,7 @@ export default function AddToCart() {
         const data = (await response.json()).cartitem;
         if (data) {
           setCartitem(data);
-          if (data.length === 0) {
+          if (data.length === 0 || cartItem.length === 0) {
             if (errorRef.current) {
               errorRef.current.style.backgroundImage = "linear-gradient(red)";
               errorRef.current.textContent = "Looks like your cart is empty";
