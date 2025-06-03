@@ -1,5 +1,6 @@
 const prisma = require("../shortcut/prisma_initilization");
 const decrypt = require("../utils/usefulFunction/decryption");
+const date = require("../utils/usefulFunction/returnDate");
 const updateCart = async (req, res) => {
   try {
     const cookies = req.cookies;
@@ -34,13 +35,14 @@ const updateCart = async (req, res) => {
         },
         take: 1,
       });
-      if (ExistingUserCart&&ExistingUserCart.length>0) {
+      if (ExistingUserCart && ExistingUserCart.length > 0) {
         const updateCart = await prisma.beforebuying.update({
           where: {
             id: JSON.parse(ExistingUserCart[0].id),
           },
           data: {
             usrcartobj: JSON.stringify(req.body.quantities),
+            createdAt: date(),
           },
         });
         if (updateCart) {
@@ -62,6 +64,7 @@ const updateCart = async (req, res) => {
           data: {
             email: decryptedemail,
             usrcartobj: JSON.stringify(req.body.quantities),
+            createdAt: date(),
           },
         });
         if (createCart) {
