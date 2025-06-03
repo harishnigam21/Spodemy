@@ -37,7 +37,7 @@ export default function AddToCart() {
         const data = (await response.json()).cartitem;
         if (data) {
           setCartitem(data);
-          if (data.length === 0 || cartItem.length === 0) {
+          if (data.length === 0) {
             if (errorRef.current) {
               errorRef.current.style.backgroundImage = "linear-gradient(red)";
               errorRef.current.textContent = "Looks like your cart is empty";
@@ -80,9 +80,20 @@ export default function AddToCart() {
             }
           };
           getUpdatedCart();
+        } else {
+          if (errorRef.current) {
+            errorRef.current.style.backgroundImage = "linear-gradient(red)";
+            errorRef.current.textContent =
+              "Sorry! at this time, we are unable to fullfill your needs";
+          }
         }
       } else if (response.status === 401) {
         window.location.replace("/signin");
+      } else if (response.status === 404) {
+        if (errorRef.current) {
+          errorRef.current.style.backgroundImage = "linear-gradient(red)";
+          errorRef.current.textContent = "No item found at your cart";
+        }
       }
     };
     getItem();
