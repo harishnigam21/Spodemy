@@ -31,7 +31,7 @@ export default function CheckOutFail() {
   }
   // const returnToCartURL = removeLastTwoParams(currentLocation,2);
   useEffect(() => {
-    const verifyTransURL = "https://spodemy.vercel.app/verifytransaction";
+    const verifyTransURL = `${process.env.REACT_APP_BACKEND_HOST}/verifytransaction`;
     const currentLocation = window.location.href;
 
     const verifyTrans = async () => {

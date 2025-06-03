@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import pullUser from "../../../usefullFunction/directuser";
@@ -14,9 +15,9 @@ export default function Contain() {
   const currentLocation = window.location.href;
   const updateforatc = `${currentLocation}/yourcart`;
   const errorRef = useRef(null);
-  const wishlisturl = "https://spodemy.vercel.app/wishlist";
-  const getcartdataurl = "https://spodemy.vercel.app/getcartdata";
-  const getProducturl = "https://spodemy.vercel.app/getallproductdata";
+  const wishlisturl = `${process.env.REACT_APP_BACKEND_HOST}/wishlist`;
+  const getcartdataurl = `${process.env.REACT_APP_BACKEND_HOST}/getcartdata`;
+  const getProducturl = `${process.env.REACT_APP_BACKEND_HOST}/getallproductdata`;
 
   const backUrl = removeSegment(window.location.pathname, 1);
   //pull User, who are not signed in
@@ -103,7 +104,7 @@ export default function Contain() {
   }, [product, itemidsinatc]); // Re-run when product or cart items change
 
   useEffect(() => {
-    const postcartdataurl = "https://spodemy.vercel.app/postcartdata";
+    const postcartdataurl = `${process.env.REACT_APP_BACKEND_HOST}/postcartdata`;
     const postcartdata = async () => {
       try {
         const response = await fetch(postcartdataurl, {

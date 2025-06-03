@@ -24,8 +24,8 @@ export default function AddToCart() {
   pullUser(emailenc);
 
   useEffect(() => {
-    const getcartitemurl = "https://spodemy.vercel.app/getcartitem";
-    const getupdatedcarturl = "https://spodemy.vercel.app/getupdatedcart";
+    const getcartitemurl = `${process.env.REACT_APP_BACKEND_HOST}/getcartitem`;
+    const getupdatedcarturl = `${process.env.REACT_APP_BACKEND_HOST}/getupdatedcart`;
 
     const getItem = async () => {
       const response = await fetch(getcartitemurl, {
@@ -128,7 +128,7 @@ export default function AddToCart() {
   }, [quantities, totalItem, cartItem]);
 
   const sendUpdatedcart = async () => {
-    const sendurl = "https://spodemy.vercel.app/sendupdatedcart";
+    const sendurl = `${process.env.REACT_APP_BACKEND_HOST}/sendupdatedcart`;
     const response = await fetch(sendurl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -143,7 +143,7 @@ export default function AddToCart() {
   };
 
   const handleDeleteCart = async (productId) => {
-    const deleteurl = "https://spodemy.vercel.app/deletecartitem";
+    const deleteurl = `${process.env.REACT_APP_BACKEND_HOST}/deletecartitem`;
     const response = await fetch(deleteurl, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
@@ -170,7 +170,7 @@ export default function AddToCart() {
   };
 
   const makePayment = async () => {
-    const getpublishKeyurl = "https://spodemy.vercel.app/publishkey";
+    const getpublishKeyurl = `${process.env.REACT_APP_BACKEND_HOST}/publishkey`;
     const getpublishKeyResponse = await fetch(getpublishKeyurl, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -180,7 +180,7 @@ export default function AddToCart() {
       const key = (await getpublishKeyResponse.json()).pk;
       const stripe = await loadStripe(key);
 
-      const checkout = "https://spodemy.vercel.app/checkout";
+      const checkout = `${process.env.REACT_APP_BACKEND_HOST}/checkout`;
       const response = await fetch(checkout, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

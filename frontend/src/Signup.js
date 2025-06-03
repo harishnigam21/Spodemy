@@ -34,7 +34,7 @@ const Signup = ({ logo }) => {
     }
   }, [adminuser]);
 
-  const signupurl = "https://spodemy.vercel.app/signup";
+  const signupurl = `${process.env.REACT_APP_BACKEND_HOST}/signup`;
 
   //This function will give json Message, which you have given with status at backend
   const responseMessage = async (response, color) => {

@@ -20,7 +20,7 @@ export default function Order() {
 
   const errorRef = useRef(null);
   useEffect(() => {
-    const getOrderitemUrl = "https://spodemy.vercel.app/getorderitem";
+    const getOrderitemUrl = `${process.env.REACT_APP_BACKEND_HOST}/getorderitem`;
     const getOrderItem = async () => {
       const response = await fetch(getOrderitemUrl, {
         method: "GET",

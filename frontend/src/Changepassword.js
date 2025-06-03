@@ -11,7 +11,7 @@ const Changepassword = () => {
   const [second, setSecond] = useState(0);
   const params = useParams();
   let vote = [];
-  const changepasswordurl = "https://spodemy.vercel.app/changepassword";
+  const changepasswordurl = `${process.env.REACT_APP_BACKEND_HOST}/changepassword`;
   const email = params.email;
   const responseMessage = async (response) => {
     const statusMessage = JSON.parse(JSON.stringify(await response.json()));

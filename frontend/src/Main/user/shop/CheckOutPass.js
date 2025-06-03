@@ -30,7 +30,7 @@ export default function CheckOutPass() {
   pullUser(emailenc);
 
   useEffect(() => {
-    const verifyTransURL = "https://spodemy.vercel.app/verifytransaction";
+    const verifyTransURL = `${process.env.REACT_APP_BACKEND_HOST}/verifytransaction`;
     const currentLocation = window.location.href;
 
     const verifyTrans = async () => {

@@ -2,7 +2,6 @@ import Nav from './Nav';
 import Background from './Background';
 import Queryform from './Queryform';
 import Footer from './Footer';
-
 const myAppname = "Spodemy";
 
 function App() {

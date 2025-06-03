@@ -5,7 +5,7 @@ import Loader from "../../Loarder";
 const Signout = () => {
   const params = useParams();
   const emailenc = params.email;
-  const signouturl = "https://spodemy.vercel.app/signout";
+  const signouturl = `${process.env.REACT_APP_BACKEND_HOST}/signout`;
 
   const responseMessage = async (response) => {
     const statusMessage = JSON.parse(JSON.stringify(await response.json()));

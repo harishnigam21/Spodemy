@@ -1,4 +1,4 @@
-const pulluserurl = "https://spodemy.vercel.app/directuser";
+const pulluserurl = `${process.env.REACT_APP_BACKEND_HOST}/directuser`;
 //pull User, who are not signed in
 const pullUser = async (emailenc) => {
   const response = await fetch(pulluserurl, {
