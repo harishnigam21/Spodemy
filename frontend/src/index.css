@@ -992,6 +992,13 @@ code {
   display: grid;
   grid-template-columns: 20% 60% 20%;
   background-color: white;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 0),
+    rgba(230, 90, 230, 0.4),
+    rgba(13, 255, 0, 0.4)
+  );
+  border-radius: 0.4rem;
   place-items: center;
   margin: 0.5rem;
   img {
@@ -1164,6 +1171,12 @@ code {
   padding: 0.8rem;
   display: flex;
   flex-direction: row;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 0),
+    rgba(230, 90, 230, 0.5),
+    rgba(13, 255, 0, 0.5)
+  );
 }
 
 .filter {
