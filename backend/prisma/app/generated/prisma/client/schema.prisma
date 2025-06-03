@@ -10,29 +10,29 @@ datasource db {
 }
 
 model products {
-  ProductId         Int       @id @unique(map: "ProductId_UNIQUE") @default(autoincrement())
-  ProductName       String?   @db.VarChar(255)
-  ProductBrand      String?   @db.VarChar(255)
+  ProductId         Int     @id @unique(map: "ProductId_UNIQUE") @default(autoincrement())
+  ProductName       String? @db.VarChar(255)
+  ProductBrand      String? @db.VarChar(255)
   ProductQuantity   Int?
   ProductPrice      Int?
-  ProductExpirydate DateTime? @db.Date
-  ProductImg        String?   @db.VarChar(255)
-  ShopName          String?   @db.VarChar(255)
+  ProductExpirydate String?
+  ProductImg        String? @db.VarChar(255)
+  ShopName          String? @db.VarChar(255)
   UserEmail         String?
 }
 
 model users {
-  id             Int      @id @unique(map: "Users_id_key") @default(autoincrement())
+  id             Int     @id @unique(map: "Users_id_key") @default(autoincrement())
   firstname      String
   middlename     String?
   lastname       String
   dob            String
   gender         String
-  email          String   @unique(map: "Users_email_key")
+  email          String  @unique(map: "Users_email_key")
   mobileno       String
   password       String
-  createdUser    DateTime @default(now())
-  referenceToken String   @unique(map: "Users_referenceToken_key")
+  createdUser    String
+  referenceToken String  @unique(map: "Users_referenceToken_key")
   userType       String
 }
 
@@ -43,12 +43,12 @@ model usercart {
 }
 
 model beforebuying {
-  id                Int      @id @default(autoincrement())
-  email             String   @db.VarChar(255)
-  usrcartobj        String?  @db.LongText
-  transactionid     String?  @unique @db.VarChar(255)
-  transactionstatus String?  @db.VarChar(45)
-  createdAt         DateTime @default(now())
+  id                Int     @id @default(autoincrement())
+  email             String  @db.VarChar(255)
+  usrcartobj        String? @db.LongText
+  transactionid     String? @unique @db.VarChar(255)
+  transactionstatus String? @db.VarChar(45)
+  createdAt         String
 }
 
 model whishlist {

@@ -1223,7 +1223,7 @@ export namespace Prisma {
     ProductBrand: string | null
     ProductQuantity: number | null
     ProductPrice: number | null
-    ProductExpirydate: Date | null
+    ProductExpirydate: string | null
     ProductImg: string | null
     ShopName: string | null
     UserEmail: string | null
@@ -1235,7 +1235,7 @@ export namespace Prisma {
     ProductBrand: string | null
     ProductQuantity: number | null
     ProductPrice: number | null
-    ProductExpirydate: Date | null
+    ProductExpirydate: string | null
     ProductImg: string | null
     ShopName: string | null
     UserEmail: string | null
@@ -1396,7 +1396,7 @@ export namespace Prisma {
     ProductBrand: string | null
     ProductQuantity: number | null
     ProductPrice: number | null
-    ProductExpirydate: Date | null
+    ProductExpirydate: string | null
     ProductImg: string | null
     ShopName: string | null
     UserEmail: string | null
@@ -1458,7 +1458,7 @@ export namespace Prisma {
       ProductBrand: string | null
       ProductQuantity: number | null
       ProductPrice: number | null
-      ProductExpirydate: Date | null
+      ProductExpirydate: string | null
       ProductImg: string | null
       ShopName: string | null
       UserEmail: string | null
@@ -1836,7 +1836,7 @@ export namespace Prisma {
     readonly ProductBrand: FieldRef<"products", 'String'>
     readonly ProductQuantity: FieldRef<"products", 'Int'>
     readonly ProductPrice: FieldRef<"products", 'Int'>
-    readonly ProductExpirydate: FieldRef<"products", 'DateTime'>
+    readonly ProductExpirydate: FieldRef<"products", 'String'>
     readonly ProductImg: FieldRef<"products", 'String'>
     readonly ShopName: FieldRef<"products", 'String'>
     readonly UserEmail: FieldRef<"products", 'String'>
@@ -2191,7 +2191,7 @@ export namespace Prisma {
     email: string | null
     mobileno: string | null
     password: string | null
-    createdUser: Date | null
+    createdUser: string | null
     referenceToken: string | null
     userType: string | null
   }
@@ -2206,7 +2206,7 @@ export namespace Prisma {
     email: string | null
     mobileno: string | null
     password: string | null
-    createdUser: Date | null
+    createdUser: string | null
     referenceToken: string | null
     userType: string | null
   }
@@ -2378,7 +2378,7 @@ export namespace Prisma {
     email: string
     mobileno: string
     password: string
-    createdUser: Date
+    createdUser: string
     referenceToken: string
     userType: string
     _count: UsersCountAggregateOutputType | null
@@ -2449,7 +2449,7 @@ export namespace Prisma {
       email: string
       mobileno: string
       password: string
-      createdUser: Date
+      createdUser: string
       referenceToken: string
       userType: string
     }, ExtArgs["result"]["users"]>
@@ -2830,7 +2830,7 @@ export namespace Prisma {
     readonly email: FieldRef<"users", 'String'>
     readonly mobileno: FieldRef<"users", 'String'>
     readonly password: FieldRef<"users", 'String'>
-    readonly createdUser: FieldRef<"users", 'DateTime'>
+    readonly createdUser: FieldRef<"users", 'String'>
     readonly referenceToken: FieldRef<"users", 'String'>
     readonly userType: FieldRef<"users", 'String'>
   }
@@ -4074,7 +4074,7 @@ export namespace Prisma {
     usrcartobj: string | null
     transactionid: string | null
     transactionstatus: string | null
-    createdAt: Date | null
+    createdAt: string | null
   }
 
   export type BeforebuyingMaxAggregateOutputType = {
@@ -4083,7 +4083,7 @@ export namespace Prisma {
     usrcartobj: string | null
     transactionid: string | null
     transactionstatus: string | null
-    createdAt: Date | null
+    createdAt: string | null
   }
 
   export type BeforebuyingCountAggregateOutputType = {
@@ -4225,7 +4225,7 @@ export namespace Prisma {
     usrcartobj: string | null
     transactionid: string | null
     transactionstatus: string | null
-    createdAt: Date
+    createdAt: string
     _count: BeforebuyingCountAggregateOutputType | null
     _avg: BeforebuyingAvgAggregateOutputType | null
     _sum: BeforebuyingSumAggregateOutputType | null
@@ -4278,7 +4278,7 @@ export namespace Prisma {
       usrcartobj: string | null
       transactionid: string | null
       transactionstatus: string | null
-      createdAt: Date
+      createdAt: string
     }, ExtArgs["result"]["beforebuying"]>
     composites: {}
   }
@@ -4653,7 +4653,7 @@ export namespace Prisma {
     readonly usrcartobj: FieldRef<"beforebuying", 'String'>
     readonly transactionid: FieldRef<"beforebuying", 'String'>
     readonly transactionstatus: FieldRef<"beforebuying", 'String'>
-    readonly createdAt: FieldRef<"beforebuying", 'DateTime'>
+    readonly createdAt: FieldRef<"beforebuying", 'String'>
   }
     
 
@@ -5931,6 +5931,7 @@ export namespace Prisma {
   export const productsOrderByRelevanceFieldEnum: {
     ProductName: 'ProductName',
     ProductBrand: 'ProductBrand',
+    ProductExpirydate: 'ProductExpirydate',
     ProductImg: 'ProductImg',
     ShopName: 'ShopName',
     UserEmail: 'UserEmail'
@@ -5948,6 +5949,7 @@ export namespace Prisma {
     email: 'email',
     mobileno: 'mobileno',
     password: 'password',
+    createdUser: 'createdUser',
     referenceToken: 'referenceToken',
     userType: 'userType'
   };
@@ -5967,7 +5969,8 @@ export namespace Prisma {
     email: 'email',
     usrcartobj: 'usrcartobj',
     transactionid: 'transactionid',
-    transactionstatus: 'transactionstatus'
+    transactionstatus: 'transactionstatus',
+    createdAt: 'createdAt'
   };
 
   export type beforebuyingOrderByRelevanceFieldEnum = (typeof beforebuyingOrderByRelevanceFieldEnum)[keyof typeof beforebuyingOrderByRelevanceFieldEnum]
@@ -6002,13 +6005,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
-   */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -6027,7 +6023,7 @@ export namespace Prisma {
     ProductBrand?: StringNullableFilter<"products"> | string | null
     ProductQuantity?: IntNullableFilter<"products"> | number | null
     ProductPrice?: IntNullableFilter<"products"> | number | null
-    ProductExpirydate?: DateTimeNullableFilter<"products"> | Date | string | null
+    ProductExpirydate?: StringNullableFilter<"products"> | string | null
     ProductImg?: StringNullableFilter<"products"> | string | null
     ShopName?: StringNullableFilter<"products"> | string | null
     UserEmail?: StringNullableFilter<"products"> | string | null
@@ -6055,7 +6051,7 @@ export namespace Prisma {
     ProductBrand?: StringNullableFilter<"products"> | string | null
     ProductQuantity?: IntNullableFilter<"products"> | number | null
     ProductPrice?: IntNullableFilter<"products"> | number | null
-    ProductExpirydate?: DateTimeNullableFilter<"products"> | Date | string | null
+    ProductExpirydate?: StringNullableFilter<"products"> | string | null
     ProductImg?: StringNullableFilter<"products"> | string | null
     ShopName?: StringNullableFilter<"products"> | string | null
     UserEmail?: StringNullableFilter<"products"> | string | null
@@ -6087,7 +6083,7 @@ export namespace Prisma {
     ProductBrand?: StringNullableWithAggregatesFilter<"products"> | string | null
     ProductQuantity?: IntNullableWithAggregatesFilter<"products"> | number | null
     ProductPrice?: IntNullableWithAggregatesFilter<"products"> | number | null
-    ProductExpirydate?: DateTimeNullableWithAggregatesFilter<"products"> | Date | string | null
+    ProductExpirydate?: StringNullableWithAggregatesFilter<"products"> | string | null
     ProductImg?: StringNullableWithAggregatesFilter<"products"> | string | null
     ShopName?: StringNullableWithAggregatesFilter<"products"> | string | null
     UserEmail?: StringNullableWithAggregatesFilter<"products"> | string | null
@@ -6106,7 +6102,7 @@ export namespace Prisma {
     email?: StringFilter<"users"> | string
     mobileno?: StringFilter<"users"> | string
     password?: StringFilter<"users"> | string
-    createdUser?: DateTimeFilter<"users"> | Date | string
+    createdUser?: StringFilter<"users"> | string
     referenceToken?: StringFilter<"users"> | string
     userType?: StringFilter<"users"> | string
   }
@@ -6141,7 +6137,7 @@ export namespace Prisma {
     gender?: StringFilter<"users"> | string
     mobileno?: StringFilter<"users"> | string
     password?: StringFilter<"users"> | string
-    createdUser?: DateTimeFilter<"users"> | Date | string
+    createdUser?: StringFilter<"users"> | string
     userType?: StringFilter<"users"> | string
   }, "id" | "id" | "email" | "referenceToken">
 
@@ -6178,7 +6174,7 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"users"> | string
     mobileno?: StringWithAggregatesFilter<"users"> | string
     password?: StringWithAggregatesFilter<"users"> | string
-    createdUser?: DateTimeWithAggregatesFilter<"users"> | Date | string
+    createdUser?: StringWithAggregatesFilter<"users"> | string
     referenceToken?: StringWithAggregatesFilter<"users"> | string
     userType?: StringWithAggregatesFilter<"users"> | string
   }
@@ -6237,7 +6233,7 @@ export namespace Prisma {
     usrcartobj?: StringNullableFilter<"beforebuying"> | string | null
     transactionid?: StringNullableFilter<"beforebuying"> | string | null
     transactionstatus?: StringNullableFilter<"beforebuying"> | string | null
-    createdAt?: DateTimeFilter<"beforebuying"> | Date | string
+    createdAt?: StringFilter<"beforebuying"> | string
   }
 
   export type beforebuyingOrderByWithRelationInput = {
@@ -6259,7 +6255,7 @@ export namespace Prisma {
     email?: StringFilter<"beforebuying"> | string
     usrcartobj?: StringNullableFilter<"beforebuying"> | string | null
     transactionstatus?: StringNullableFilter<"beforebuying"> | string | null
-    createdAt?: DateTimeFilter<"beforebuying"> | Date | string
+    createdAt?: StringFilter<"beforebuying"> | string
   }, "id" | "transactionid">
 
   export type beforebuyingOrderByWithAggregationInput = {
@@ -6285,7 +6281,7 @@ export namespace Prisma {
     usrcartobj?: StringNullableWithAggregatesFilter<"beforebuying"> | string | null
     transactionid?: StringNullableWithAggregatesFilter<"beforebuying"> | string | null
     transactionstatus?: StringNullableWithAggregatesFilter<"beforebuying"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"beforebuying"> | Date | string
+    createdAt?: StringWithAggregatesFilter<"beforebuying"> | string
   }
 
   export type whishlistWhereInput = {
@@ -6336,7 +6332,7 @@ export namespace Prisma {
     ProductBrand?: string | null
     ProductQuantity?: number | null
     ProductPrice?: number | null
-    ProductExpirydate?: Date | string | null
+    ProductExpirydate?: string | null
     ProductImg?: string | null
     ShopName?: string | null
     UserEmail?: string | null
@@ -6348,7 +6344,7 @@ export namespace Prisma {
     ProductBrand?: string | null
     ProductQuantity?: number | null
     ProductPrice?: number | null
-    ProductExpirydate?: Date | string | null
+    ProductExpirydate?: string | null
     ProductImg?: string | null
     ShopName?: string | null
     UserEmail?: string | null
@@ -6359,7 +6355,7 @@ export namespace Prisma {
     ProductBrand?: NullableStringFieldUpdateOperationsInput | string | null
     ProductQuantity?: NullableIntFieldUpdateOperationsInput | number | null
     ProductPrice?: NullableIntFieldUpdateOperationsInput | number | null
-    ProductExpirydate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ProductExpirydate?: NullableStringFieldUpdateOperationsInput | string | null
     ProductImg?: NullableStringFieldUpdateOperationsInput | string | null
     ShopName?: NullableStringFieldUpdateOperationsInput | string | null
     UserEmail?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6371,7 +6367,7 @@ export namespace Prisma {
     ProductBrand?: NullableStringFieldUpdateOperationsInput | string | null
     ProductQuantity?: NullableIntFieldUpdateOperationsInput | number | null
     ProductPrice?: NullableIntFieldUpdateOperationsInput | number | null
-    ProductExpirydate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ProductExpirydate?: NullableStringFieldUpdateOperationsInput | string | null
     ProductImg?: NullableStringFieldUpdateOperationsInput | string | null
     ShopName?: NullableStringFieldUpdateOperationsInput | string | null
     UserEmail?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6383,7 +6379,7 @@ export namespace Prisma {
     ProductBrand?: string | null
     ProductQuantity?: number | null
     ProductPrice?: number | null
-    ProductExpirydate?: Date | string | null
+    ProductExpirydate?: string | null
     ProductImg?: string | null
     ShopName?: string | null
     UserEmail?: string | null
@@ -6394,7 +6390,7 @@ export namespace Prisma {
     ProductBrand?: NullableStringFieldUpdateOperationsInput | string | null
     ProductQuantity?: NullableIntFieldUpdateOperationsInput | number | null
     ProductPrice?: NullableIntFieldUpdateOperationsInput | number | null
-    ProductExpirydate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ProductExpirydate?: NullableStringFieldUpdateOperationsInput | string | null
     ProductImg?: NullableStringFieldUpdateOperationsInput | string | null
     ShopName?: NullableStringFieldUpdateOperationsInput | string | null
     UserEmail?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6406,7 +6402,7 @@ export namespace Prisma {
     ProductBrand?: NullableStringFieldUpdateOperationsInput | string | null
     ProductQuantity?: NullableIntFieldUpdateOperationsInput | number | null
     ProductPrice?: NullableIntFieldUpdateOperationsInput | number | null
-    ProductExpirydate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ProductExpirydate?: NullableStringFieldUpdateOperationsInput | string | null
     ProductImg?: NullableStringFieldUpdateOperationsInput | string | null
     ShopName?: NullableStringFieldUpdateOperationsInput | string | null
     UserEmail?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6421,7 +6417,7 @@ export namespace Prisma {
     email: string
     mobileno: string
     password: string
-    createdUser?: Date | string
+    createdUser: string
     referenceToken: string
     userType: string
   }
@@ -6436,7 +6432,7 @@ export namespace Prisma {
     email: string
     mobileno: string
     password: string
-    createdUser?: Date | string
+    createdUser: string
     referenceToken: string
     userType: string
   }
@@ -6450,7 +6446,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     mobileno?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    createdUser?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdUser?: StringFieldUpdateOperationsInput | string
     referenceToken?: StringFieldUpdateOperationsInput | string
     userType?: StringFieldUpdateOperationsInput | string
   }
@@ -6465,7 +6461,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     mobileno?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    createdUser?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdUser?: StringFieldUpdateOperationsInput | string
     referenceToken?: StringFieldUpdateOperationsInput | string
     userType?: StringFieldUpdateOperationsInput | string
   }
@@ -6480,7 +6476,7 @@ export namespace Prisma {
     email: string
     mobileno: string
     password: string
-    createdUser?: Date | string
+    createdUser: string
     referenceToken: string
     userType: string
   }
@@ -6494,7 +6490,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     mobileno?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    createdUser?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdUser?: StringFieldUpdateOperationsInput | string
     referenceToken?: StringFieldUpdateOperationsInput | string
     userType?: StringFieldUpdateOperationsInput | string
   }
@@ -6509,7 +6505,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     mobileno?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    createdUser?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdUser?: StringFieldUpdateOperationsInput | string
     referenceToken?: StringFieldUpdateOperationsInput | string
     userType?: StringFieldUpdateOperationsInput | string
   }
@@ -6561,7 +6557,7 @@ export namespace Prisma {
     usrcartobj?: string | null
     transactionid?: string | null
     transactionstatus?: string | null
-    createdAt?: Date | string
+    createdAt: string
   }
 
   export type beforebuyingUncheckedCreateInput = {
@@ -6570,7 +6566,7 @@ export namespace Prisma {
     usrcartobj?: string | null
     transactionid?: string | null
     transactionstatus?: string | null
-    createdAt?: Date | string
+    createdAt: string
   }
 
   export type beforebuyingUpdateInput = {
@@ -6578,7 +6574,7 @@ export namespace Prisma {
     usrcartobj?: NullableStringFieldUpdateOperationsInput | string | null
     transactionid?: NullableStringFieldUpdateOperationsInput | string | null
     transactionstatus?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: StringFieldUpdateOperationsInput | string
   }
 
   export type beforebuyingUncheckedUpdateInput = {
@@ -6587,7 +6583,7 @@ export namespace Prisma {
     usrcartobj?: NullableStringFieldUpdateOperationsInput | string | null
     transactionid?: NullableStringFieldUpdateOperationsInput | string | null
     transactionstatus?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: StringFieldUpdateOperationsInput | string
   }
 
   export type beforebuyingCreateManyInput = {
@@ -6596,7 +6592,7 @@ export namespace Prisma {
     usrcartobj?: string | null
     transactionid?: string | null
     transactionstatus?: string | null
-    createdAt?: Date | string
+    createdAt: string
   }
 
   export type beforebuyingUpdateManyMutationInput = {
@@ -6604,7 +6600,7 @@ export namespace Prisma {
     usrcartobj?: NullableStringFieldUpdateOperationsInput | string | null
     transactionid?: NullableStringFieldUpdateOperationsInput | string | null
     transactionstatus?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: StringFieldUpdateOperationsInput | string
   }
 
   export type beforebuyingUncheckedUpdateManyInput = {
@@ -6613,7 +6609,7 @@ export namespace Prisma {
     usrcartobj?: NullableStringFieldUpdateOperationsInput | string | null
     transactionid?: NullableStringFieldUpdateOperationsInput | string | null
     transactionstatus?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: StringFieldUpdateOperationsInput | string
   }
 
   export type whishlistCreateInput = {
@@ -6693,17 +6689,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type SortOrderInput = {
@@ -6815,20 +6800,6 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -6842,17 +6813,6 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type usersOrderByRelevanceInput = {
@@ -6930,20 +6890,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type usercartOrderByRelevanceInput = {
@@ -7055,10 +7001,6 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
-  }
-
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -7069,10 +7011,6 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -7110,17 +7048,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -7195,20 +7122,6 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -7222,17 +7135,6 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -7251,20 +7153,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
 

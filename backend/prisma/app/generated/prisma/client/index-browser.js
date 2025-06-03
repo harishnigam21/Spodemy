@@ -178,6 +178,7 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.productsOrderByRelevanceFieldEnum = {
   ProductName: 'ProductName',
   ProductBrand: 'ProductBrand',
+  ProductExpirydate: 'ProductExpirydate',
   ProductImg: 'ProductImg',
   ShopName: 'ShopName',
   UserEmail: 'UserEmail'
@@ -192,6 +193,7 @@ exports.Prisma.usersOrderByRelevanceFieldEnum = {
   email: 'email',
   mobileno: 'mobileno',
   password: 'password',
+  createdUser: 'createdUser',
   referenceToken: 'referenceToken',
   userType: 'userType'
 };
@@ -205,7 +207,8 @@ exports.Prisma.beforebuyingOrderByRelevanceFieldEnum = {
   email: 'email',
   usrcartobj: 'usrcartobj',
   transactionid: 'transactionid',
-  transactionstatus: 'transactionstatus'
+  transactionstatus: 'transactionstatus',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.whishlistOrderByRelevanceFieldEnum = {

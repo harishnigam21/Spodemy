@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const prisma = require("../shortcut/prisma_initilization");
-
+const date = require("../utils/usefulFunction/returnDate");
 const getUser = async (req, res) => {
   if (
     req.body.firstname &&
@@ -29,6 +29,7 @@ const getUser = async (req, res) => {
         email: req.body.email,
         mobileno: req.body.mobilenumber,
         password: encryptpassword,
+        createdUser: date(),
         referenceToken: `just signupped ${req.body.email}`,
       };
 
