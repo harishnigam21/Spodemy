@@ -762,7 +762,7 @@ code {
       height: 10rem;
       flex-grow: 1;
       margin: 0.5rem;
-      transition: all 0.5s ease-in-out;
+      transition: all 1s ease-in-out;
 
       div {
         display: flex;
