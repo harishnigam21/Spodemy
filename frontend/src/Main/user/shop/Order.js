@@ -165,7 +165,7 @@ export default function Order() {
                     <strong>ORDER PLACED</strong>
                     <p>
                       {item.createdAt.slice(0, 10)} at{" "}
-                      {item.createdAt.slice(12, 16)}
+                      {item.createdAt.slice(11, 16)}
                     </p>
                   </div>
                   <div className="orderBarItem">

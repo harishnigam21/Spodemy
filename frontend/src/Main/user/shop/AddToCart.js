@@ -33,9 +33,9 @@ export default function AddToCart() {
         headers: { "content-type": "application/json" },
         credentials: "include",
       });
-      const Message = (await response.json()).Message;
+      const getData = await response.json();
       if (response.ok) {
-        const data = (await response.json()).cartitem;
+        const data = getData.cartitem;
         if (data) {
           setCartitem(data);
           if (data.length === 0) {
@@ -93,7 +93,7 @@ export default function AddToCart() {
       } else {
         if (errorRef.current) {
           errorRef.current.style.backgroundImage = "linear-gradient(red)";
-          errorRef.current.textContent = Message;
+          errorRef.current.textContent = getData.Message;
         }
       }
     };
