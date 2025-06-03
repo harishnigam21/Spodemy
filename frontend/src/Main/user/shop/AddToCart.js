@@ -33,6 +33,7 @@ export default function AddToCart() {
         headers: { "content-type": "application/json" },
         credentials: "include",
       });
+      const Message = (await response.json()).Message;
       if (response.ok) {
         const data = (await response.json()).cartitem;
         if (data) {
@@ -89,10 +90,10 @@ export default function AddToCart() {
         }
       } else if (response.status === 401) {
         window.location.replace("/signin");
-      } else if (response.status === 404) {
+      } else {
         if (errorRef.current) {
           errorRef.current.style.backgroundImage = "linear-gradient(red)";
-          errorRef.current.textContent = "No item found at your cart";
+          errorRef.current.textContent = Message;
         }
       }
     };
