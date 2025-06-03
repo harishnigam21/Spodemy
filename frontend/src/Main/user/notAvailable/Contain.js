@@ -1,6 +1,14 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import useTimer from "../../../usefullFunction/timer";
 const Contain = () => {
-  const { hour, minute, second, isTimerRunning } = useTimer(0, 0, 5);
+  const navigate = useNavigate();
+  const { second } = useTimer(0, 0, 5);
+  useEffect(() => {
+    if (second === "05") {
+      navigate(-1);
+    }
+  }, [second,navigate]);
   return (
     <div className="notavailable">
       <h1>404 : NOT FOUND</h1>

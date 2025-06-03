@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import { GiConfirmed } from "react-icons/gi";
 import pullUser from "../../../usefullFunction/directuser";
 import Loader from "../../../Loarder";
-
+import useTimer from "../../../usefullFunction/timer";
 export default function CheckOutPass() {
+  const { second } = useTimer(0, 0, 5);
   const h1Ref = useRef();
   const params = useParams();
   const transactionid = params.transactionid;
@@ -53,8 +54,7 @@ export default function CheckOutPass() {
         if ((await response).status === 401) {
           if (h1Ref.current) {
             h1Ref.current.style.backgroundImage = "linear-gradient(red)";
-            h1Ref.current.textContent =
-              "You are not authorized person, Sending back you to Sign In page within 5s";
+            h1Ref.current.textContent = `You are not authorized person, Sending back you to Sign In page within ${second}`;
           }
           console.log("invalid User");
           setTimeout(() => {
@@ -63,8 +63,7 @@ export default function CheckOutPass() {
         } else if ((await response).status === 406) {
           if (h1Ref.current) {
             h1Ref.current.style.backgroundImage = "linear-gradient(red)";
-            h1Ref.current.textContent =
-              "Looks like you are trying to reach this page Directly, this is not authorized, Sending back to your State in 5s";
+            h1Ref.current.textContent = `Looks like you are trying to reach this page Directly, this is not authorized, Sending back to your State in ${second}`;
           }
           console.log("Sending back to your Cart");
           setTimeout(() => {
@@ -87,7 +86,7 @@ export default function CheckOutPass() {
             <p>with Transaction ID : {transactionid}</p>
           </div>
           <strong style={{ color: "white", padding: "2rem" }}>
-            Returning to Your Order in 5s
+            Returning to Your Order in {second}
           </strong>
         </div>
       ) : (

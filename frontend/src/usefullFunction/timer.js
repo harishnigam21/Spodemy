@@ -1,12 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 const padZero = (num) => String(num).padStart(2, "0");
 
 const useTimer = (targetHour, targetMinute, targetSecond) => {
   const [hour, setHour] = useState(0);
   const [minute, setMinute] = useState(0);
   const [second, setSecond] = useState(0);
-  const navigate = useNavigate();
   const intervalRef = useRef(null);
 
   useEffect(() => {
@@ -44,7 +42,6 @@ const useTimer = (targetHour, targetMinute, targetSecond) => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
-      navigate(-1);
     }
   }, [hour, minute, second, targetHour, targetMinute, targetSecond]); 
   return {
