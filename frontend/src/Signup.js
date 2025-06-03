@@ -25,7 +25,6 @@ const Signup = ({ logo }) => {
   const adminRef = useRef(null); // Created a ref for the admin strong element
   const noteRef = useRef(null);
   useEffect(() => {
-    console.log("changed role");
     if (adminuser === "none" && noteRef.current) {
       noteRef.current.textContent =
         "Note : Slecting your role is mandatory here";
