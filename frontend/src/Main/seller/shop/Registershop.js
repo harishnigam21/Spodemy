@@ -101,7 +101,9 @@ const Registershop = () => {
               required
             />
 
-            <label htmlFor="shopaddr">Shop Images</label>
+            <label htmlFor="shopaddr">
+              Shop Images <p></p>(max 5)
+            </label>
             <strong>:</strong>
             <UploadThings ref={uploadRef} />
           </div>

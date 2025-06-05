@@ -1,6 +1,7 @@
 const prisma = require("../../shortcut/prisma_initilization");
 const decrypt = require("./decryption");
-const verifyUser = async (req, res, cookies) => {
+const verifyUser = async (req, res) => {
+  const cookies = req.cookies;
   if (!cookies) {
     return res.status(401).json({ Message: "You are not authorized" });
   }

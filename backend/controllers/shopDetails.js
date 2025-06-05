@@ -51,8 +51,7 @@ const postshopDetails = async (req, res) => {
   }
 };
 const getshopDetails = async (req, res) => {
-  const cookies = req.cookies;
-  const email = await verifyUser(req,res,cookies);
+  const email = await verifyUser(req, res);
   if (email) {
     const shopDetail = await prisma.shopdetails.findUnique({
       where: { email: email },
@@ -64,7 +63,9 @@ const getshopDetails = async (req, res) => {
       });
     }
     console.log("got store details");
-    return res.status(200).json({ Message: "got store details" });
+    return res
+      .status(200)
+      .json({ shopdetails: shopDetail, Message: "got store details" });
   } else {
     return email;
   }

@@ -26,7 +26,6 @@ app.use("/", require("./routes/signout"));
 
 
 // user
-app.use("/", require("./routes/getProductdata"));
 app.use("/", require("./routes/getallProductdata"));
 app.use("/", require("./routes/postCartdata"));
 app.use("/", require("./routes/getCartdata"));
@@ -42,6 +41,7 @@ app.use("/", require("./routes/getOrderitem"));
 
 
 //seller
+app.use("/", require("./routes/productdata"));
 app.use("/", require("./routes/shopDetails"));
 
 app.get("/", (req, res) => {
