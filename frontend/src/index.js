@@ -7,8 +7,11 @@ import Signin from "./Signin";
 import Signup from "./Signup";
 import Forgotpwd from "./Forgotpwd";
 import Changepassword from "./Changepassword";
-import MainAdmin from "./Main/admin/Main";
-import SignoutAdmin from "./Main/admin/Signout";
+
+import MainSeller from "./Main/seller/Main";
+import Registershop from "./Main/seller/shop/Registershop";
+import SignoutSeller from "./Main/seller/Signout";
+
 import MainUser from "./Main/user/Main";
 import ServiceLoader from "./Main/user/ServiceLoader";
 import AddToCart from "./Main/user/shop/AddToCart";
@@ -40,12 +43,17 @@ const router = createBrowserRouter([
     element: <Changepassword />,
   },
   {
-    path: "/main/admin/:email",
-    element: <MainAdmin />,
+    path: "/main/seller/:email/shop",
+    element: <MainSeller />,
   },
   {
-    path: "/main/admin/:email/signout",
-    element: <SignoutAdmin />,
+    path: "/main/seller/:email/shop/registershop",
+    element: <Registershop />,
+  },
+
+  {
+    path: "/main/seller/:email/signout",
+    element: <SignoutSeller />,
   },
   {
     path: "/main/user/:email",

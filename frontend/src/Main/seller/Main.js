@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import pullUser from "../../usefullFunction/directuser";
 import Nav from "./Nav";
-import Contain from "./Contain";
+import Contain from "./shop/Contain";
 const Main = () => {
   const [user, setUser] = useState({});
   const params = useParams();

@@ -38,6 +38,11 @@ export type beforebuying = $Result.DefaultSelection<Prisma.$beforebuyingPayload>
  * 
  */
 export type whishlist = $Result.DefaultSelection<Prisma.$whishlistPayload>
+/**
+ * Model shopdetails
+ * 
+ */
+export type shopdetails = $Result.DefaultSelection<Prisma.$shopdetailsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -213,6 +218,16 @@ export class PrismaClient<
     * ```
     */
   get whishlist(): Prisma.whishlistDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.shopdetails`: Exposes CRUD operations for the **shopdetails** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Shopdetails
+    * const shopdetails = await prisma.shopdetails.findMany()
+    * ```
+    */
+  get shopdetails(): Prisma.shopdetailsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -657,7 +672,8 @@ export namespace Prisma {
     users: 'users',
     usercart: 'usercart',
     beforebuying: 'beforebuying',
-    whishlist: 'whishlist'
+    whishlist: 'whishlist',
+    shopdetails: 'shopdetails'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -676,7 +692,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "products" | "users" | "usercart" | "beforebuying" | "whishlist"
+      modelProps: "products" | "users" | "usercart" | "beforebuying" | "whishlist" | "shopdetails"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1010,6 +1026,72 @@ export namespace Prisma {
           }
         }
       }
+      shopdetails: {
+        payload: Prisma.$shopdetailsPayload<ExtArgs>
+        fields: Prisma.shopdetailsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.shopdetailsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$shopdetailsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.shopdetailsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$shopdetailsPayload>
+          }
+          findFirst: {
+            args: Prisma.shopdetailsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$shopdetailsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.shopdetailsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$shopdetailsPayload>
+          }
+          findMany: {
+            args: Prisma.shopdetailsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$shopdetailsPayload>[]
+          }
+          create: {
+            args: Prisma.shopdetailsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$shopdetailsPayload>
+          }
+          createMany: {
+            args: Prisma.shopdetailsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.shopdetailsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$shopdetailsPayload>
+          }
+          update: {
+            args: Prisma.shopdetailsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$shopdetailsPayload>
+          }
+          deleteMany: {
+            args: Prisma.shopdetailsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.shopdetailsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.shopdetailsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$shopdetailsPayload>
+          }
+          aggregate: {
+            args: Prisma.ShopdetailsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateShopdetails>
+          }
+          groupBy: {
+            args: Prisma.shopdetailsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ShopdetailsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.shopdetailsCountArgs<ExtArgs>
+            result: $Utils.Optional<ShopdetailsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1099,6 +1181,7 @@ export namespace Prisma {
     usercart?: usercartOmit
     beforebuying?: beforebuyingOmit
     whishlist?: whishlistOmit
+    shopdetails?: shopdetailsOmit
   }
 
   /* Types for Logging */
@@ -5836,6 +5919,877 @@ export namespace Prisma {
 
 
   /**
+   * Model shopdetails
+   */
+
+  export type AggregateShopdetails = {
+    _count: ShopdetailsCountAggregateOutputType | null
+    _min: ShopdetailsMinAggregateOutputType | null
+    _max: ShopdetailsMaxAggregateOutputType | null
+  }
+
+  export type ShopdetailsMinAggregateOutputType = {
+    email: string | null
+    shopName: string | null
+    shopAddress: string | null
+    shopImg: string | null
+  }
+
+  export type ShopdetailsMaxAggregateOutputType = {
+    email: string | null
+    shopName: string | null
+    shopAddress: string | null
+    shopImg: string | null
+  }
+
+  export type ShopdetailsCountAggregateOutputType = {
+    email: number
+    shopName: number
+    shopAddress: number
+    shopImg: number
+    _all: number
+  }
+
+
+  export type ShopdetailsMinAggregateInputType = {
+    email?: true
+    shopName?: true
+    shopAddress?: true
+    shopImg?: true
+  }
+
+  export type ShopdetailsMaxAggregateInputType = {
+    email?: true
+    shopName?: true
+    shopAddress?: true
+    shopImg?: true
+  }
+
+  export type ShopdetailsCountAggregateInputType = {
+    email?: true
+    shopName?: true
+    shopAddress?: true
+    shopImg?: true
+    _all?: true
+  }
+
+  export type ShopdetailsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which shopdetails to aggregate.
+     */
+    where?: shopdetailsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of shopdetails to fetch.
+     */
+    orderBy?: shopdetailsOrderByWithRelationInput | shopdetailsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: shopdetailsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` shopdetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` shopdetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned shopdetails
+    **/
+    _count?: true | ShopdetailsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ShopdetailsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ShopdetailsMaxAggregateInputType
+  }
+
+  export type GetShopdetailsAggregateType<T extends ShopdetailsAggregateArgs> = {
+        [P in keyof T & keyof AggregateShopdetails]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateShopdetails[P]>
+      : GetScalarType<T[P], AggregateShopdetails[P]>
+  }
+
+
+
+
+  export type shopdetailsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: shopdetailsWhereInput
+    orderBy?: shopdetailsOrderByWithAggregationInput | shopdetailsOrderByWithAggregationInput[]
+    by: ShopdetailsScalarFieldEnum[] | ShopdetailsScalarFieldEnum
+    having?: shopdetailsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ShopdetailsCountAggregateInputType | true
+    _min?: ShopdetailsMinAggregateInputType
+    _max?: ShopdetailsMaxAggregateInputType
+  }
+
+  export type ShopdetailsGroupByOutputType = {
+    email: string
+    shopName: string | null
+    shopAddress: string | null
+    shopImg: string | null
+    _count: ShopdetailsCountAggregateOutputType | null
+    _min: ShopdetailsMinAggregateOutputType | null
+    _max: ShopdetailsMaxAggregateOutputType | null
+  }
+
+  type GetShopdetailsGroupByPayload<T extends shopdetailsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ShopdetailsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ShopdetailsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ShopdetailsGroupByOutputType[P]>
+            : GetScalarType<T[P], ShopdetailsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type shopdetailsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    email?: boolean
+    shopName?: boolean
+    shopAddress?: boolean
+    shopImg?: boolean
+  }, ExtArgs["result"]["shopdetails"]>
+
+
+
+  export type shopdetailsSelectScalar = {
+    email?: boolean
+    shopName?: boolean
+    shopAddress?: boolean
+    shopImg?: boolean
+  }
+
+  export type shopdetailsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"email" | "shopName" | "shopAddress" | "shopImg", ExtArgs["result"]["shopdetails"]>
+
+  export type $shopdetailsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "shopdetails"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      email: string
+      shopName: string | null
+      shopAddress: string | null
+      shopImg: string | null
+    }, ExtArgs["result"]["shopdetails"]>
+    composites: {}
+  }
+
+  type shopdetailsGetPayload<S extends boolean | null | undefined | shopdetailsDefaultArgs> = $Result.GetResult<Prisma.$shopdetailsPayload, S>
+
+  type shopdetailsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<shopdetailsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ShopdetailsCountAggregateInputType | true
+    }
+
+  export interface shopdetailsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['shopdetails'], meta: { name: 'shopdetails' } }
+    /**
+     * Find zero or one Shopdetails that matches the filter.
+     * @param {shopdetailsFindUniqueArgs} args - Arguments to find a Shopdetails
+     * @example
+     * // Get one Shopdetails
+     * const shopdetails = await prisma.shopdetails.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends shopdetailsFindUniqueArgs>(args: SelectSubset<T, shopdetailsFindUniqueArgs<ExtArgs>>): Prisma__shopdetailsClient<$Result.GetResult<Prisma.$shopdetailsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Shopdetails that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {shopdetailsFindUniqueOrThrowArgs} args - Arguments to find a Shopdetails
+     * @example
+     * // Get one Shopdetails
+     * const shopdetails = await prisma.shopdetails.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends shopdetailsFindUniqueOrThrowArgs>(args: SelectSubset<T, shopdetailsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__shopdetailsClient<$Result.GetResult<Prisma.$shopdetailsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Shopdetails that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {shopdetailsFindFirstArgs} args - Arguments to find a Shopdetails
+     * @example
+     * // Get one Shopdetails
+     * const shopdetails = await prisma.shopdetails.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends shopdetailsFindFirstArgs>(args?: SelectSubset<T, shopdetailsFindFirstArgs<ExtArgs>>): Prisma__shopdetailsClient<$Result.GetResult<Prisma.$shopdetailsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Shopdetails that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {shopdetailsFindFirstOrThrowArgs} args - Arguments to find a Shopdetails
+     * @example
+     * // Get one Shopdetails
+     * const shopdetails = await prisma.shopdetails.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends shopdetailsFindFirstOrThrowArgs>(args?: SelectSubset<T, shopdetailsFindFirstOrThrowArgs<ExtArgs>>): Prisma__shopdetailsClient<$Result.GetResult<Prisma.$shopdetailsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Shopdetails that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {shopdetailsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Shopdetails
+     * const shopdetails = await prisma.shopdetails.findMany()
+     * 
+     * // Get first 10 Shopdetails
+     * const shopdetails = await prisma.shopdetails.findMany({ take: 10 })
+     * 
+     * // Only select the `email`
+     * const shopdetailsWithEmailOnly = await prisma.shopdetails.findMany({ select: { email: true } })
+     * 
+     */
+    findMany<T extends shopdetailsFindManyArgs>(args?: SelectSubset<T, shopdetailsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$shopdetailsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Shopdetails.
+     * @param {shopdetailsCreateArgs} args - Arguments to create a Shopdetails.
+     * @example
+     * // Create one Shopdetails
+     * const Shopdetails = await prisma.shopdetails.create({
+     *   data: {
+     *     // ... data to create a Shopdetails
+     *   }
+     * })
+     * 
+     */
+    create<T extends shopdetailsCreateArgs>(args: SelectSubset<T, shopdetailsCreateArgs<ExtArgs>>): Prisma__shopdetailsClient<$Result.GetResult<Prisma.$shopdetailsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Shopdetails.
+     * @param {shopdetailsCreateManyArgs} args - Arguments to create many Shopdetails.
+     * @example
+     * // Create many Shopdetails
+     * const shopdetails = await prisma.shopdetails.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends shopdetailsCreateManyArgs>(args?: SelectSubset<T, shopdetailsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Shopdetails.
+     * @param {shopdetailsDeleteArgs} args - Arguments to delete one Shopdetails.
+     * @example
+     * // Delete one Shopdetails
+     * const Shopdetails = await prisma.shopdetails.delete({
+     *   where: {
+     *     // ... filter to delete one Shopdetails
+     *   }
+     * })
+     * 
+     */
+    delete<T extends shopdetailsDeleteArgs>(args: SelectSubset<T, shopdetailsDeleteArgs<ExtArgs>>): Prisma__shopdetailsClient<$Result.GetResult<Prisma.$shopdetailsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Shopdetails.
+     * @param {shopdetailsUpdateArgs} args - Arguments to update one Shopdetails.
+     * @example
+     * // Update one Shopdetails
+     * const shopdetails = await prisma.shopdetails.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends shopdetailsUpdateArgs>(args: SelectSubset<T, shopdetailsUpdateArgs<ExtArgs>>): Prisma__shopdetailsClient<$Result.GetResult<Prisma.$shopdetailsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Shopdetails.
+     * @param {shopdetailsDeleteManyArgs} args - Arguments to filter Shopdetails to delete.
+     * @example
+     * // Delete a few Shopdetails
+     * const { count } = await prisma.shopdetails.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends shopdetailsDeleteManyArgs>(args?: SelectSubset<T, shopdetailsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Shopdetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {shopdetailsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Shopdetails
+     * const shopdetails = await prisma.shopdetails.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends shopdetailsUpdateManyArgs>(args: SelectSubset<T, shopdetailsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Shopdetails.
+     * @param {shopdetailsUpsertArgs} args - Arguments to update or create a Shopdetails.
+     * @example
+     * // Update or create a Shopdetails
+     * const shopdetails = await prisma.shopdetails.upsert({
+     *   create: {
+     *     // ... data to create a Shopdetails
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Shopdetails we want to update
+     *   }
+     * })
+     */
+    upsert<T extends shopdetailsUpsertArgs>(args: SelectSubset<T, shopdetailsUpsertArgs<ExtArgs>>): Prisma__shopdetailsClient<$Result.GetResult<Prisma.$shopdetailsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Shopdetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {shopdetailsCountArgs} args - Arguments to filter Shopdetails to count.
+     * @example
+     * // Count the number of Shopdetails
+     * const count = await prisma.shopdetails.count({
+     *   where: {
+     *     // ... the filter for the Shopdetails we want to count
+     *   }
+     * })
+    **/
+    count<T extends shopdetailsCountArgs>(
+      args?: Subset<T, shopdetailsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ShopdetailsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Shopdetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ShopdetailsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ShopdetailsAggregateArgs>(args: Subset<T, ShopdetailsAggregateArgs>): Prisma.PrismaPromise<GetShopdetailsAggregateType<T>>
+
+    /**
+     * Group by Shopdetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {shopdetailsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends shopdetailsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: shopdetailsGroupByArgs['orderBy'] }
+        : { orderBy?: shopdetailsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, shopdetailsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetShopdetailsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the shopdetails model
+   */
+  readonly fields: shopdetailsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for shopdetails.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__shopdetailsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the shopdetails model
+   */
+  interface shopdetailsFieldRefs {
+    readonly email: FieldRef<"shopdetails", 'String'>
+    readonly shopName: FieldRef<"shopdetails", 'String'>
+    readonly shopAddress: FieldRef<"shopdetails", 'String'>
+    readonly shopImg: FieldRef<"shopdetails", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * shopdetails findUnique
+   */
+  export type shopdetailsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shopdetails
+     */
+    select?: shopdetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the shopdetails
+     */
+    omit?: shopdetailsOmit<ExtArgs> | null
+    /**
+     * Filter, which shopdetails to fetch.
+     */
+    where: shopdetailsWhereUniqueInput
+  }
+
+  /**
+   * shopdetails findUniqueOrThrow
+   */
+  export type shopdetailsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shopdetails
+     */
+    select?: shopdetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the shopdetails
+     */
+    omit?: shopdetailsOmit<ExtArgs> | null
+    /**
+     * Filter, which shopdetails to fetch.
+     */
+    where: shopdetailsWhereUniqueInput
+  }
+
+  /**
+   * shopdetails findFirst
+   */
+  export type shopdetailsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shopdetails
+     */
+    select?: shopdetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the shopdetails
+     */
+    omit?: shopdetailsOmit<ExtArgs> | null
+    /**
+     * Filter, which shopdetails to fetch.
+     */
+    where?: shopdetailsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of shopdetails to fetch.
+     */
+    orderBy?: shopdetailsOrderByWithRelationInput | shopdetailsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for shopdetails.
+     */
+    cursor?: shopdetailsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` shopdetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` shopdetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of shopdetails.
+     */
+    distinct?: ShopdetailsScalarFieldEnum | ShopdetailsScalarFieldEnum[]
+  }
+
+  /**
+   * shopdetails findFirstOrThrow
+   */
+  export type shopdetailsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shopdetails
+     */
+    select?: shopdetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the shopdetails
+     */
+    omit?: shopdetailsOmit<ExtArgs> | null
+    /**
+     * Filter, which shopdetails to fetch.
+     */
+    where?: shopdetailsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of shopdetails to fetch.
+     */
+    orderBy?: shopdetailsOrderByWithRelationInput | shopdetailsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for shopdetails.
+     */
+    cursor?: shopdetailsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` shopdetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` shopdetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of shopdetails.
+     */
+    distinct?: ShopdetailsScalarFieldEnum | ShopdetailsScalarFieldEnum[]
+  }
+
+  /**
+   * shopdetails findMany
+   */
+  export type shopdetailsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shopdetails
+     */
+    select?: shopdetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the shopdetails
+     */
+    omit?: shopdetailsOmit<ExtArgs> | null
+    /**
+     * Filter, which shopdetails to fetch.
+     */
+    where?: shopdetailsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of shopdetails to fetch.
+     */
+    orderBy?: shopdetailsOrderByWithRelationInput | shopdetailsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing shopdetails.
+     */
+    cursor?: shopdetailsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` shopdetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` shopdetails.
+     */
+    skip?: number
+    distinct?: ShopdetailsScalarFieldEnum | ShopdetailsScalarFieldEnum[]
+  }
+
+  /**
+   * shopdetails create
+   */
+  export type shopdetailsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shopdetails
+     */
+    select?: shopdetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the shopdetails
+     */
+    omit?: shopdetailsOmit<ExtArgs> | null
+    /**
+     * The data needed to create a shopdetails.
+     */
+    data: XOR<shopdetailsCreateInput, shopdetailsUncheckedCreateInput>
+  }
+
+  /**
+   * shopdetails createMany
+   */
+  export type shopdetailsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many shopdetails.
+     */
+    data: shopdetailsCreateManyInput | shopdetailsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * shopdetails update
+   */
+  export type shopdetailsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shopdetails
+     */
+    select?: shopdetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the shopdetails
+     */
+    omit?: shopdetailsOmit<ExtArgs> | null
+    /**
+     * The data needed to update a shopdetails.
+     */
+    data: XOR<shopdetailsUpdateInput, shopdetailsUncheckedUpdateInput>
+    /**
+     * Choose, which shopdetails to update.
+     */
+    where: shopdetailsWhereUniqueInput
+  }
+
+  /**
+   * shopdetails updateMany
+   */
+  export type shopdetailsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update shopdetails.
+     */
+    data: XOR<shopdetailsUpdateManyMutationInput, shopdetailsUncheckedUpdateManyInput>
+    /**
+     * Filter which shopdetails to update
+     */
+    where?: shopdetailsWhereInput
+    /**
+     * Limit how many shopdetails to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * shopdetails upsert
+   */
+  export type shopdetailsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shopdetails
+     */
+    select?: shopdetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the shopdetails
+     */
+    omit?: shopdetailsOmit<ExtArgs> | null
+    /**
+     * The filter to search for the shopdetails to update in case it exists.
+     */
+    where: shopdetailsWhereUniqueInput
+    /**
+     * In case the shopdetails found by the `where` argument doesn't exist, create a new shopdetails with this data.
+     */
+    create: XOR<shopdetailsCreateInput, shopdetailsUncheckedCreateInput>
+    /**
+     * In case the shopdetails was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<shopdetailsUpdateInput, shopdetailsUncheckedUpdateInput>
+  }
+
+  /**
+   * shopdetails delete
+   */
+  export type shopdetailsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shopdetails
+     */
+    select?: shopdetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the shopdetails
+     */
+    omit?: shopdetailsOmit<ExtArgs> | null
+    /**
+     * Filter which shopdetails to delete.
+     */
+    where: shopdetailsWhereUniqueInput
+  }
+
+  /**
+   * shopdetails deleteMany
+   */
+  export type shopdetailsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which shopdetails to delete
+     */
+    where?: shopdetailsWhereInput
+    /**
+     * Limit how many shopdetails to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * shopdetails without action
+   */
+  export type shopdetailsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the shopdetails
+     */
+    select?: shopdetailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the shopdetails
+     */
+    omit?: shopdetailsOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5912,6 +6866,16 @@ export namespace Prisma {
   export type WhishlistScalarFieldEnum = (typeof WhishlistScalarFieldEnum)[keyof typeof WhishlistScalarFieldEnum]
 
 
+  export const ShopdetailsScalarFieldEnum: {
+    email: 'email',
+    shopName: 'shopName',
+    shopAddress: 'shopAddress',
+    shopImg: 'shopImg'
+  };
+
+  export type ShopdetailsScalarFieldEnum = (typeof ShopdetailsScalarFieldEnum)[keyof typeof ShopdetailsScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -5983,6 +6947,16 @@ export namespace Prisma {
   };
 
   export type whishlistOrderByRelevanceFieldEnum = (typeof whishlistOrderByRelevanceFieldEnum)[keyof typeof whishlistOrderByRelevanceFieldEnum]
+
+
+  export const shopdetailsOrderByRelevanceFieldEnum: {
+    email: 'email',
+    shopName: 'shopName',
+    shopAddress: 'shopAddress',
+    shopImg: 'shopImg'
+  };
+
+  export type shopdetailsOrderByRelevanceFieldEnum = (typeof shopdetailsOrderByRelevanceFieldEnum)[keyof typeof shopdetailsOrderByRelevanceFieldEnum]
 
 
   /**
@@ -6327,6 +7301,54 @@ export namespace Prisma {
     category?: StringNullableWithAggregatesFilter<"whishlist"> | string | null
   }
 
+  export type shopdetailsWhereInput = {
+    AND?: shopdetailsWhereInput | shopdetailsWhereInput[]
+    OR?: shopdetailsWhereInput[]
+    NOT?: shopdetailsWhereInput | shopdetailsWhereInput[]
+    email?: StringFilter<"shopdetails"> | string
+    shopName?: StringNullableFilter<"shopdetails"> | string | null
+    shopAddress?: StringNullableFilter<"shopdetails"> | string | null
+    shopImg?: StringNullableFilter<"shopdetails"> | string | null
+  }
+
+  export type shopdetailsOrderByWithRelationInput = {
+    email?: SortOrder
+    shopName?: SortOrderInput | SortOrder
+    shopAddress?: SortOrderInput | SortOrder
+    shopImg?: SortOrderInput | SortOrder
+    _relevance?: shopdetailsOrderByRelevanceInput
+  }
+
+  export type shopdetailsWhereUniqueInput = Prisma.AtLeast<{
+    email?: string
+    AND?: shopdetailsWhereInput | shopdetailsWhereInput[]
+    OR?: shopdetailsWhereInput[]
+    NOT?: shopdetailsWhereInput | shopdetailsWhereInput[]
+    shopName?: StringNullableFilter<"shopdetails"> | string | null
+    shopAddress?: StringNullableFilter<"shopdetails"> | string | null
+    shopImg?: StringNullableFilter<"shopdetails"> | string | null
+  }, "email" | "email">
+
+  export type shopdetailsOrderByWithAggregationInput = {
+    email?: SortOrder
+    shopName?: SortOrderInput | SortOrder
+    shopAddress?: SortOrderInput | SortOrder
+    shopImg?: SortOrderInput | SortOrder
+    _count?: shopdetailsCountOrderByAggregateInput
+    _max?: shopdetailsMaxOrderByAggregateInput
+    _min?: shopdetailsMinOrderByAggregateInput
+  }
+
+  export type shopdetailsScalarWhereWithAggregatesInput = {
+    AND?: shopdetailsScalarWhereWithAggregatesInput | shopdetailsScalarWhereWithAggregatesInput[]
+    OR?: shopdetailsScalarWhereWithAggregatesInput[]
+    NOT?: shopdetailsScalarWhereWithAggregatesInput | shopdetailsScalarWhereWithAggregatesInput[]
+    email?: StringWithAggregatesFilter<"shopdetails"> | string
+    shopName?: StringNullableWithAggregatesFilter<"shopdetails"> | string | null
+    shopAddress?: StringNullableWithAggregatesFilter<"shopdetails"> | string | null
+    shopImg?: StringNullableWithAggregatesFilter<"shopdetails"> | string | null
+  }
+
   export type productsCreateInput = {
     ProductName?: string | null
     ProductBrand?: string | null
@@ -6652,6 +7674,55 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     listObj?: NullableStringFieldUpdateOperationsInput | string | null
     category?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type shopdetailsCreateInput = {
+    email: string
+    shopName?: string | null
+    shopAddress?: string | null
+    shopImg?: string | null
+  }
+
+  export type shopdetailsUncheckedCreateInput = {
+    email: string
+    shopName?: string | null
+    shopAddress?: string | null
+    shopImg?: string | null
+  }
+
+  export type shopdetailsUpdateInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    shopName?: NullableStringFieldUpdateOperationsInput | string | null
+    shopAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    shopImg?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type shopdetailsUncheckedUpdateInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    shopName?: NullableStringFieldUpdateOperationsInput | string | null
+    shopAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    shopImg?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type shopdetailsCreateManyInput = {
+    email: string
+    shopName?: string | null
+    shopAddress?: string | null
+    shopImg?: string | null
+  }
+
+  export type shopdetailsUpdateManyMutationInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    shopName?: NullableStringFieldUpdateOperationsInput | string | null
+    shopAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    shopImg?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type shopdetailsUncheckedUpdateManyInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    shopName?: NullableStringFieldUpdateOperationsInput | string | null
+    shopAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    shopImg?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -6987,6 +8058,33 @@ export namespace Prisma {
     email?: SortOrder
     listObj?: SortOrder
     category?: SortOrder
+  }
+
+  export type shopdetailsOrderByRelevanceInput = {
+    fields: shopdetailsOrderByRelevanceFieldEnum | shopdetailsOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type shopdetailsCountOrderByAggregateInput = {
+    email?: SortOrder
+    shopName?: SortOrder
+    shopAddress?: SortOrder
+    shopImg?: SortOrder
+  }
+
+  export type shopdetailsMaxOrderByAggregateInput = {
+    email?: SortOrder
+    shopName?: SortOrder
+    shopAddress?: SortOrder
+    shopImg?: SortOrder
+  }
+
+  export type shopdetailsMinOrderByAggregateInput = {
+    email?: SortOrder
+    shopName?: SortOrder
+    shopAddress?: SortOrder
+    shopImg?: SortOrder
   }
 
   export type NullableStringFieldUpdateOperationsInput = {

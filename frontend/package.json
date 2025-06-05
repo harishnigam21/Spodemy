@@ -5,6 +5,7 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^3.7.0",
     "@stripe/stripe-js": "^7.3.0",
+    "@uploadthing/react": "^7.3.1",
     "date-fns": "^4.1.0",
     "eslint-plugin-react-hooks": "^6.1.0-canary-38ef6550-20250508",
     "react": "^19.1.0",
@@ -12,7 +13,8 @@
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.5.0",
     "react-scripts": "^5.0.1",
-    "stripe": "^18.1.0"
+    "stripe": "^18.1.0",
+    "uploadthing": "^7.7.2"
   },
   "scripts": {
     "start": "react-scripts start",

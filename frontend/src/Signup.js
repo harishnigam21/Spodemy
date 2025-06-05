@@ -18,21 +18,21 @@ const Signup = ({ logo }) => {
   const [cnfpassword, cnfsetPassword] = useState("");
   const [passworderror, setPassworderror] = useState("none");
   const [cnfpassworderror, setcnfPassworderror] = useState("none");
-  const [adminuser, setAdminuser] = useState("none");
+  const [selleruser, setSelleruser] = useState("none");
   let vote = [];
 
   const userRef = useRef(null); // Created a ref for the user strong element
-  const adminRef = useRef(null); // Created a ref for the admin strong element
+  const sellerRef = useRef(null); // Created a ref for the seller strong element
   const noteRef = useRef(null);
   useEffect(() => {
-    if (adminuser === "none" && noteRef.current) {
+    if (selleruser === "none" && noteRef.current) {
       noteRef.current.textContent =
         "Note : Slecting your role is mandatory here";
     } else if (noteRef.current) {
       noteRef.current.textContent =
         "NOTE - fill all mandatory field to activate submit button !";
     }
-  }, [adminuser]);
+  }, [selleruser]);
 
   const signupurl = `${process.env.REACT_APP_BACKEND_HOST}/signup`;
 
@@ -49,20 +49,20 @@ const Signup = ({ logo }) => {
     if (userRef.current) {
       userRef.current.style.backgroundColor = "red";
     }
-    if (adminRef.current) {
-      adminRef.current.style.backgroundColor = "transparent";
+    if (sellerRef.current) {
+      sellerRef.current.style.backgroundColor = "transparent";
     }
-    setAdminuser("User");
+    setSelleruser("User");
   };
 
-  const onclickAdmin = (event) => {
-    if (adminRef.current) {
-      adminRef.current.style.backgroundColor = "blue";
+  const onclickSeller = (event) => {
+    if (sellerRef.current) {
+      sellerRef.current.style.backgroundColor = "blue";
     }
     if (userRef.current) {
       userRef.current.style.backgroundColor = "transparent";
     }
-    setAdminuser("Admin");
+    setSelleruser("Seller");
   };
 
   const dateOnfocus = () => {
@@ -77,7 +77,7 @@ const Signup = ({ logo }) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        adminuser,
+        selleruser,
         firstname,
         middlename,
         lastname,
@@ -179,12 +179,12 @@ const Signup = ({ logo }) => {
             <strong id="user" onClick={(e) => onclickUser(e)} ref={userRef}>
               User
             </strong>
-            <strong id="admin" onClick={(e) => onclickAdmin(e)} ref={adminRef}>
-              Admin
+            <strong id="seller" onClick={(e) => onclickSeller(e)} ref={sellerRef}>
+              Seller
             </strong>
           </div>
         </div>
-        {adminuser == "none" ? (
+        {selleruser == "none" ? (
           <></>
         ) : (
           <div className="signupinput">

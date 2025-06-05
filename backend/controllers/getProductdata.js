@@ -21,11 +21,10 @@ const getProduct = async (req, res) => {
         UserEmail: currentuserEmail,
       },
     });
-
-    if (!validProducts) {
+    if (!validProducts || validProducts.length===0) {
       return res
-        .status(401)
-        .json({ Message: "Its looks like your stock is empty" });
+        .status(404)
+        .json({ Message: "looks like, your stock is empty" });
     }
     return res.status(200).json({ product: validProducts });
   } catch (error) {

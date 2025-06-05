@@ -165,6 +165,13 @@ exports.Prisma.WhishlistScalarFieldEnum = {
   category: 'category'
 };
 
+exports.Prisma.ShopdetailsScalarFieldEnum = {
+  email: 'email',
+  shopName: 'shopName',
+  shopAddress: 'shopAddress',
+  shopImg: 'shopImg'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -217,13 +224,21 @@ exports.Prisma.whishlistOrderByRelevanceFieldEnum = {
   category: 'category'
 };
 
+exports.Prisma.shopdetailsOrderByRelevanceFieldEnum = {
+  email: 'email',
+  shopName: 'shopName',
+  shopAddress: 'shopAddress',
+  shopImg: 'shopImg'
+};
+
 
 exports.Prisma.ModelName = {
   products: 'products',
   users: 'users',
   usercart: 'usercart',
   beforebuying: 'beforebuying',
-  whishlist: 'whishlist'
+  whishlist: 'whishlist',
+  shopdetails: 'shopdetails'
 };
 
 /**

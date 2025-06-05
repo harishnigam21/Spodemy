@@ -1,7 +1,7 @@
 generator client {
   provider      = "prisma-client-js"
-  binaryTargets = ["native", "rhel-openssl-3.0.x"]
   output        = "app/generated/prisma/client"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
 datasource db {
@@ -55,4 +55,11 @@ model whishlist {
   email    String  @id @unique(map: "email_UNIQUE") @db.VarChar(255)
   listObj  String? @db.LongText
   category String? @db.VarChar(55)
+}
+
+model shopdetails {
+  email       String  @id @unique(map: "email_UNIQUE") @db.VarChar(255)
+  shopName    String? @db.VarChar(255)
+  shopAddress String? @db.VarChar(510)
+  shopImg     String? @db.LongText
 }

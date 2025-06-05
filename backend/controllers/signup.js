@@ -20,7 +20,7 @@ const getUser = async (req, res) => {
 
       const encryptpassword = await bcrypt.hash(req.body.password, 5);
       const addedUser = {
-        userType: req.body.adminuser,
+        userType: req.body.selleruser,
         firstname: req.body.firstname,
         middlename: req.body.middlename,
         lastname: req.body.lastname,

@@ -1,3 +1,4 @@
+/* General tags and classes */
 body {
   background-color: black;
   margin: 0;
@@ -11,6 +12,23 @@ body {
 body::-webkit-scrollbar {
   width: 0;
   height: 0;
+}
+.uploadThings{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  input{
+    width: fit-content;
+  }
+  p{
+    position: absolute;
+    text-align: center;
+    width:90%;
+    background-color: black;
+    color: greenyellow;
+    font-size: x-large;
+  }
 }
 h1,
 h2 {
@@ -37,7 +55,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 .App {
   text-align: center;
 }
@@ -727,6 +744,8 @@ code {
   color: white;
 }
 /*Change password end*/
+
+/* User Section */
 .listallservice {
   width: 100%;
   display: flex;
@@ -1264,8 +1283,87 @@ code {
   }
 }
 
+/* Seller Section */
+.registershop {
+  color: white;
+  form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    .form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      min-width: fit-content;
+      padding: 3rem 3rem 2rem 3rem;
+      border: 0.1rem solid red;
+      border-radius: 1rem;
+      box-shadow: 0.1rem 0.1rem 1rem red inset;
+      div {
+        width: fit-content;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 30% 2% 68%;
+        label {
+          align-self: center;
+          text-align: right;
+          padding: 0.5rem;
+          font-weight: bold;
+        }
+        strong {
+          text-align: center;
+          align-self: center;
+        }
+        input,
+        p {
+          margin: 0;
+          align-self: center;
+          text-align: left;
+          padding: 1rem;
+          word-wrap: break-word;
+        }
+        input {
+          margin: 0.5rem;
+          background-color: transparent;
+          border: 0.1rem solid white;
+          border-radius: 1rem;
+          text-align: center;
+          color: white;
+          font-weight: bold;
+        }
+        input:focus {
+          border: 0.2rem solid yellow;
+        }
+      }
+      h4{
+        color:rgb(95, 100, 104);
+      }
+      button {
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        background-color: transparent;
+        color: white;
+        font-weight: bolder;
+        margin: 1rem 0;
+        border: 0.1rem solid yellow;
+        box-shadow: 0.1rem 0.1rem 0.3rem yellow inset;
+      }
+      button:focus {
+        box-shadow: 0.1rem 0.1rem 0.3rem green inset;
+      }
+    }
+  }
+}
+
 /*Media Query for mobile screen*/
 @media only screen and (max-width: 780px) {
+  /* General section */
   .signin input {
     width: 80%;
   }
@@ -1324,6 +1422,8 @@ code {
       width: calc(100% - 2rem);
     }
   }
+
+  /* user section */
   .productDiv {
     display: flex;
     flex-direction: row;
@@ -1410,6 +1510,8 @@ code {
       }
     }
   }
+
+  /* Seller Section */
 }
 @keyframes listFade {
   0% {

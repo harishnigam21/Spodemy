@@ -11,8 +11,8 @@ const Signin = ({ logo }) => {
     const statusMessage = JSON.parse(JSON.stringify(await response.json()));
     if (response.ok) {
       setTimeout(() => {
-        if (statusMessage.userType === "Admin") {
-          window.location.replace(`/main/admin/${statusMessage.email}`);
+        if (statusMessage.userType === "Seller") {
+          window.location.replace(`/main/seller/${statusMessage.email}/shop`);
         } else if (statusMessage.userType === "User") {
           window.location.replace(`/main/user/${statusMessage.email}`);
         } else {
