@@ -157,16 +157,18 @@ const Contain = ({ user }) => {
                 />
               ))}
             </div>
-            <section>
-              <label>Quantity</label>
-              <strong>:</strong>
-              <p>{item.ProductQuantity}</p>
-            </section>
-            <section>
-              <label>Price</label>
-              <strong>:</strong>
-              <p>{item.ProductPrice}/piece</p>
-            </section>
+            <div className="info">
+              <section>
+                <label>Quantity</label>
+                <strong>:</strong>
+                <p>{item.ProductQuantity}</p>
+              </section>
+              <section>
+                <label>Price</label>
+                <strong>:</strong>
+                <p>{item.ProductPrice}/piece</p>
+              </section>
+            </div>
           </div>
         ))}
       </div>
