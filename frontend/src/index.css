@@ -1318,14 +1318,14 @@ code {
         display: flex;
         flex-direction: row;
         align-items: center;
-        width: 100px;
+        width: 150px;
         overflow: auto;
         box-sizing: border-box;
         flex-grow: 1;
         img {
           position: relative;
-          width: 100px;
-          height: 100px;
+          width: 150px;
+          height: 150px;
           border-right: 0.05rem solid white;
         }
       }
