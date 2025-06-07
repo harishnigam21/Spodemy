@@ -59,7 +59,7 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/main/seller/:email/signout",
+    path: "/main/seller/:email/shop/signout",
     element: <SignoutSeller />,
   },
   {
