@@ -1601,8 +1601,8 @@ code {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  h1{
-    .home{
+  h1 {
+    .home {
       padding: 0 1rem;
       align-self: center;
       color: gray;
@@ -1673,6 +1673,17 @@ code {
     border: 0.2rem solid gray;
     border-radius: 1rem;
     margin-top: 2rem;
+  }
+  .Sheader {
+    width:100%;
+    background-color: gray;
+    overflow: hidden;
+    p {
+      text-align: right;
+      margin: 0;
+      color: rgb(200, 255, 0);
+      animation: footermover 15s linear 0s infinite normal none;
+    }
   }
 }
 /*Media Query for mobile screen*/
@@ -1881,5 +1892,13 @@ code {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+@keyframes footermover {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
   }
 }

@@ -6,7 +6,8 @@ import removeSegment from "../../../usefullFunction/removeSegment";
 
 const UpdateStock = () => {
   const location = useLocation();
-  const items = location.state.stock;
+  const stockitems = location.state.stock;
+  const [items, setItems] = useState(stockitems);
   const [updatelogs, setUpdatelogs] = useState([]);
   const [liststart, setListstart] = useState(0);
   const [listend, setListend] = useState(9);
@@ -126,7 +127,17 @@ const UpdateStock = () => {
       }
     }
   };
-
+  // updating product in current page, changes on DB will reflect on Submit, but this changes will reflect simultaneously and changes will occur at items, when page will load changes will destroyed
+  const onlyCurrentPage = (id, value, target) => {
+    setItems((preItem) => {
+      return preItem.map((item) => {
+        if (item.ProductId === id) {
+          item[target] = value;
+        }
+        return item;
+      });
+    });
+  };
   return (
     <div className="updateStock">
       <h1 ref={h1Ref}>
@@ -147,42 +158,74 @@ const UpdateStock = () => {
             </tr>
           </thead>
           <tbody ref={trRef}>
-            {sliceProducts.map((item) => (
+            {sliceProducts.map((item, index) => (
               <tr key={item.ProductId}>
                 <td>
                   <input
+                    id={`pname/${index}`}
+                    name={`pname/${index}`}
                     type="text"
                     defaultValue={item.ProductName}
-                    onChange={(e) =>
-                      logData(item.ProductId, e.target.value, "ProductName")
-                    }
+                    onChange={(e) => {
+                      logData(item.ProductId, e.target.value, "ProductName");
+                      onlyCurrentPage(
+                        item.ProductId,
+                        e.target.value,
+                        "ProductName"
+                      );
+                    }}
                   />
                 </td>
                 <td>
                   <input
+                    id={`pbrand/${index}`}
+                    name={`pbrand/${index}`}
                     type="text"
                     defaultValue={item.ProductBrand}
-                    onChange={(e) =>
-                      logData(item.ProductId, e.target.value, "ProductBrand")
-                    }
+                    onChange={(e) => {
+                      logData(item.ProductId, e.target.value, "ProductBrand");
+                      onlyCurrentPage(
+                        item.ProductId,
+                        e.target.value,
+                        "ProductBrand"
+                      );
+                    }}
                   />
                 </td>
                 <td>
                   <input
+                    id={`pquantity/${index}`}
+                    name={`pquantity/${index}`}
                     type="number"
                     defaultValue={item.ProductQuantity}
-                    onChange={(e) =>
-                      logData(item.ProductId, e.target.value, "ProductQuantity")
-                    }
+                    onChange={(e) => {
+                      logData(
+                        item.ProductId,
+                        e.target.value,
+                        "ProductQuantity"
+                      );
+                      onlyCurrentPage(
+                        item.ProductId,
+                        e.target.value,
+                        "ProductQuantity"
+                      );
+                    }}
                   />
                 </td>
                 <td>
                   <input
+                    id={`pprice/${index}`}
+                    name={`pprice/${index}`}
                     type="number"
                     defaultValue={item.ProductPrice}
-                    onChange={(e) =>
-                      logData(item.ProductId, e.target.value, "ProductPrice")
-                    }
+                    onChange={(e) => {
+                      logData(item.ProductId, e.target.value, "ProductPrice");
+                      onlyCurrentPage(
+                        item.ProductId,
+                        e.target.value,
+                        "ProductPrice"
+                      );
+                    }}
                   />
                 </td>
                 <td>
@@ -194,6 +237,12 @@ const UpdateStock = () => {
             ))}
           </tbody>
         </table>
+        <header className="Sheader">
+          <p>
+            Note : While Updating stock, please complete current page then
+            switch to another page
+          </p>
+        </header>
         <div className="navigate">
           <FaHandPointLeft
             onClick={() => {
