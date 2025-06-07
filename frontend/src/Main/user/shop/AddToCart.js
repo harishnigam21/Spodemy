@@ -223,7 +223,14 @@ export default function AddToCart() {
 
           return (
             <div key={item.ProductId} className="cartitem">
-              <img src={item.ProductImg} alt="refresh" />
+              <img
+                src={
+                  JSON.parse(item.ProductImg)[
+                    JSON.parse(item.ProductImg).length - 1
+                  ]
+                }
+                alt="refresh"
+              />
               <div className="itemdetails">
                 <h2>
                   {item.ProductName} [{item.ProductBrand}]
