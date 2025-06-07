@@ -4,6 +4,8 @@ import pullUser from "../../../usefullFunction/directuser";
 import { IoAddCircleOutline } from "react-icons/io5";
 import UploadThings from "../../../uplodFile";
 import { ImCross } from "react-icons/im";
+import Loader from "../../../Loarder";
+
 const Contain = ({ user }) => {
   const params = useParams();
   pullUser(params.email);
@@ -34,7 +36,7 @@ const Contain = ({ user }) => {
       if (response.ok) {
         if (h1Ref.current) {
           setShopdetails(data.shopdetails);
-          h1Ref.current.style.color = "blue";
+          h1Ref.current.style.backgroundImage = "linear-gradient(blue)";
           h1Ref.current.textContent = `${data.shopdetails.shopName} stock`;
         }
         const getProduct = async () => {
@@ -50,7 +52,7 @@ const Contain = ({ user }) => {
           } else {
             console.log(getData.Message);
             if (h1Ref.current) {
-              h1Ref.current.style.color = "red";
+              h1Ref.current.style.backgroundImage = "linear-gradient(red)";
               h1Ref.current.textContent = getData.Message;
             }
           }
@@ -58,7 +60,7 @@ const Contain = ({ user }) => {
         getProduct();
       } else {
         if (h1Ref.current) {
-          h1Ref.current.style.color = "red";
+          h1Ref.current.style.backgroundImage = "linear-gradient(red)";
           h1Ref.current.textContent = data.Message;
           if (response.status === 404) {
             setTimeout(() => {
@@ -140,7 +142,7 @@ const Contain = ({ user }) => {
   return (
     <div className="SellerproductDiv">
       <h1 style={{ color: "white" }} ref={h1Ref}>
-        .
+        LOADING <Loader />
       </h1>
       <div className="SproductList">
         {product.map((item) => (
