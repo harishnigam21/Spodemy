@@ -8,10 +8,13 @@ import Signup from "./Signup";
 import Forgotpwd from "./Forgotpwd";
 import Changepassword from "./Changepassword";
 
+//Seller
 import MainSeller from "./Main/seller/Main";
 import Registershop from "./Main/seller/shop/Registershop";
+import UpdateStock from "./Main/seller/shop/UpdateStock";
 import SignoutSeller from "./Main/seller/Signout";
 
+// User
 import MainUser from "./Main/user/Main";
 import ServiceLoader from "./Main/user/ServiceLoader";
 import AddToCart from "./Main/user/shop/AddToCart";
@@ -49,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "/main/seller/:email/shop/registershop",
     element: <Registershop />,
+  },
+  {
+    path: "/main/seller/:email/shop/:shopname/updatestock",
+    element: <UpdateStock />,
   },
 
   {

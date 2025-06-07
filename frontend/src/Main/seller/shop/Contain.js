@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate, useLocation, useParams } from "react-router-dom";
+import { useNavigate, useLocation, useParams, Link } from "react-router-dom";
 import pullUser from "../../../usefullFunction/directuser";
 import { IoAddCircleOutline } from "react-icons/io5";
 import UploadThings from "../../../uplodFile";
 import { ImCross } from "react-icons/im";
-
 const Contain = ({ user }) => {
   const params = useParams();
   pullUser(params.email);
@@ -149,13 +148,16 @@ const Contain = ({ user }) => {
               {item.ProductName} ({item.ProductBrand})
             </h3>
             <div className="Simage">
-              {JSON.parse(item.ProductImg).map((img, index) => (
+              <div className="images">
                 <img
-                  key={`${item.ProductId}/img/${index}`}
-                  src={img}
+                  src={
+                    JSON.parse(item.ProductImg)[
+                      JSON.parse(item.ProductImg).length - 1
+                    ]
+                  }
                   alt="refresh"
                 />
-              ))}
+              </div>
             </div>
             <div className="info">
               <section>
@@ -172,11 +174,21 @@ const Contain = ({ user }) => {
           </div>
         ))}
       </div>
-      <IoAddCircleOutline
-        onClick={() => setAdditem(true)}
-        className="icon additem"
-      />
-      Add Item
+      <div className="stockbtn">
+        <div className="additemdiv">
+          <IoAddCircleOutline
+            onClick={() => setAdditem(true)}
+            className="icon additem"
+          />
+          Add Item
+        </div>
+        <Link
+          to={`${shopdetails.shopName}/updatestock`}
+          state={{ stock: product }}
+        >
+          <button>Update stock</button>
+        </Link>
+      </div>
       {addItem ? (
         <div className="addstock">
           <form>

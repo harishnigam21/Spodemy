@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { CgProfile } from "react-icons/cg";
 import { FaCaretDown } from "react-icons/fa";
 import { TiThMenu } from "react-icons/ti";
 import { ImCross } from "react-icons/im";
@@ -39,8 +38,7 @@ const Nav = ({ user, updateforlogout }) => {
             <li>
               <ImCross className="icon" onClick={() => setBarIcon(!barIcon)} />
             </li>
-            <li>Hello! {user.firstname}
-            </li>
+            <li>Hello! {user.firstname}</li>
             <li className="list">
               <Link className="link" to={location.pathname}>
                 Home
@@ -122,21 +120,30 @@ const Nav = ({ user, updateforlogout }) => {
           <img src={logo} alt="refresh" />
         </li>
         <div className="rightlist">
-          <li className="profile">
-            <CgProfile
-              className="pro icon"
-              onMouseEnter={() => setProfile(!profile)}
-            />
+          <li
+            className="profile icon"
+            onMouseEnter={() => setProfile(!profile)}
+          >
+            {user.firstname && user.lastname
+              ? user.firstname[0] + user.lastname[0]
+              : "XY"}
           </li>
           {profile ? (
             <div
               className="profileList"
               onMouseLeave={() => setProfile(!profile)}
             >
-              <li className="profile" onClick={() => setProfile(!profile)}>
-                <CgProfile className="icon" id="profileToogle" />
+              <li className="profile icon" onClick={() => setProfile(!profile)}>
+                {user.firstname && user.lastname
+                  ? user.firstname[0] + user.lastname[0]
+                  : "XY"}
               </li>
               <li>Your Account</li>
+              <li>
+                <Link to={`${window.location.href}/orders`} className="link">
+                  Orders
+                </Link>
+              </li>
               <li>
                 <Link to={updateforlogout} className="link">
                   Logout
@@ -229,26 +236,33 @@ const Nav = ({ user, updateforlogout }) => {
         </div>
         <li className="logo">
           <img src={logo} alt="refresh" />
-          <p>
-            Welcome {user.firstname}
-          </p>
+          <p>Welcome {user.firstname}</p>
         </li>
         <div className="rightlist">
-          <li className="profile">
-            <CgProfile
-              className="pro icon"
-              onMouseEnter={() => setProfile(!profile)}
-            />
+          <li
+            className="profile icon"
+            onMouseEnter={() => setProfile(!profile)}
+          >
+            {user.firstname && user.lastname
+              ? user.firstname[0] + user.lastname[0]
+              : "XY"}
           </li>
           {profile ? (
             <div
               className="profileList"
               onMouseLeave={() => setProfile(!profile)}
             >
-              <li className="profile" onClick={() => setProfile(!profile)}>
-                <CgProfile className="icon" id="profileToogle" />
+              <li className="profile icon" onClick={() => setProfile(!profile)}>
+                {user.firstname && user.lastname
+                  ? user.firstname[0] + user.lastname[0]
+                  : "XY"}
               </li>
               <li>Your Account</li>
+              <li>
+                <Link to={`${window.location.href}/yourorder`} className="link">
+                  Order taken
+                </Link>
+              </li>
               <li>
                 <Link to={updateforlogout} className="link">
                   Logout

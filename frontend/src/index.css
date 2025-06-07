@@ -1,6 +1,7 @@
 /* General tags and classes */
 body {
   background-color: black;
+  color: white;
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -1291,6 +1292,7 @@ code {
   justify-content: center;
   align-items: center;
   color: white;
+  box-sizing: border-box;
   .SproductList {
     display: flex;
     flex-direction: row;
@@ -1311,27 +1313,61 @@ code {
       box-sizing: border-box;
       h3 {
         text-align: center;
-        word-break: break-all;
+        word-wrap: break-word;
         flex-grow: 1;
       }
       .Simage {
+        position: relative;
         display: flex;
         flex-direction: row;
         align-items: center;
-        width: 150px;
-        overflow: auto;
-        box-sizing: border-box;
-        flex-grow: 1;
-        img {
+        .images {
           position: relative;
-          width: 150px;
-          height: 150px;
-          border-right: 0.05rem solid white;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          max-width: 150px;
+          overflow: auto;
+          box-sizing: border-box;
+          flex-grow: 1;
+          img {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-right: 0.05rem solid white;
+            border-radius: 1rem;
+          }
+        }
+        .rightdiv {
+          display: flex;
+          position: absolute;
+          background-color: rgba(73, 69, 69, 0.5);
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+          right: 0;
+        }
+        .leftdiv {
+          display: flex;
+          position: absolute;
+          background-color: rgba(73, 69, 69, 0.5);
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+          left: 0;
+        }
+        .right,
+        .left {
+          color: blue;
+          font-size: x-large;
+          font-weight: bolder;
         }
       }
       .info {
         display: flex;
         flex-direction: column;
+        padding: 1rem 0;
+        box-sizing: border-box;
         section {
           display: grid;
           grid-template-columns: 1fr min-content 1fr;
@@ -1352,16 +1388,45 @@ code {
       }
     }
   }
-  .Simage::-webkit-scrollbar {
+  .images::-webkit-scrollbar {
     width: 0;
     height: 0;
   }
-  .additem {
-    color: white;
-    font-size: 3rem;
-    padding: 1rem;
-    :hover {
-      color: greenyellow;
+  .stockbtn {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    box-sizing: border-box;
+    .additemdiv {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      box-sizing: border-box;
+      .additem {
+        align-items: center;
+        color: white;
+        font-size: 3rem;
+        :hover {
+          color: greenyellow;
+        }
+      }
+    }
+    button {
+      background-color: transparent;
+      font-size: larger;
+      font-weight: bolder;
+      border-radius: 1rem;
+      color: white;
+      padding: 1rem;
+      box-shadow: 0.1rem 0.1rem 0.5rem red inset;
+    }
+    button:hover {
+      box-shadow: 0.1rem 0.1rem 0.5rem blue inset;
     }
   }
   .addstock {
@@ -1529,7 +1594,80 @@ code {
     }
   }
 }
-
+.updateStock {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  .table {
+    overflow: auto;
+    table {
+      border-collapse: collapse;
+      overflow: auto;
+      border: 0.1rem solid white;
+      tr {
+        th,
+        td {
+          position: relative;
+          padding: 8px;
+          border-left: 0.1rem solid white;
+          border-right: 0.1rem solid white;
+          text-align: center;
+          word-wrap: break-word;
+          img {
+            width: 2rem;
+            padding: 0.5rem;
+          }
+          img:hover {
+            position: relative;
+            width: 30rem;
+          }
+          input {
+            background-color: transparent;
+            color: white;
+            text-align: center;
+            border: none;
+          }
+          animation: fadeTable 1s ease;
+        }
+        th {
+          background-color: gray;
+        }
+      }
+    }
+    .navigate {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 0.5rem 0;
+      background-color: gray;
+      p {
+        margin: 0;
+        color: white;
+        font-size: small;
+        font-weight: bolder;
+        padding: 0 1rem;
+      }
+    }
+  }
+  .table::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  .updateItem {
+    padding: 1rem;
+    color: white;
+    font-size: medium;
+    font-weight: bolder;
+    background-color: transparent;
+    box-shadow: 0.1rem 0.1rem 1rem gray inset;
+    border: 0.2rem solid gray;
+    border-radius: 1rem;
+    margin-top: 2rem;
+  }
+}
 /*Media Query for mobile screen*/
 @media only screen and (max-width: 780px) {
   /* General section */
@@ -1698,6 +1836,16 @@ code {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@keyframes fadeTable {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 @keyframes rotate {

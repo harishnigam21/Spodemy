@@ -24,7 +24,6 @@ app.use("/", require("./routes/getUserdata"));
 app.use("/", require("./routes/directUser"));
 app.use("/", require("./routes/signout"));
 
-
 // user
 app.use("/", require("./routes/getallProductdata"));
 app.use("/", require("./routes/postCartdata"));
@@ -39,10 +38,10 @@ app.use("/", require("./routes/checkOut"));
 app.use("/", require("./routes/verifyTransaction"));
 app.use("/", require("./routes/getOrderitem"));
 
-
 //seller
 app.use("/", require("./routes/productdata"));
 app.use("/", require("./routes/shopDetails"));
+app.use("/", require("./routes/updateStock"));
 
 app.get("/", (req, res) => {
   res.send("Welcome to Spodemy!");
