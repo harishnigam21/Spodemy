@@ -211,7 +211,14 @@ export default function Contain() {
                 <h3>
                   {item.ProductName} ({item.ProductBrand})
                 </h3>
-                <img src={item.ProductImg} alt="refresh" />
+                <img
+                  src={
+                    JSON.parse(item.ProductImg)[
+                      JSON.parse(item.ProductImg).length - 1
+                    ]
+                  }
+                  alt="refresh"
+                />
                 <section>
                   <label>Quantity</label>
                   <>:</>
@@ -264,7 +271,14 @@ export default function Contain() {
                   <h3>
                     {item.ProductName} ({item.ProductBrand})
                   </h3>
-                  <img src={item.ProductImg} alt="refresh" />
+                  <img
+                    src={
+                      JSON.parse(item.ProductImg)[
+                        JSON.parse(item.ProductImg).length - 1
+                      ]
+                    }
+                    alt="refresh"
+                  />
                   <section>
                     <label>Quantity</label>
                     <>:</>
