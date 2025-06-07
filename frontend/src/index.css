@@ -1013,6 +1013,7 @@ code {
   display: grid;
   grid-template-columns: 20% 60% 20%;
   background-color: white;
+  color: black;
   background-image: linear-gradient(
     to right,
     rgba(255, 0, 0, 0),
@@ -1675,7 +1676,7 @@ code {
     margin-top: 2rem;
   }
   .Sheader {
-    width:100%;
+    width: 100%;
     background-color: gray;
     overflow: hidden;
     p {
