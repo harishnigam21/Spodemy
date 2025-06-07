@@ -141,9 +141,11 @@ const Contain = ({ user }) => {
   };
   return (
     <div className="SellerproductDiv">
-      <h1 style={{ color: "white" }} ref={h1Ref}>
-        LOADING <Loader />
-      </h1>
+      <div id="loading">
+        <h1 ref={h1Ref}>
+          LOADING <Loader />
+        </h1>
+      </div>
       <div className="SproductList">
         {product.map((item) => (
           <div key={item.ProductId} className="Sproduct">
