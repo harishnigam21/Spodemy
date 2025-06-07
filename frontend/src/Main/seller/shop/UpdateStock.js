@@ -17,7 +17,6 @@ const UpdateStock = () => {
   const h1Ref = useRef(null);
   const updateRef = useRef(null);
   pullUser(useParams().email);
-
   const moveback = () => {
     if (liststart >= 10) {
       setListstart(liststart - 10);
@@ -74,38 +73,47 @@ const UpdateStock = () => {
   };
   const onUpdate = async () => {
     try {
-      updateRef.current.style.color = "blue";
-      updateRef.current.disabled = true;
-      updateRef.current.textContent = "updating...";
-      const updatestockUrl = `${process.env.REACT_APP_BACKEND_HOST}/updatestock`;
-      const response = await fetch(updatestockUrl, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ updatelogs }),
-        credentials: "include",
-      });
-      const data = await response.json();
-      if (response.ok && h1Ref.current && updateRef.current) {
-        updateRef.current.style.color = "green";
-        updateRef.current.disabled = false;
-        updateRef.current.textContent = "updated";
-        h1Ref.current.style.color = "green";
-        h1Ref.current.textContent = data.Message;
-        setTimeout(() => {
-          h1Ref.current.style.color = "yellow";
-          h1Ref.current.textContent = "Returning back to shop...";
-        }, 2000);
-        setTimeout(() => {
-          navigate(`/${backUrl}`, { replace: true });
-        }, 5000);
-      } else {
-        if (h1Ref.current && updateRef.current) {
-          updateRef.current.style.color = "red";
+      if (updatelogs.length > 0) {
+        updateRef.current.style.color = "blue";
+        updateRef.current.disabled = true;
+        updateRef.current.textContent = "updating...";
+        const updatestockUrl = `${process.env.REACT_APP_BACKEND_HOST}/updatestock`;
+        const response = await fetch(updatestockUrl, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ updatelogs }),
+          credentials: "include",
+        });
+        const data = await response.json();
+        if (response.ok && h1Ref.current && updateRef.current) {
+          updateRef.current.style.color = "green";
           updateRef.current.disabled = false;
-          updateRef.current.textContent = "error!";
-          h1Ref.current.style.color = "red";
+          updateRef.current.textContent = "updated";
+          h1Ref.current.style.color = "green";
           h1Ref.current.textContent = data.Message;
+          setTimeout(() => {
+            h1Ref.current.style.color = "yellow";
+            h1Ref.current.textContent = "Returning back to shop...";
+          }, 2000);
+          setTimeout(() => {
+            navigate(`/${backUrl}`, { replace: true });
+          }, 5000);
+        } else {
+          if (h1Ref.current && updateRef.current) {
+            updateRef.current.style.color = "red";
+            updateRef.current.disabled = false;
+            updateRef.current.textContent = "error!";
+            h1Ref.current.style.color = "red";
+            h1Ref.current.textContent = data.Message;
+          }
         }
+      } else {
+        updateRef.current.style.color = "red";
+        updateRef.current.textContent = "No updates!";
+        setTimeout(() => {
+          updateRef.current.style.color = "white";
+          updateRef.current.textContent = "Update";
+        }, 1000);
       }
     } catch (error) {
       if (h1Ref.current && updateRef.current) {

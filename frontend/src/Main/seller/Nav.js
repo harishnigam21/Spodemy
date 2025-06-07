@@ -259,8 +259,8 @@ const Nav = ({ user, updateforlogout }) => {
               </li>
               <li>Your Account</li>
               <li>
-                <Link to={`${window.location.href}/yourorder`} className="link">
-                  Order taken
+                <Link to={`${window.location.href}/orders`} className="link">
+                  Orders
                 </Link>
               </li>
               <li>
