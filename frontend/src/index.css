@@ -1299,7 +1299,6 @@ code {
     flex-wrap: wrap;
     column-gap: 1rem;
     row-gap: 1rem;
-
     .Sproduct {
       display: flex;
       flex-direction: column;
@@ -1311,6 +1310,8 @@ code {
       box-shadow: 0.1rem 0.1rem 1rem red inset;
       padding: 1rem;
       box-sizing: border-box;
+      animation: fadeItems 1s ease-in-out forwards;
+
       h3 {
         text-align: center;
         word-wrap: break-word;
@@ -1600,6 +1601,13 @@ code {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  h1{
+    .home{
+      padding: 0 1rem;
+      align-self: center;
+      color: gray;
+    }
+  }
   .table {
     overflow: auto;
     table {
@@ -1629,7 +1637,6 @@ code {
             text-align: center;
             border: none;
           }
-          animation: fadeTable 1s ease;
         }
         th {
           background-color: gray;
@@ -1838,10 +1845,30 @@ code {
     transform: translateY(0);
   }
 }
-@keyframes fadeTable {
+@keyframes fadeItemsOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10rem);
+  }
+}
+@keyframes fadeTableIn {
   0% {
     opacity: 0;
     transform: translateX(-10rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeTableOut {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
   }
   100% {
     opacity: 1;

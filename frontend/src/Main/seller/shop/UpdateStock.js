@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { FaHandPointRight, FaHandPointLeft } from "react-icons/fa";
+import { useLocation, useNavigate, useParams, Link } from "react-router-dom";
+import { FaHandPointRight, FaHandPointLeft, FaHome } from "react-icons/fa";
 import pullUser from "../../../usefullFunction/directuser";
 import removeSegment from "../../../usefullFunction/removeSegment";
 
@@ -16,6 +16,7 @@ const UpdateStock = () => {
   const backUrl = removeSegment(window.location.pathname, 2);
   const h1Ref = useRef(null);
   const updateRef = useRef(null);
+  const trRef = useRef(null);
   pullUser(useParams().email);
   const moveback = () => {
     if (liststart >= 10) {
@@ -128,7 +129,12 @@ const UpdateStock = () => {
 
   return (
     <div className="updateStock">
-      <h1 ref={h1Ref}>Update Stock</h1>
+      <h1 ref={h1Ref}>
+        <Link to={`/${backUrl}`}>
+          <FaHome className="icon home" />
+        </Link>
+        Update Stock
+      </h1>
       <div className="table">
         <table>
           <thead>
@@ -140,7 +146,7 @@ const UpdateStock = () => {
               <th>Product Img</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody ref={trRef}>
             {sliceProducts.map((item) => (
               <tr key={item.ProductId}>
                 <td>
@@ -189,10 +195,23 @@ const UpdateStock = () => {
           </tbody>
         </table>
         <div className="navigate">
-          <FaHandPointLeft onClick={() => moveback()} className="icon left" />
+          <FaHandPointLeft
+            onClick={() => {
+              if (trRef.current) {
+                trRef.current.style.animation = "fadeTableOut 1s ease";
+                moveback();
+              }
+            }}
+            className="icon left"
+          />
           <p>Page {pageno}</p>
           <FaHandPointRight
-            onClick={() => moveforward()}
+            onClick={() => {
+              if (trRef.current) {
+                trRef.current.style.animation = "fadeTableIn 1s ease forwards";
+              }
+              moveforward();
+            }}
             className="icon right"
           />
         </div>

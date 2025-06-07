@@ -18,6 +18,7 @@ const Contain = ({ user }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const uploadRef = useRef();
+  const addstockRef = useRef();
   const errorRef = useRef(null);
   const productdataUrl = `${process.env.REACT_APP_BACKEND_HOST}/productdata`;
 
@@ -190,12 +191,20 @@ const Contain = ({ user }) => {
         </Link>
       </div>
       {addItem ? (
-        <div className="addstock">
+        <div ref={addstockRef} className="addstock">
           <form>
             <div className="form">
               <ImCross
                 className="icon cross"
-                onClick={() => setAdditem(false)}
+                onClick={() => {
+                  if (addstockRef.current) {
+                    addstockRef.current.style.animation =
+                      "fadeItemsOut 1s ease-in-out forwards";
+                    setTimeout(() => {
+                      setAdditem(false);
+                    }, 1000);
+                  }
+                }}
               />
               <div className="details">
                 <label htmlFor="pname">Product Name</label>
