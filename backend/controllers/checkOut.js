@@ -26,7 +26,9 @@ const checkout = async (req, res) => {
       currency: "INR",
       product_data: {
         name: item.name,
-        images: [item.img[0]],
+        images: JSON.parse(item.img)[
+                    JSON.parse(item.img).length - 1
+                  ],
         description: `Buying from ${item.seller}`,
       },
       unit_amount: Math.round(item.price * 100),
