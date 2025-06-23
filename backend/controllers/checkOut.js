@@ -35,6 +35,7 @@ const checkout = async (req, res) => {
     },
     quantity: item.quantity,
   }));
+  console.log(showItem);
   try {
     const transactionID = uuidv4();
     const session = await stripe.checkout.sessions.create({
