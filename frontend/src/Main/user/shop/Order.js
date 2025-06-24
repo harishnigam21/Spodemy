@@ -210,7 +210,7 @@ export default function Order() {
                 <div className="imgArray">
                   {imageArray(item).map((img, index) => (
                     <>
-                      <p>{img}</p>
+                      <p>{img[0]}</p>
                       <img
                         key={`${item.id}` + `${index}`}
                         src={img[0]}
