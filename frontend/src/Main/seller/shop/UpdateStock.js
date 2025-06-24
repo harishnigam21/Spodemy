@@ -230,7 +230,7 @@ const UpdateStock = () => {
                 </td>
                 <td>
                   {JSON.parse(item.ProductImg).map((img, index) => (
-                    <img key={`${item.ProductId}/img/${index}`} src={img} />
+                    <img key={`${item.ProductId}/img/${index}`} src={img} alt="refresh"/>
                   ))}
                 </td>
               </tr>

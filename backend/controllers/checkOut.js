@@ -26,16 +26,13 @@ const checkout = async (req, res) => {
       currency: "INR",
       product_data: {
         name: item.name,
-        images: JSON.parse(item.img)[
-                    JSON.parse(item.img).length - 1
-                  ],
+        images: [JSON.parse(item.img)[JSON.parse(item.img).length - 1]],
         description: `Buying from ${item.seller}`,
       },
       unit_amount: Math.round(item.price * 100),
     },
     quantity: item.quantity,
   }));
-  console.log(showItem);
   try {
     const transactionID = uuidv4();
     const session = await stripe.checkout.sessions.create({

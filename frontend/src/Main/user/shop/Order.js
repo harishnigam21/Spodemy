@@ -86,6 +86,7 @@ export default function Order() {
     for (let i = 0; i < data.length; i++) {
       arr[i] = data[i].img;
     }
+    console.log(arr);
     return arr;
   };
   return (
@@ -208,11 +209,14 @@ export default function Order() {
                 <p>Delivery status that where it is</p>
                 <div className="imgArray">
                   {imageArray(item).map((img, index) => (
-                    <img
-                      key={`${item.id}` + `${index}`}
-                      src={img}
-                      alt="refresh"
-                    />
+                    <>
+                      <p>{img}</p>
+                      <img
+                        key={`${item.id}` + `${index}`}
+                        src={img}
+                        alt="refresh"
+                      />
+                    </>
                   ))}
                 </div>
                 {/* list product here */}
