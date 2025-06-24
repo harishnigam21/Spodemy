@@ -213,7 +213,7 @@ export default function Order() {
                       <p>{img}</p>
                       <img
                         key={`${item.id}` + `${index}`}
-                        src={img}
+                        src={img[0]}
                         alt="refresh"
                       />
                     </>
