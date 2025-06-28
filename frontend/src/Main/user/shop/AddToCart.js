@@ -15,6 +15,8 @@ export default function AddToCart() {
   const [totalItem, setTotalItem] = useState(0);
   const [updcheckstatus, setUpdcheckstatus] = useState(false);
   const errorRef = useRef(null);
+  const updateRef = useRef(null);
+  const proceedRef = useRef(null);
   const currentLocation = window.location.href;
   const newUrl = currentLocation.replace("/yourcart", "");
 
@@ -128,6 +130,7 @@ export default function AddToCart() {
   }, [quantities, totalItem, cartItem]);
 
   const sendUpdatedcart = async () => {
+    updateRef.current.textContent = "Updating...";
     const sendurl = `${process.env.REACT_APP_BACKEND_HOST}/sendupdatedcart`;
     const response = await fetch(sendurl, {
       method: "POST",
@@ -137,12 +140,16 @@ export default function AddToCart() {
     });
     if (response.ok) {
       setUpdcheckstatus(false);
+      updateRef.current.textContent = "Updated";
     } else {
       console.log("Sorry, currently we are unable to proceed with checkout"); //display this to user
     }
   };
 
   const handleDeleteCart = async (productId) => {
+    const id = document.getElementById(`remove/${productId}`);
+    id.style.color = "blue";
+    id.textContent = "removing...";
     const deleteurl = `${process.env.REACT_APP_BACKEND_HOST}/deletecartitem`;
     const response = await fetch(deleteurl, {
       method: "DELETE",
@@ -152,12 +159,15 @@ export default function AddToCart() {
     });
     try {
       if (response.ok) {
-        window.location.reload();
         setCartitem(cartItem.filter((item) => item.productId !== productId));
         setQuantities(
           quantities.filter((item) => item.productId !== productId)
         );
+        id.style.color = "green";
+        id.textContent = "removed !";
       } else {
+        id.style.color = "red";
+        id.textContent = "error!/update cart";
         console.log(
           `There is issue at DB side with response : ${response.Message}`
         );
@@ -170,6 +180,7 @@ export default function AddToCart() {
   };
 
   const makePayment = async () => {
+    proceedRef.current.textContent = "Proceeding...";
     const getpublishKeyurl = `${process.env.REACT_APP_BACKEND_HOST}/publishkey`;
     const getpublishKeyResponse = await fetch(getpublishKeyurl, {
       method: "GET",
@@ -302,7 +313,10 @@ export default function AddToCart() {
                   style={{ color: "red", fontSize: "2rem" }}
                   onClick={() => handleDeleteCart(item.ProductId)}
                 />
-                Remove
+                <p
+                  id={`remove/${item.ProductId}`}
+                  style={{ margin: "0", fontWeight: "bold" }}
+                ></p>
                 <br />
               </div>
             </div>
@@ -323,6 +337,7 @@ export default function AddToCart() {
       </div>
       <div className="total">
         <button
+          ref={updateRef}
           disabled={!updcheckstatus}
           className="update"
           type="button"
@@ -351,6 +366,7 @@ export default function AddToCart() {
           id="paybtn"
           disabled={updcheckstatus}
           className="checkout"
+          ref={proceedRef}
           type="button"
           onClick={makePayment}
         >
