@@ -84,9 +84,8 @@ export default function Order() {
     const length = data.length;
     const arr = new Array(length);
     for (let i = 0; i < data.length; i++) {
-      arr[i] = data[i].img;
+      arr[i] = JSON.parse(data[i].img)[0];
     }
-    console.log(arr);
     return arr;
   };
   return (
@@ -210,10 +209,9 @@ export default function Order() {
                 <div className="imgArray">
                   {imageArray(item).map((img, index) => (
                     <>
-                      <p>{JSON.parse(img[0])}</p>
                       <img
                         key={`${item.id}` + `${index}`}
-                        src={JSON.parse(img[0])}
+                        src={img}
                         alt="refresh"
                       />
                     </>
