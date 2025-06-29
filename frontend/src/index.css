@@ -857,95 +857,73 @@ code {
   margin: 0;
   padding: 0.5rem;
 }
+
+.productDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  box-sizing: border-box;
+}
 .productList {
+  position: relative;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  border: 0.1rem solid red;
-  box-shadow: 0rem 0rem 1rem blue inset;
-  justify-content: center;
-  align-items: center;
-  background: gray;
+  background-color: gray;
+  border-radius: 1rem;
+  flex-grow: 1;
+  text-align: center;
+  overflow: auto;
+  width: 200px;
+  box-sizing: border-box;
+  h3 {
+    font-family: sans-serif;
+    color: black;
+    margin: 0;
+    font-weight: lighter;
+    font-size: larger;
+    flex-grow: 1;
+  }
+  img {
+    pointer-events: none;
+    aspect-ratio: 1/1;
+    max-width: 100%;
+    flex-grow: 1;
+  }
+  .atcbn {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    box-sizing: border-box;
+    background-color: rgba(128, 128, 128, 0.8);
+    width: 100%;
+    bottom: 0;
+    opacity: 0;
+    max-height: 0;
+    padding: 0.5rem;
+    justify-content: space-between;
+    transition: all 1s ease-in-out;
+  }
+}
+.productList:hover {
+  .atcbn {
+    opacity: 1;
+    max-height: 100%;
+  }
 }
 .productList::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
-.productDiv {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex-grow: 1;
-  div {
-    width: 20rem;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    margin: 0.5rem;
-    overflow: auto;
-    flex-grow: 1;
-    h3 {
-      font-size: larger;
-      font-weight: bolder;
-      flex-grow: 1;
-    }
-    img {
-      pointer-events: none;
-      max-width: 90%;
-      max-height: 15rem;
-      flex-grow: 1;
-    }
-    section {
-      display: grid;
-      display: inline-flex;
-      grid-template-columns: 48% 4% 48%;
-      align-items: center;
-      flex-grow: 1;
-      label {
-        margin: 0;
-        padding: 0.2rem;
-        text-align: right;
-        font-weight: 500;
-      }
-      p {
-        margin: 0;
-        padding: 0.2rem;
-        text-align: left;
-      }
-    }
-    div {
-      display: flex;
-      flex-direction: row;
-      background-color: transparent;
-      justify-self: center;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem 0;
-      button {
-        text-align: center;
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-        margin-right: 0.5rem;
-        box-shadow: 0rem 0rem 0.5rem red inset;
-        font-weight: bolder;
-      }
-      input {
-        max-width: 2rem;
-        padding: 0.5rem;
-        margin-right: 0.5rem;
-        box-shadow: 0rem 0rem 0.5rem red inset;
-      }
-    }
-  }
-}
+
 .productDiv::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
-.atcbn {
-  display: flex;
-}
-.wish {
+
+.wish,
+.atc,
+.bn {
   font-size: x-large;
   color: white;
 }
@@ -1306,9 +1284,7 @@ code {
       align-items: center;
       flex-grow: 1;
       width: 15rem;
-      border: 0.1rem solid red;
       border-radius: 1rem;
-      box-shadow: 0.1rem 0.1rem 1rem red inset;
       padding: 1rem;
       box-sizing: border-box;
       animation: fadeItems 1s ease-in-out forwards;
@@ -1750,54 +1726,30 @@ code {
   }
 
   /* user section */
-  .productDiv {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex-grow: 1;
-    div {
-      display: block;
-      max-width: 500px;
-      text-align: center;
-      align-items: center;
-      justify-content: center;
-      margin: 0.5rem;
-      overflow: auto;
-      flex-grow: 1;
-      h3 {
-        font-size: larger;
-        font-weight: bolder;
-      }
-      img {
-        pointer-events: none;
-        max-width: 40%;
-        max-height: 15rem;
-      }
-      section {
-        display: grid;
-        grid-template-columns: 48% 4% 48%;
-        align-items: center;
-        label {
-          margin: 0;
-          padding: 0.2rem;
-          text-align: right;
-          font-weight: 500;
-        }
-        p {
-          margin: 0;
-          padding: 0.2rem;
-          text-align: left;
-        }
-      }
-      div {
-        button {
-          padding: 0.5rem;
-          border-radius: 0.5rem;
-          margin-right: 0.5rem;
-        }
-      }
+  .productList {
+    width: 100px;
+    h3 {
+      font-size: medium;
+    }
+    .atcbn {
+      flex-direction: column;
+      height: 100%;
+      right: 0;
+      background-color: rgba(128, 128, 128, 0.8);
+      opacity: 0;
+      max-width: 0;
+      padding: 0.5rem;
+      justify-content: space-between;
+      transition:all 1s ease-in-out;
     }
   }
+  .productList:hover {
+    .atcbn {
+      opacity: 1;
+      max-width:fit-content;
+    }
+  }
+
   .orderBar {
     flex-wrap: nowrap;
     overflow-x: auto;

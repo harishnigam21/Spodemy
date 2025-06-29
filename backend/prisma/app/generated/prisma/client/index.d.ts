@@ -286,8 +286,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.6.0
-   * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
+   * Prisma Client JS version: 6.9.0
+   * Query Engine version: 81e4af48011447c3cc503a190e86995b66d2a28e
    */
   export type PrismaVersion = {
     client: string
@@ -1310,6 +1310,9 @@ export namespace Prisma {
     ProductImg: string | null
     ShopName: string | null
     UserEmail: string | null
+    Game: string | null
+    Type: string | null
+    door: string | null
   }
 
   export type ProductsMaxAggregateOutputType = {
@@ -1322,6 +1325,9 @@ export namespace Prisma {
     ProductImg: string | null
     ShopName: string | null
     UserEmail: string | null
+    Game: string | null
+    Type: string | null
+    door: string | null
   }
 
   export type ProductsCountAggregateOutputType = {
@@ -1334,6 +1340,9 @@ export namespace Prisma {
     ProductImg: number
     ShopName: number
     UserEmail: number
+    Game: number
+    Type: number
+    door: number
     _all: number
   }
 
@@ -1360,6 +1369,9 @@ export namespace Prisma {
     ProductImg?: true
     ShopName?: true
     UserEmail?: true
+    Game?: true
+    Type?: true
+    door?: true
   }
 
   export type ProductsMaxAggregateInputType = {
@@ -1372,6 +1384,9 @@ export namespace Prisma {
     ProductImg?: true
     ShopName?: true
     UserEmail?: true
+    Game?: true
+    Type?: true
+    door?: true
   }
 
   export type ProductsCountAggregateInputType = {
@@ -1384,6 +1399,9 @@ export namespace Prisma {
     ProductImg?: true
     ShopName?: true
     UserEmail?: true
+    Game?: true
+    Type?: true
+    door?: true
     _all?: true
   }
 
@@ -1483,6 +1501,9 @@ export namespace Prisma {
     ProductImg: string | null
     ShopName: string | null
     UserEmail: string | null
+    Game: string | null
+    Type: string | null
+    door: string | null
     _count: ProductsCountAggregateOutputType | null
     _avg: ProductsAvgAggregateOutputType | null
     _sum: ProductsSumAggregateOutputType | null
@@ -1514,6 +1535,9 @@ export namespace Prisma {
     ProductImg?: boolean
     ShopName?: boolean
     UserEmail?: boolean
+    Game?: boolean
+    Type?: boolean
+    door?: boolean
   }, ExtArgs["result"]["products"]>
 
 
@@ -1528,9 +1552,12 @@ export namespace Prisma {
     ProductImg?: boolean
     ShopName?: boolean
     UserEmail?: boolean
+    Game?: boolean
+    Type?: boolean
+    door?: boolean
   }
 
-  export type productsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ProductId" | "ProductName" | "ProductBrand" | "ProductQuantity" | "ProductPrice" | "ProductExpirydate" | "ProductImg" | "ShopName" | "UserEmail", ExtArgs["result"]["products"]>
+  export type productsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ProductId" | "ProductName" | "ProductBrand" | "ProductQuantity" | "ProductPrice" | "ProductExpirydate" | "ProductImg" | "ShopName" | "UserEmail" | "Game" | "Type" | "door", ExtArgs["result"]["products"]>
 
   export type $productsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "products"
@@ -1545,6 +1572,9 @@ export namespace Prisma {
       ProductImg: string | null
       ShopName: string | null
       UserEmail: string | null
+      Game: string | null
+      Type: string | null
+      door: string | null
     }, ExtArgs["result"]["products"]>
     composites: {}
   }
@@ -1923,6 +1953,9 @@ export namespace Prisma {
     readonly ProductImg: FieldRef<"products", 'String'>
     readonly ShopName: FieldRef<"products", 'String'>
     readonly UserEmail: FieldRef<"products", 'String'>
+    readonly Game: FieldRef<"products", 'String'>
+    readonly Type: FieldRef<"products", 'String'>
+    readonly door: FieldRef<"products", 'String'>
   }
     
 
@@ -6812,7 +6845,10 @@ export namespace Prisma {
     ProductExpirydate: 'ProductExpirydate',
     ProductImg: 'ProductImg',
     ShopName: 'ShopName',
-    UserEmail: 'UserEmail'
+    UserEmail: 'UserEmail',
+    Game: 'Game',
+    Type: 'Type',
+    door: 'door'
   };
 
   export type ProductsScalarFieldEnum = (typeof ProductsScalarFieldEnum)[keyof typeof ProductsScalarFieldEnum]
@@ -6898,7 +6934,10 @@ export namespace Prisma {
     ProductExpirydate: 'ProductExpirydate',
     ProductImg: 'ProductImg',
     ShopName: 'ShopName',
-    UserEmail: 'UserEmail'
+    UserEmail: 'UserEmail',
+    Game: 'Game',
+    Type: 'Type',
+    door: 'door'
   };
 
   export type productsOrderByRelevanceFieldEnum = (typeof productsOrderByRelevanceFieldEnum)[keyof typeof productsOrderByRelevanceFieldEnum]
@@ -7001,6 +7040,9 @@ export namespace Prisma {
     ProductImg?: StringNullableFilter<"products"> | string | null
     ShopName?: StringNullableFilter<"products"> | string | null
     UserEmail?: StringNullableFilter<"products"> | string | null
+    Game?: StringNullableFilter<"products"> | string | null
+    Type?: StringNullableFilter<"products"> | string | null
+    door?: StringNullableFilter<"products"> | string | null
   }
 
   export type productsOrderByWithRelationInput = {
@@ -7013,6 +7055,9 @@ export namespace Prisma {
     ProductImg?: SortOrderInput | SortOrder
     ShopName?: SortOrderInput | SortOrder
     UserEmail?: SortOrderInput | SortOrder
+    Game?: SortOrderInput | SortOrder
+    Type?: SortOrderInput | SortOrder
+    door?: SortOrderInput | SortOrder
     _relevance?: productsOrderByRelevanceInput
   }
 
@@ -7029,6 +7074,9 @@ export namespace Prisma {
     ProductImg?: StringNullableFilter<"products"> | string | null
     ShopName?: StringNullableFilter<"products"> | string | null
     UserEmail?: StringNullableFilter<"products"> | string | null
+    Game?: StringNullableFilter<"products"> | string | null
+    Type?: StringNullableFilter<"products"> | string | null
+    door?: StringNullableFilter<"products"> | string | null
   }, "ProductId" | "ProductId">
 
   export type productsOrderByWithAggregationInput = {
@@ -7041,6 +7089,9 @@ export namespace Prisma {
     ProductImg?: SortOrderInput | SortOrder
     ShopName?: SortOrderInput | SortOrder
     UserEmail?: SortOrderInput | SortOrder
+    Game?: SortOrderInput | SortOrder
+    Type?: SortOrderInput | SortOrder
+    door?: SortOrderInput | SortOrder
     _count?: productsCountOrderByAggregateInput
     _avg?: productsAvgOrderByAggregateInput
     _max?: productsMaxOrderByAggregateInput
@@ -7061,6 +7112,9 @@ export namespace Prisma {
     ProductImg?: StringNullableWithAggregatesFilter<"products"> | string | null
     ShopName?: StringNullableWithAggregatesFilter<"products"> | string | null
     UserEmail?: StringNullableWithAggregatesFilter<"products"> | string | null
+    Game?: StringNullableWithAggregatesFilter<"products"> | string | null
+    Type?: StringNullableWithAggregatesFilter<"products"> | string | null
+    door?: StringNullableWithAggregatesFilter<"products"> | string | null
   }
 
   export type usersWhereInput = {
@@ -7358,6 +7412,9 @@ export namespace Prisma {
     ProductImg?: string | null
     ShopName?: string | null
     UserEmail?: string | null
+    Game?: string | null
+    Type?: string | null
+    door?: string | null
   }
 
   export type productsUncheckedCreateInput = {
@@ -7370,6 +7427,9 @@ export namespace Prisma {
     ProductImg?: string | null
     ShopName?: string | null
     UserEmail?: string | null
+    Game?: string | null
+    Type?: string | null
+    door?: string | null
   }
 
   export type productsUpdateInput = {
@@ -7381,6 +7441,9 @@ export namespace Prisma {
     ProductImg?: NullableStringFieldUpdateOperationsInput | string | null
     ShopName?: NullableStringFieldUpdateOperationsInput | string | null
     UserEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    Game?: NullableStringFieldUpdateOperationsInput | string | null
+    Type?: NullableStringFieldUpdateOperationsInput | string | null
+    door?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type productsUncheckedUpdateInput = {
@@ -7393,6 +7456,9 @@ export namespace Prisma {
     ProductImg?: NullableStringFieldUpdateOperationsInput | string | null
     ShopName?: NullableStringFieldUpdateOperationsInput | string | null
     UserEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    Game?: NullableStringFieldUpdateOperationsInput | string | null
+    Type?: NullableStringFieldUpdateOperationsInput | string | null
+    door?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type productsCreateManyInput = {
@@ -7405,6 +7471,9 @@ export namespace Prisma {
     ProductImg?: string | null
     ShopName?: string | null
     UserEmail?: string | null
+    Game?: string | null
+    Type?: string | null
+    door?: string | null
   }
 
   export type productsUpdateManyMutationInput = {
@@ -7416,6 +7485,9 @@ export namespace Prisma {
     ProductImg?: NullableStringFieldUpdateOperationsInput | string | null
     ShopName?: NullableStringFieldUpdateOperationsInput | string | null
     UserEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    Game?: NullableStringFieldUpdateOperationsInput | string | null
+    Type?: NullableStringFieldUpdateOperationsInput | string | null
+    door?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type productsUncheckedUpdateManyInput = {
@@ -7428,6 +7500,9 @@ export namespace Prisma {
     ProductImg?: NullableStringFieldUpdateOperationsInput | string | null
     ShopName?: NullableStringFieldUpdateOperationsInput | string | null
     UserEmail?: NullableStringFieldUpdateOperationsInput | string | null
+    Game?: NullableStringFieldUpdateOperationsInput | string | null
+    Type?: NullableStringFieldUpdateOperationsInput | string | null
+    door?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type usersCreateInput = {
@@ -7783,6 +7858,9 @@ export namespace Prisma {
     ProductImg?: SortOrder
     ShopName?: SortOrder
     UserEmail?: SortOrder
+    Game?: SortOrder
+    Type?: SortOrder
+    door?: SortOrder
   }
 
   export type productsAvgOrderByAggregateInput = {
@@ -7801,6 +7879,9 @@ export namespace Prisma {
     ProductImg?: SortOrder
     ShopName?: SortOrder
     UserEmail?: SortOrder
+    Game?: SortOrder
+    Type?: SortOrder
+    door?: SortOrder
   }
 
   export type productsMinOrderByAggregateInput = {
@@ -7813,6 +7894,9 @@ export namespace Prisma {
     ProductImg?: SortOrder
     ShopName?: SortOrder
     UserEmail?: SortOrder
+    Game?: SortOrder
+    Type?: SortOrder
+    door?: SortOrder
   }
 
   export type productsSumOrderByAggregateInput = {

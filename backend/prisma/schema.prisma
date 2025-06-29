@@ -19,6 +19,9 @@ model products {
   ProductImg        String? @db.VarChar(255)
   ShopName          String? @db.VarChar(255)
   UserEmail         String?
+  Game              String? @db.VarChar(255)
+  Type              String? @db.VarChar(255)
+  door              String? @db.VarChar(10)
 }
 
 model users {

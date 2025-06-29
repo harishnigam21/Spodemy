@@ -159,9 +159,11 @@ export default function AddToCart() {
     });
     try {
       if (response.ok) {
-        setCartitem(cartItem.filter((item) => item.productId !== productId));
-        setQuantities(
-          quantities.filter((item) => item.productId !== productId)
+        setCartitem((prevCartItems) =>
+          prevCartItems.filter((item) => item.ProductId !== productId)
+        );
+        setQuantities((prevQuantities) =>
+          prevQuantities.filter((item) => item.id !== productId)
         );
         id.style.color = "green";
         id.textContent = "removed !";

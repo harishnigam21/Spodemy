@@ -2,7 +2,13 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import pullUser from "../../../usefullFunction/directuser";
-import { FaCartArrowDown, FaArrowLeft, FaHeart } from "react-icons/fa";
+import {
+  FaShoppingCart,
+  FaCartArrowDown,
+  FaArrowLeft,
+  FaHeart,
+} from "react-icons/fa";
+import { MdElectricBolt } from "react-icons/md";
 import Loader from "../../../Loarder";
 import removeSegment from "../../../usefullFunction/removeSegment";
 export default function Contain() {
@@ -11,7 +17,7 @@ export default function Contain() {
   const [itemidsinatc, setItemidsinatc] = useState([]);
   const [whishlistState, setWhishlistState] = useState([]);
   const [searchbarvalue, setSearchbarvalue] = useState("");
-  const [buttonStates, setButtonStates] = useState({});
+  const [gamelist, setGamelist] = useState([]);
   const currentLocation = window.location.href;
   const updateforatc = `${currentLocation}/yourcart`;
   const errorRef = useRef(null);
@@ -36,6 +42,14 @@ export default function Contain() {
         if (response.ok) {
           const validProduct = (await response.json()).product;
           setProduct(validProduct);
+          if (validProduct.length > 0) {
+            let array = [];
+            for (let i = 0; i < validProduct.length; i++) {
+              array[i] = validProduct[i].Game;
+            }
+            const uniqueSports = [...new Set(array)];
+            setGamelist(uniqueSports);
+          }
         } else {
           console.log("There is nothing to show you currently");
           if (errorRef.current) {
@@ -89,19 +103,6 @@ export default function Contain() {
     getcartdata();
     getWL();
   }, []);
-
-  useEffect(() => {
-    // Initialize button states based on itemidsinatc when products load
-    const initialButtonStates = {};
-    product.forEach((item) => {
-      initialButtonStates[item.ProductId] = itemidsinatc.includes(
-        item.ProductId
-      )
-        ? { text: "Added", disabled: true }
-        : { text: "Add to cart", disabled: false };
-    });
-    setButtonStates(initialButtonStates);
-  }, [product, itemidsinatc]); // Re-run when product or cart items change
 
   useEffect(() => {
     const postcartdataurl = `${process.env.REACT_APP_BACKEND_HOST}/postcartdata`;
@@ -164,11 +165,9 @@ export default function Contain() {
   const handleAddToCart = (productId) => {
     setIteminatc((prevCount) => prevCount + 1);
     setItemidsinatc((prevIds) => [...prevIds, productId]);
-    setButtonStates((prevStates) => ({
-      ...prevStates,
-      [productId]: { text: "Added", disabled: true },
-    }));
   };
+  console.log(product);
+  console.log(gamelist);
 
   const onClickWL = (id) => {
     const newObj = {
@@ -219,32 +218,16 @@ export default function Contain() {
                   }
                   alt="refresh"
                 />
-                <section>
-                  <label>Quantity</label>
-                  <>:</>
-                  <p>{item.ProductQuantity}</p>
-                </section>
-                <section>
-                  <label>Price</label>
-                  <>:</>
-                  <p>₹ {item.ProductPrice}/piece</p>
-                </section>
-                <section>
-                  <label>Shop</label>
-                  <>:</>
-                  <p>{item.ShopName}</p>
-                </section>
+                {/* using it when i click item to see */}
                 <div className="atcbn">
-                  <button
-                    type="button"
+                  <FaShoppingCart
+                    title="Add to cart"
+                    className="atc icon"
                     onClick={() => handleAddToCart(item.ProductId)}
-                    data-product-id={item.ProductId}
-                    disabled={buttonStates[item.ProductId]?.disabled || false}
-                  >
-                    {buttonStates[item.ProductId]?.text || "Add to cart"}
-                  </button>
-                  <button type="button">Buy Now</button>
+                  />
+                  <MdElectricBolt title="Buy Now" className="bn icon" />
                   <FaHeart
+                    title="Wishlist"
                     className="wish icon"
                     id={`wish${item.ProductId}`}
                     onClick={() => onClickWL(item.ProductId)}
@@ -279,33 +262,17 @@ export default function Contain() {
                     }
                     alt="refresh"
                   />
-                  <section>
-                    <label>Quantity</label>
-                    <>:</>
-                    <p>{item.ProductQuantity}</p>
-                  </section>
-                  <section>
-                    <label>Price</label>
-                    <>:</>
-                    <p>₹ {item.ProductPrice}/piece</p>
-                  </section>
-                  <section>
-                    <label>Shop</label>
-                    <>:</>
-                    <p>{item.ShopName}</p>
-                  </section>
+                  {/* using it when i click item to see */}
                   <div className="atcbn">
-                    <button
-                      type="button"
+                    <FaShoppingCart
+                      title="Add to cart"
+                      className="atc icon"
                       onClick={() => handleAddToCart(item.ProductId)}
-                      data-product-id={item.ProductId}
-                      disabled={buttonStates[item.ProductId]?.disabled || false}
-                    >
-                      {buttonStates[item.ProductId]?.text || "Add to cart"}
-                    </button>
-                    <button type="button">Buy Now</button>
+                    />
+                    <MdElectricBolt title="Buy Now" className="bn icon" />
                     <FaHeart
-                      className="wish"
+                      title="Wishlist"
+                      className="wish icon"
                       id={`wish${item.ProductId}`}
                       onClick={() => onClickWL(item.ProductId)}
                     />
