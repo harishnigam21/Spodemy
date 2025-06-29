@@ -45,10 +45,19 @@ export default function Contain() {
           if (validProduct.length > 0) {
             let array = [];
             for (let i = 0; i < validProduct.length; i++) {
-              array[i] = validProduct[i].Game;
+              let url = JSON.parse(validProduct[i].ProductImg)[
+                JSON.parse(validProduct[i].ProductImg).length - 1
+              ];
+              array[i] = {
+                name: validProduct[i].Game,
+                image: url,
+              };
             }
-            const uniqueSports = [...new Set(array)];
-            setGamelist(uniqueSports);
+            const uniqueObjectsByName = array.filter(
+              (obj, index, self) =>
+                index === self.findIndex((t) => t.name === obj.name)
+            );
+            setGamelist(uniqueObjectsByName);
           }
         } else {
           console.log("There is nothing to show you currently");
@@ -166,8 +175,6 @@ export default function Contain() {
     setIteminatc((prevCount) => prevCount + 1);
     setItemidsinatc((prevIds) => [...prevIds, productId]);
   };
-  console.log(product);
-  console.log(gamelist);
 
   const onClickWL = (id) => {
     const newObj = {
@@ -188,6 +195,7 @@ export default function Contain() {
       );
     }
   };
+
   return (
     <div className="Contain">
       <div className="searchboxdiv">
@@ -202,14 +210,31 @@ export default function Contain() {
           onChange={(e) => setSearchbarvalue(e.target.value)}
         />
       </div>
+      <div className="category">
+        <p>Shop by Category</p>
+        <div className="gameList">
+          {gamelist.length > 0 ? (
+            gamelist.map((game) => {
+              return (
+                <div key={game.name} className="game">
+                  <strong>{game.name}</strong>
+                  <img src={game.image} alt="refresh" />
+                </div>
+              );
+            })
+          ) : (
+            <></>
+          )}
+        </div>
+      </div>
       {product.length !== 0 ? (
         <div className="productDiv">
           {product && !searchbarvalue ? (
             product.map((item) => (
               <div key={item.ProductId} className="productList">
-                <h3>
+                <strong>
                   {item.ProductName} ({item.ProductBrand})
-                </h3>
+                </strong>
                 <img
                   src={
                     JSON.parse(item.ProductImg)[
@@ -251,9 +276,9 @@ export default function Contain() {
               )
               .map((item) => (
                 <div key={item.ProductId} className="productList">
-                  <h3>
+                  <strong>
                     {item.ProductName} ({item.ProductBrand})
-                  </h3>
+                  </strong>
                   <img
                     src={
                       JSON.parse(item.ProductImg)[
