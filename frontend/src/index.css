@@ -873,9 +873,10 @@ code {
   border-radius: 1rem;
   flex-grow: 1;
   text-align: center;
-  overflow: auto;
   width: 200px;
   box-sizing: border-box;
+  overflow: hidden;
+
   strong {
     font-family: sans-serif;
     color: black;
@@ -900,7 +901,8 @@ code {
     justify-content: space-between;
     opacity: 0;
     max-height: 0;
-    transition: all 1s ease-in-out;
+    transition: opacity 1s, max-height 2s;
+    transition-timing-function: ease-in-out;
   }
 }
 .productList:hover {
@@ -1771,23 +1773,25 @@ div::-webkit-scrollbar {
   .productList {
     width: 100px;
     .atcbn {
+      display: flex;
       flex-direction: column;
       height: 100%;
       right: 0;
       background-color: rgba(128, 128, 128, 0.8);
-      /* opacity: 0;
-      max-width: 0; */
+      opacity: 0;
+      max-width: 0;
       padding: 0.5rem;
+      overflow: hidden;
       justify-content: space-between;
-      transition: all 1s ease-in-out;
+      transition: opacity 1s ease-out, max-width 2s ease-out;
     }
   }
-  /* .productList:hover {
+  .productList:hover {
     .atcbn {
       opacity: 1;
-      max-width: fit-content;
+      max-width:50%;
     }
-  } */
+  }
 
   .orderBar {
     flex-wrap: nowrap;
