@@ -896,19 +896,19 @@ code {
     background-color: rgba(128, 128, 128, 0.8);
     width: 100%;
     bottom: 0;
-    opacity: 0;
-    max-height: 0;
+    /* opacity: 0;
+    max-height: 0; */
     padding: 0.5rem;
     justify-content: space-between;
     transition: all 1s ease-in-out;
   }
 }
-.productList:hover {
+/* .productList:hover {
   .atcbn {
     opacity: 1;
     max-height: 100%;
   }
-}
+} */
 .productList::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -1775,19 +1775,19 @@ div::-webkit-scrollbar {
       height: 100%;
       right: 0;
       background-color: rgba(128, 128, 128, 0.8);
-      opacity: 0;
-      max-width: 0;
+      /* opacity: 0;
+      max-width: 0; */
       padding: 0.5rem;
       justify-content: space-between;
       transition: all 1s ease-in-out;
     }
   }
-  .productList:hover {
+  /* .productList:hover {
     .atcbn {
       opacity: 1;
       max-width: fit-content;
     }
-  }
+  } */
 
   .orderBar {
     flex-wrap: nowrap;
