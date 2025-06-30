@@ -44,7 +44,7 @@ app.use("/", require("./routes/shopDetails"));
 app.use("/", require("./routes/updateStock"));
 
 app.get("/", (req, res) => {
-  res.send("Welcome to Spodemy!");
+  res.send("Welcome to Spodemy Backend Server");
 });
 
 app.listen(PORT, () => {
