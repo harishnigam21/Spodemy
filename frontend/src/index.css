@@ -900,6 +900,10 @@ code {
     background-color: rgba(128, 128, 128, 0.8);
     padding: 0.5rem;
     justify-content: space-around;
+    button {
+      background-color: transparent;
+      border: none;
+    }
   }
   .atcbn > :nth-child(1) {
     animation: Yminus 0.5s ease-in-out;
@@ -1812,6 +1816,10 @@ div::-webkit-scrollbar {
       background-color: rgba(128, 128, 128, 0.8);
       padding: 0.5rem;
       justify-content: space-around;
+      button {
+        background-color: transparent;
+        border: none;
+      }
     }
     .atcbn > :nth-child(1) {
       animation: Xminus 0.5s ease-in-out;

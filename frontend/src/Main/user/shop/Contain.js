@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import pullUser from "../../../usefullFunction/directuser";
@@ -132,7 +131,18 @@ export default function Contain() {
       // Only post if there are items in the cart
       postcartdata();
     }
-  }, [iteminatc, itemidsinatc]);
+    for (let i = 0; i < itemidsinatc.length; i++) {
+      const id = `atc${itemidsinatc[i]}`;
+      const element = document.getElementById(id);
+      if (element) {
+        const icon = element.getElementsByClassName("icon");
+        element.disabled = true;
+        if (icon) {
+          icon[0].style.color = "red";
+        }
+      }
+    }
+  }, [iteminatc, itemidsinatc,product]);
 
   useEffect(() => {
     const postWL = async () => {
@@ -245,18 +255,24 @@ export default function Contain() {
                 />
                 {/* using it when i click item to see */}
                 <div className="atcbn">
-                  <FaShoppingCart
-                    title="Add to cart"
-                    className="atc icon"
-                    onClick={() => handleAddToCart(item.ProductId)}
-                  />
-                  <MdElectricBolt title="Buy Now" className="bn icon" />
-                  <FaHeart
-                    title="Wishlist"
-                    className="wish icon"
-                    id={`wish${item.ProductId}`}
-                    onClick={() => onClickWL(item.ProductId)}
-                  />
+                  <button type="button" id={`atc${item.ProductId}`}>
+                    <FaShoppingCart
+                      title="Add to cart"
+                      className="atc icon"
+                      onClick={() => handleAddToCart(item.ProductId)}
+                    />
+                  </button>
+                  <button type="button" id={`bn${item.ProductId}`}>
+                    <MdElectricBolt title="Buy Now" className="bn icon" />
+                  </button>
+                  <button type="button">
+                    <FaHeart
+                      title="Wishlist"
+                      className="wish icon"
+                      id={`wish${item.ProductId}`}
+                      onClick={() => onClickWL(item.ProductId)}
+                    />
+                  </button>
                 </div>
               </div>
             ))
