@@ -891,24 +891,24 @@ code {
   .atcbn {
     display: flex;
     position: absolute;
+    bottom: 0;
     flex-direction: row;
     box-sizing: border-box;
     background-color: rgba(128, 128, 128, 0.8);
     width: 100%;
-    bottom: 0;
-    /* opacity: 0;
-    max-height: 0; */
     padding: 0.5rem;
     justify-content: space-between;
+    opacity: 0;
+    max-height: 0;
     transition: all 1s ease-in-out;
   }
 }
-/* .productList:hover {
+.productList:hover {
   .atcbn {
     opacity: 1;
     max-height: 100%;
   }
-} */
+}
 .productList::-webkit-scrollbar {
   width: 0;
   height: 0;
