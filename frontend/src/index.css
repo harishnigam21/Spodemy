@@ -890,25 +890,31 @@ code {
     flex-grow: 1;
   }
   .atcbn {
-    display: flex;
+    display: none;
     position: absolute;
-    bottom: 0;
-    flex-direction: row;
     box-sizing: border-box;
-    background-color: rgba(128, 128, 128, 0.8);
     width: 100%;
+    bottom: 0;
+    opacity: 0;
+    flex-direction: row;
+    background-color: rgba(128, 128, 128, 0.8);
     padding: 0.5rem;
     justify-content: space-around;
-    opacity: 0;
-    max-height: 0;
-    transition: opacity 1s, max-height 2s;
-    transition-timing-function: ease-in-out;
+  }
+  .atcbn > :nth-child(1) {
+    animation: Yminus 0.5s ease-in-out;
+  }
+  .atcbn > :nth-child(2) {
+    animation: Yminus 0.8s ease-in-out;
+  }
+  .atcbn > :nth-child(3) {
+    animation: Yminus 1s ease-in-out;
   }
 }
 .productList:hover {
   .atcbn {
+    display: flex;
     opacity: 1;
-    max-height: 100%;
   }
 }
 .productList::-webkit-scrollbar {
@@ -1795,25 +1801,32 @@ div::-webkit-scrollbar {
       flex-grow: 1;
     }
     .atcbn {
-      transition: none;
-      display: flex;
+      display: none;
       position: absolute;
-      right: 0;
-      flex-direction: column;
       box-sizing: border-box;
-      background-color: rgba(128, 128, 128, 0.8);
       height: 100%;
+      width: unset;
+      right: 0;
+      opacity: 0;
+      flex-direction: column;
+      background-color: rgba(128, 128, 128, 0.8);
       padding: 0.5rem;
       justify-content: space-around;
-      opacity: 0;
-      max-width: 0px;
-      transition: all 1s ease;
+    }
+    .atcbn > :nth-child(1) {
+      animation: Xminus 0.5s ease-in-out;
+    }
+    .atcbn > :nth-child(2) {
+      animation: Xminus 0.8s ease-in-out;
+    }
+    .atcbn > :nth-child(3) {
+      animation: Xminus 1s ease-in-out;
     }
   }
   .productList:hover {
     .atcbn {
+      display: flex;
       opacity: 1;
-      max-width: 50%;
     }
   }
 
@@ -1920,5 +1933,45 @@ div::-webkit-scrollbar {
   }
   100% {
     transform: translateX(-100%);
+  }
+}
+@keyframes Xplus {
+  0% {
+    opacity: 0;
+    transform: translateX(-5rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes Xminus {
+  0% {
+    opacity: 0;
+    transform: translateX(5rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes Yplus {
+  0% {
+    opacity: 0;
+    transform: translateY(-5rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes Yminus {
+  0% {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
