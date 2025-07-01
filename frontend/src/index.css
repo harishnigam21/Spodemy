@@ -901,8 +901,12 @@ code {
     padding: 0.5rem;
     justify-content: space-around;
     button {
+      position: relative;
       background-color: transparent;
       border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
   .atcbn > :nth-child(1) {
@@ -934,7 +938,11 @@ div::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
-
+.tick {
+  display: none;
+  position: absolute;
+  color: green;
+}
 .wish,
 .atc,
 .bn {
@@ -976,10 +984,12 @@ div::-webkit-scrollbar {
 .category {
   display: flex;
   flex-direction: column;
+  margin: 2rem 0;
   .gameList {
     display: flex;
     flex-direction: row;
     overflow: scroll;
+    border-radius: 1rem;
     background-image: linear-gradient(
       to right,
       rgba(128, 128, 128, 1),
@@ -990,6 +1000,7 @@ div::-webkit-scrollbar {
     padding: 0.5rem;
     gap: 0.5rem;
     .game {
+      position: relative;
       display: flex;
       background-color: rgba(177, 174, 174, 0.5);
       flex-direction: column;
@@ -998,6 +1009,8 @@ div::-webkit-scrollbar {
       border-radius: 1rem;
       box-sizing: border-box;
       min-width: 150px;
+      overflow: hidden;
+      box-sizing: border-box;
       strong {
         color: black;
         margin: 0;
@@ -1007,6 +1020,51 @@ div::-webkit-scrollbar {
         aspect-ratio: 1/1;
         border-radius: 2rem;
         width: 100%;
+      }
+      div {
+        display: flex;
+        position: absolute;
+        width: 0;
+        height: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(128, 128, 128, 0.8);
+        transition: all 0.5s ease-in-out;
+        .button {
+          max-width: fit-content;
+          max-height: fit-content;
+          position: relative;
+          background-color: transparent;
+          button {
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-weight: bold;
+            background-color: rgba(0, 128, 0, 0.8);
+            color: white;
+          }
+          p {
+            position: absolute;
+            width: 5px;
+            background-color: red;
+            height: 1000%;
+            align-self: first baseline;
+            transform: rotate(45deg);
+            transition: all 0.5s ease-in-out;
+          }
+          overflow: hidden;
+        }
+      }
+    }
+    .game:hover {
+      div {
+        width: 100%;
+        height: 100%;
+        .button:hover {
+          p {
+            transform: translateY(100%);
+          }
+        }
       }
     }
   }
@@ -1134,6 +1192,7 @@ div::-webkit-scrollbar {
     font-size: x-large;
   }
 }
+
 .continueShopping {
   display: flex;
   flex-direction: column;
@@ -1220,6 +1279,7 @@ div::-webkit-scrollbar {
 }
 .orderBarItem {
   margin: 0.5rem;
+  animation: Xplus 1s ease-in-out forwards;
 }
 .otherdetails {
   padding: 0.8rem;
@@ -1250,6 +1310,7 @@ div::-webkit-scrollbar {
     padding: 0.2rem 0.5rem;
     border-radius: 1rem;
     box-shadow: 0 0 0.3rem blue inset;
+    animation: Xplus 1s ease-in-out forwards;
   }
   button:hover {
     box-shadow: 0 0 0.3rem rgb(255, 0, 149) inset;
@@ -1817,8 +1878,12 @@ div::-webkit-scrollbar {
       padding: 0.5rem;
       justify-content: space-around;
       button {
+        position: relative;
         background-color: transparent;
         border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
     .atcbn > :nth-child(1) {

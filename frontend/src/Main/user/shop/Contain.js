@@ -7,6 +7,7 @@ import {
   FaArrowLeft,
   FaHeart,
 } from "react-icons/fa";
+import { FaCircleCheck } from "react-icons/fa6";
 import { MdElectricBolt } from "react-icons/md";
 import Loader from "../../../Loarder";
 import removeSegment from "../../../usefullFunction/removeSegment";
@@ -138,11 +139,11 @@ export default function Contain() {
         const icon = element.getElementsByClassName("icon");
         element.disabled = true;
         if (icon) {
-          icon[0].style.color = "red";
+          icon[1].style.display = "flex";
         }
       }
     }
-  }, [iteminatc, itemidsinatc,product]);
+  }, [iteminatc, itemidsinatc, product]);
 
   useEffect(() => {
     const postWL = async () => {
@@ -229,6 +230,12 @@ export default function Contain() {
                 <div key={game.name} className="game">
                   <strong>{game.name}</strong>
                   <img src={game.image} alt="refresh" />
+                  <div>
+                    <div className="button">
+                      <button type="button">Go there</button>
+                      <p>.</p>
+                    </div>
+                  </div>
                 </div>
               );
             })
@@ -261,6 +268,7 @@ export default function Contain() {
                       className="atc icon"
                       onClick={() => handleAddToCart(item.ProductId)}
                     />
+                    <FaCircleCheck className="tick icon" />
                   </button>
                   <button type="button" id={`bn${item.ProductId}`}>
                     <MdElectricBolt title="Buy Now" className="bn icon" />
