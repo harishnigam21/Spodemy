@@ -140,7 +140,6 @@ export default function AddToCart() {
     });
     if (response.ok) {
       setUpdcheckstatus(false);
-      updateRef.current.textContent = "Updated";
     } else {
       console.log("Sorry, currently we are unable to proceed with checkout"); //display this to user
     }
