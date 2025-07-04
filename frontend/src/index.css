@@ -900,6 +900,7 @@ code {
     background-color: rgba(128, 128, 128, 0.8);
     padding: 0.5rem;
     justify-content: space-around;
+    align-items: center;
     button {
       position: relative;
       background-color: transparent;
