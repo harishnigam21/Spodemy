@@ -43,7 +43,7 @@ const verifyUser = async (req, res) => {
       });
       try {
         if (updatedUser) {
-          console.log("Successfully for updated token for signed user");
+          console.log("Successfully updated token for signed user");
         }
       } catch (error) {
         console.log(error);
@@ -77,5 +77,3 @@ const verifyUser = async (req, res) => {
   }
 };
 module.exports = { verifyUser };
-
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhcmlzaG5pZ2FtMjFAZ21haWwuY29tIiwiaWF0IjoxNzQ1NTAwNjI5LCJleHAiOjE3NDU1ODcwMjl9.4_j2VnWfBiCtC7P7YTNiSi9BO889x2F9xvdSmqGMEJY
