@@ -25,21 +25,19 @@ const verify = async (req, res) => {
     return res.status(503).json({ Message: "Problem at decryption func" });
   }
   try {
-    const validUser = await prisma.beforebuying.findMany({
-      where: { email: decryptedEmail, transactionid: { not: null } },
-      orderBy: {
-        createdAt: "desc",
-      },
-      take: 1,
+    const validUser = await prisma.beforebuying.findFirst({
+      where: { email: decryptedEmail },
+      orderBy: { id: "desc" },
     });
     if (!validUser) {
       return res
         .status(404)
         .json({ Message: "You haven't make any order yet" });
     }
-    if (validUser[0].transactionid === transactionid) {
+    console.log(validUser);
+    if (validUser.transactionid === transactionid) {
       const updateStatus = await prisma.beforebuying.update({
-        where: { email: decryptedEmail, id: validUser[0].id },
+        where: { email: decryptedEmail, id: validUser.id },
         data: { transactionstatus: transactionState },
       });
       if (!updateStatus) {
@@ -65,6 +63,8 @@ const verify = async (req, res) => {
         .status(200)
         .json({ Message: "Successfully Updated paymentState to DB" });
     } else {
+      console.log("first", validUser.transactionid);
+      console.log("second", transactionid);
       return res
         .status(406)
         .json({ Message: "Don't try to access this page directly" });
