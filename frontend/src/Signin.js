@@ -16,7 +16,7 @@ const Signin = ({ logo }) => {
         } else if (statusMessage.userType === "User") {
           window.location.replace(`/main/user/${statusMessage.email}`);
         } else {
-          alert("You are trying to reach in wrong way");
+          alert("You are trying to reach in wrong way, your Role is not correct");
           window.location.replace("/signin");
         }
       }, 2000);
